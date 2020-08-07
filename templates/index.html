@@ -11,6 +11,8 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
 
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
         <title>CSV to QLab</title>
     </head>
     <body>
@@ -40,20 +42,34 @@
                 Coming soon: Video Demonstration.
             </p>
 
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
                 <div class="form-group">
-                    <label for="ip_input">IP address of QLab machine</label>
-                    <input type="text" class="form-control" name="ip" />
+                    <label for="ip_input">IP address of QLab machine (must be on same local network)</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" for="ip_input">123.456.7.89</span>
+                        </div>
+                        <input type="text" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" class="form-control" id="ip_input" name="ip" required />
+                        <div class="invalid-feedback">
+                          Please enter a vaild ip address.
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="midi_device">MIDI Device ID</label>
-                    <input type="number" id="midi_device" class="form-control" name="device_ID" />
+                    <input type="number" id="midi_device" class="form-control" name="device_ID" required />
+                    <div class="invalid-feedback">
+                      Please enter a number.
+                    </div>
                 </div>
-              <div class="form-group">
-                <label for="csv_file">CSV File</label>
-                <input type="file" class="form-control-file" id="csv_file" name="file">
-              </div>
-              <button class="btn btn-primary" type="submit">Send to QLab</button>
+                <div class="form-group">
+                    <label for="csv_file">CSV File</label>
+                    <input type="file" class="form-control-file" id="csv_file" name="file" required />
+                    <div class="invalid-feedback">
+                        Only .csv files accepted.
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Send to QLab</button>
             </form>
         </section>
         <footer class="footer mt-auto py-3">
@@ -63,5 +79,8 @@
               </p>
           </div>
         </footer>
+        <script>
+
+        </script>
     </body>
 </html>
