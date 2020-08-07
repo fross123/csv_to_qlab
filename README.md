@@ -7,4 +7,4 @@
 - run pip3 install -r requirements.txt
 - flask run
 
-Flask App is crated for the eventual user interface, the csv_convert.py file is the file handlining the import.
+Flask App is created for the eventual user interface, the csv_convert.py file is the file handlining the import.
