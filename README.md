@@ -1,6 +1,6 @@
 # CSV to QLAB
 
-## Using the flask framework, it is possible to batch import MIDI cues into QLab from a .csv file.
+*Using a flask application, it is possible to batch import MIDI cues into QLab from a .csv file.*
 
 ## To run without docker:
 - ensure you have python3 installed
