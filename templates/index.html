@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+
+        <title>CSV to QLab</title>
+    </head>
+    <body>
+        <header>
+            <!-- Image and text -->
+            <nav class="navbar navbar-light bg-light">
+              <a class="navbar-brand" href="#">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-soundwave" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                CSV Import
+              </a>
+            </nav>
+        </header>
+        <section class="container">
+            <div class="alert alert-info m-3" role="alert">
+              Please note that this project is still in development. <a href="https://www.finlayrosssound.com/contact" target="_blank">Let me know</a> if a bug occurs. Thank you!
+            </div>
+            <h1>Import CSV into QLAB</h1>
+            <p>
+                Please note, this is a very new project. In it's current state, this program only works for MIDI cues and the MSC type. Eventually I will be adding options for OSC and other types that may be useful for batch importing.
+            </p>
+            <p>
+                In its current state, this program will accept an ip address of the qlab machine, the device ID for the MIDI cues(for now you will have to set all of the auto-generated cues to the same value), and a .csv file with rows <strong>EXACTLY</strong> as follows: Cue, Page, Name, Notes. You can download an example document <a href="static/example_file/example.csv" download>here</a>, just be sure to export your spreadsheet as a .csv file, any other file types will be rejected. Make sure there are no extra empty rows as well.
+            </p>
+            <p>
+                Coming soon: Video Demonstration.
+            </p>
+
+            <form method="POST" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="ip_input">IP address of QLab machine</label>
+                    <input type="text" class="form-control" name="ip" />
+                </div>
+                <div class="form-group">
+                    <label for="midi_device">MIDI Device ID</label>
+                    <input type="number" id="midi_device" class="form-control" name="device_ID" />
+                </div>
+              <div class="form-group">
+                <label for="csv_file">CSV File</label>
+                <input type="file" class="form-control-file" id="csv_file" name="file">
+              </div>
+              <button class="btn btn-primary" type="submit">Send to QLab</button>
+            </form>
+        </section>
+        <footer class="footer mt-auto py-3">
+          <div class="container">
+              <p>
+                  Recomendations for future features are very welcome! Please <a href="https://www.finlayrosssound.com/contact" target="_blank">Contact Me</a> if you have a recomendation or any questions. Thanks!
+              </p>
+          </div>
+        </footer>
+    </body>
+</html>
