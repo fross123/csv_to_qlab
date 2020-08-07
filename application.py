@@ -40,3 +40,6 @@ def success():
 @app.errorhandler(413)
 def too_large(e):
     return "File is too large", 413
+
+if __name__ == '__main__':
+    app.run(debug="True",host='0.0.0.0')
