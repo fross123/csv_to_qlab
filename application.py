@@ -1,16 +1,23 @@
+import sys
 import os
 import webview
 
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
-from csv_convert import *
+from csv_convert import send_csv
+from helper import resource_path
 
-app = Flask(__name__, static_folder='./static', template_folder='./templates')
+if getattr(sys, 'frozen', False):
+    template_folder = resource_path('templates')
+    static_folder = resource_path('static')
+    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
+else:
+    app = Flask(__name__)
 
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['UPLOAD_EXTENSIONS'] = ['.csv']
-app.config['UPLOAD_PATH'] = 'static/csv_files'
+app.config['UPLOAD_PATH'] = resource_path('static/csv_files')
 
 @app.route('/')
 def index():
@@ -26,10 +33,8 @@ def upload_file():
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
             return "Invalid File", 400
-        f = os.path.join(app.config['UPLOAD_PATH'], filename)
-        uploaded_file.save(f)
-        main(ip, f, device_ID)
-        os.remove(f)
+
+        send_csv(ip, uploaded_file, device_ID)
     return redirect(url_for('success'))
 
 
