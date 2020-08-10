@@ -1,2 +1,4 @@
 Flask
 python-osc
+pywebview
+werkzeug

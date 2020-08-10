@@ -1,11 +1,12 @@
 import os
+import webview
 
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
 from csv_convert import *
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='./static', template_folder='./templates')
 
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['UPLOAD_EXTENSIONS'] = ['.csv']
@@ -42,4 +43,5 @@ def too_large(e):
     return "File is too large", 413
 
 if __name__ == '__main__':
-    app.run(debug="True",host='0.0.0.0')
+    webview.create_window('CSV to QLab', app)
+    webview.start()
