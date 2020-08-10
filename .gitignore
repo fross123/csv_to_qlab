@@ -1,2 +1,5 @@
 __pycache__
 env
+dist
+build
+application.spec
