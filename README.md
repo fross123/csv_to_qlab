@@ -3,7 +3,8 @@
 *Using a flask application, it is possible to batch import MIDI cues into QLab from a .csv file.*
 
 ## To run on mac:
-- download the dist/csv_to_qlab.app folder
+- download csv_to_qlab.zip
+- unzip the foder
 - open the app
 
 *qlab must be open on the recieving computer in order for the messages to be recieved. It automatically picks the qlab workspace that is open and inserts the cues into the current folder.*
