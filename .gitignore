@@ -3,4 +3,5 @@ __pycache__
 env
 dist
 build
-application.spec
+icon.svg
+icon(big).icns
