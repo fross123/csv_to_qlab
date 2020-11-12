@@ -22,33 +22,35 @@ pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
           a.scripts,
-          a.binaries,
-          a.zipfiles,
-          a.datas,
           [],
-          name='application',
+          exclude_binaries=True,
+          name='csv_to_qlab',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          upx_exclude=[],
-          runtime_tmpdir=None,
           console=False )
-
-app = BUNDLE(exe,
-          name='csv_to_qlab.app',
-          icon='icon(big).icns',
-          bundle_identifier=None,
-          info_plist={
-             'NSPrincipalClass': 'NSApplication',
-             'NSAppleScriptEnabled': False,
-             'CFBundleDocumentTypes': [
-                 {
-                     'CFBundleTypeName': 'My File Format',
-                     'CFBundleTypeIconFile': 'MyFileIcon.icns',
-                     'LSItemContentTypes': ['com.example.myformat'],
-                     'LSHandlerRank': 'Owner'
-                     }
-                 ]
-             },
-          )
+coll = COLLECT(exe,
+               a.binaries,
+               a.zipfiles,
+               a.datas,
+               strip=False,
+               upx=True,
+               upx_exclude=[],
+               name='csv_to_qlab')
+app = BUNDLE(coll,
+             name='csv_to_qlab.app',
+             icon='icon(big).icns',
+             bundle_identifier=None,
+             info_plist={
+                'NSPrincipalClass': 'NSApplication',
+                'NSAppleScriptEnabled': False,
+                'CFBundleDocumentTypes': [
+                    {
+                        'CFBundleTypeName': 'CSV to QLab',
+                        'CFBundleTypeIconFile': 'icon(big).icns',
+                        'LSHandlerRank': 'Owner'
+                        }
+                    ]
+                },
+             )
