@@ -1,7 +1,7 @@
 # CSV to QLAB
 
 ## To run on mac:
-- download csv_to_qlab.zip from the latest release
+- download [csv_to_qlab.zip](https://github.com/fross123/csv_to_qlab/releases/latest/download/csv_to_qlab.zip) from the latest release
 - unzip the foder
 - open the app
 
@@ -14,6 +14,6 @@
     - Name
     - Notes
 - Make sure to save your file in the .csv format. (Not Excel or Numbers)
-[Example Spreadsheet File]("./static/example_file/example.csv")
+- [Example Spreadsheet File](https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/example.csv)
 
 Recomendations for future features are very welcome!
