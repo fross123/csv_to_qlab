@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['application.py'],
-             pathex=['/Users/Fin/Documents/csvThings/csv_convert_final'],
+             pathex=['.'],
              binaries=[],
              datas=[
                ('static', 'static'),

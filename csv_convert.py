@@ -9,8 +9,6 @@ def send_csv(ip, document, device_ID):
     client = udp_client.UDPClient(ip, 53000)
 
     stream = io.StringIO(document.stream.read().decode("UTF8"), newline=None)
-    csv_input = csv.reader(stream)
-
     reader = csv.reader(stream)
 
     for Cue, Page, Name, Notes in reader:
