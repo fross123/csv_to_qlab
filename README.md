@@ -41,8 +41,4 @@ python3 -m pip install pyinstaller
 pyinstaller application.spec
 ```
 
-:warning: | I slipped in some Big Sur vomit that Apple left all over, so building this way might not work if you are running on the new OS until pysintaller has a new release. The develomnet version of [pyinstaller](https://pyinstaller.readthedocs.io/en/stable/installation.html) worked fine for me, but you have been warned.
------------- | -------------
-
-
 Recomendations for future features are very welcome!
