@@ -3,7 +3,7 @@ import csv
 import os
 import time
 
-from pythonosc import osc_message_builder, udp_client
+from pythonosc import osc_message_builder, osc_bundle_builder, udp_client
 
 def check_cue_type(type):
     """ Return the valid type of cue, or False """
@@ -40,94 +40,93 @@ def send_csv(ip, document):
         cues.append(cue)
 
     for cue in cues:
+        bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
         msg = osc_message_builder.OscMessageBuilder(address = "/new")
         if check_cue_type(cue["type"]):
             msg.add_arg(check_cue_type(cue["type"]))
         else:
             msg.add_arg("memo")
-        msg = msg.build()
-        client.send(msg)
+        bundle.add_content(msg.build())
         
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/number")
         msg.add_arg(f"{cue['number']}")
-        msg = msg.build()
-        client.send(msg)
+        bundle.add_content(msg.build())
 
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/name")
         msg.add_arg(f"{cue['name']}")
-        msg = msg.build()
-        client.send(msg)
+        bundle.add_content(msg.build())
 
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/notes")
         msg.add_arg(f"p:{cue['page']} Notes: {cue['notes']}")
-        msg = msg.build()
-        client.send(msg)
+        bundle.add_content(msg.build())
+        
 
         if check_cue_type(cue["type"]) == "midi":
             if cue["message type"]:
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
                 msg.add_arg(int(cue["message type"]))
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
 
             if cue["command format"]:
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/commandFormat")
                 msg.add_arg(int(cue['command format']))
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
 
             if cue["command"]:
                 msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/command")
                 msg.add_arg(int(cue["command"]))
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
 
             if cue["device id"]:
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/deviceID")
                 msg.add_arg(int(cue["device id"]))
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
 
             if cue['midi cue number']:
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/qNumber")
                 msg.add_arg(f"{cue['midi cue number']}")
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
         
         if check_cue_type(cue["type"]) == "network":
             if cue["message type"]:
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
                 msg.add_arg(int(cue["message type"]))
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
 
             if cue["command"]:
                 msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCommand")
                 msg.add_arg(int(cue["command"]))
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
 
             if cue["osc cue number"]:
                 msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
                 msg.add_arg(cue["osc cue number"])
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
             else:
                 msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
                 msg.add_arg(cue["number"])
-                msg = msg.build()
-                client.send(msg)
+                bundle.add_content(msg.build())
+                
 
         if cue['target']:
             msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
             msg.add_arg(f"{cue['target']}")
-            msg = msg.build()
-            client.send(msg)
+            bundle.add_content(msg.build())
+            
 
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/colorName")
         if check_color_type(cue['color']):
             msg.add_arg(check_color_type(cue['color']))
         else:
             msg.add_arg("none")
-        msg = msg.build()
-        client.send(msg)
+        bundle.add_content(msg.build())
+    
+        client.send(bundle.build())
