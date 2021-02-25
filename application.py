@@ -27,14 +27,13 @@ def index():
 def upload_file():
     uploaded_file = request.files['file']
     ip = request.form['ip']
-    device_ID = request.form['device_ID']
     filename = secure_filename(uploaded_file.filename)
     if uploaded_file.filename != '':
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
             return "Invalid File", 400
 
-        send_csv(ip, uploaded_file, device_ID)
+        send_csv(ip, uploaded_file)
     return redirect(url_for('success'))
 
 

@@ -30,16 +30,40 @@
             <div class="alert alert-info m-3" role="alert">
               Please note that this project is still in development. <a href="https://www.finlayrosssound.com/contact" target="_blank">Let me know</a> if a bug occurs. Thank you!
             </div>
+            <small class="text-right"><a href="https://github.com/fross123/csv_to_qlab/tree/v2021.1.0" target="_blank">Version 2021.1.0</a></small>
             <h1>Import CSV into QLAB</h1>
-            <p>
-                Please note, this is a very new project. In it's current state, this program only works for MIDI cues and the MSC type. Eventually I will be adding options for OSC and other types that may be useful for batch importing.
-            </p>
-            <p>
-                This program will accept an ip address of the qlab machine, the device ID for the MIDI cues(for now you will have to set all of the auto-generated cues to the same value), and a .csv file with rows <strong>EXACTLY</strong> as follows: Cue, Page, Name, Notes. You can download an example document <a href="https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/example.csv" target="_blank">here</a>, just be sure to export your spreadsheet as a .csv file, any other file types will be rejected. Make sure there are no extra empty rows as well.
-            </p>
-            <p>
-                Coming soon: Video Demonstration.
-            </p>
+            <p>In this update, you no longer need to be precise about the order of your rows in your .csv file. You can now also add <em>any</em> type of cue, however some do require additional parameters.</p>
+            <p><a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#workspaceidnew-cue_type" target="_blank">See permitted cue types.</a></p>
+            <p>Certain optional collumns below require numbers rather than text, please follow the links to see the most up to date options that are allowed for QLab.</p>
+            
+            <p>Required Columns:</p>
+            <ul>
+                <li>Number</li>
+                <li>Type</li>
+                <li>Name</li>
+            </ul>
+
+            <p>Optional Collumns:</p>
+            <ul>
+                <li>Page (Will be added to notes)</li>
+                <li>Name</li>
+                <li>Notes</li>
+                <li>Color (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string" target="_blank">Options</a>)</li>
+                <li>Collumns availible for "midi" cue type:</li>
+                <ul>
+                    <li>Midi Cue Number</li>
+                    <li>Device ID</li>
+                    <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number-1" target="_blank">Options</a>)</li>
+                    <li>Command Format (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercommandformat-number" target="_blank">Options</a>)</li>
+                    <li>Command (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercommand-number" target="_blank">Options</a>)</li>
+                </ul>
+                <li>Collumns availible for "network" cue type:</li>
+                <ul>
+                    <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number" target="_blank">Options</a>)</li>
+                    <li>OSC Cue Number (Only if using QLab Message Type)</li>
+                    <li>Command (Only if using QLab Message Type)</li>
+                </ul>
+            </ul>
 
             <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
                 <div class="form-group">
@@ -55,27 +79,20 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="midi_device">MIDI Device ID</label>
-                    <input type="number" id="midi_device" class="form-control" name="device_ID" required />
-                    <div class="invalid-feedback">
-                      Please enter a number.
-                    </div>
-                </div>
-                <div class="form-group">
                     <!-- <label for="csv_file">CSV File</label>
                     <input type="file" class="form-control-file" id="csv_file" name="file" required />
                     <div class="invalid-feedback">
                         Only .csv files accepted.
                     </div> -->
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="csv_file" required>
+                        <input type="file" class="custom-file-input" id="csv_file" name="file" required>
                         <label class="custom-file-label" for="customFile">CSV file</label>
                         <div class="invalid-feedback">
                             Only .csv files accepted.
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit">Send to QLab</button>
+                <button class="btn btn-block btn-primary" type="submit">Send to QLab</button>
             </form>
         </section>
         <footer class="footer mt-auto py-3">

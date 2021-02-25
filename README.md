@@ -10,11 +10,39 @@
 
 
 ## How to format your csv file:
-- 4 columns:
-    - Cue
-    - Page
-    - Name
-    - Notes
+Starting with version 2021.1.0, you no longer need to be as precise about the order of your rows in your .csv file. You can now also add **any** type of cue, however some do require additional parameters.
+<p><a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#workspaceidnew-cue_type" target="_blank">See permitted cue types.</a></p>
+<p>Certain optional collumns below require numbers rather than text, please follow the links to see the most up to date options that are allowed for QLab.</p>
+
+<p>Required Columns:</p>
+<ul>
+    <li>Number</li>
+    <li>Type</li>
+    <li>Name</li>
+</ul>
+
+<p>Optional Collumns:</p>
+<ul>
+    <li>Page (Will be added to notes)</li>
+    <li>Name</li>
+    <li>Notes</li>
+    <li>Color (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string" target="_blank">Options</a>)</li>
+    <li>Collumns availible for "midi" cue type:</li>
+    <ul>
+        <li>Midi Cue Number</li>
+        <li>Device ID</li>
+        <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number-1" target="_blank">Options</a>)</li>
+        <li>Command Format (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercommandformat-number" target="_blank">Options</a>)</li>
+        <li>Command (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercommand-number" target="_blank">Options</a>)</li>
+    </ul>
+    <li>Collumns availible for "network" cue type:</li>
+    <ul>
+        <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number" target="_blank">Options</a>)</li>
+        <li>OSC Cue Number (Only if using QLab Message Type)</li>
+        <li>Command (Only if using QLab Message Type)</li>
+    </ul>
+</ul>
+
 - Make sure to save your file in the .csv format. (Not Excel or Numbers)
 - [Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/example.csv)
 
@@ -32,7 +60,7 @@ python3 -m pip install -r requirements.txt
 python3 application.py
 ```
 
-- The application was bundled for distribution using pyinstaller. To re-bundle, simply install pyinstaller:
+- The application was bundled for distribution using pyinstaller. To re-bundle, install pyinstaller:
 ```
 python3 -m pip install pyinstaller
 ```
