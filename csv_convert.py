@@ -56,56 +56,66 @@ def send_csv(ip, document):
         msg.add_arg(f"{cue['name']}")
         bundle.add_content(msg.build())
 
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/notes")
-        msg.add_arg(f"p:{cue['page']} Notes: {cue['notes']}")
-        bundle.add_content(msg.build())
-        
+        if cue.get('page') or cue.get('notes'):
+            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/notes")
+            if cue["page"] and cue["notes"]:
+                msg.add_arg(f"p:{cue['page']} Notes: {cue['notes']}")
+            elif cue["page"]:
+                msg.add_arg(f"p:{cue['page']}")
+            elif cue["notes"]:
+                msg.add_arg(f"{cue['notes']}")
+            bundle.add_content(msg.build())
+
+        if cue.get('follow'):
+            msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/continueMode")
+            msg.add_arg(int(cue["follow"]))
+            bundle.add_content(msg.build())
 
         if check_cue_type(cue["type"]) == "midi":
-            if cue["message type"]:
+            if cue.get('message type'):
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
                 msg.add_arg(int(cue["message type"]))
                 bundle.add_content(msg.build())
                 
 
-            if cue["command format"]:
+            if cue.get("command format"):
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/commandFormat")
                 msg.add_arg(int(cue['command format']))
                 bundle.add_content(msg.build())
                 
 
-            if cue["command"]:
+            if cue.get("command"):
                 msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/command")
                 msg.add_arg(int(cue["command"]))
                 bundle.add_content(msg.build())
                 
 
-            if cue["device id"]:
+            if cue.get("device id"):
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/deviceID")
                 msg.add_arg(int(cue["device id"]))
                 bundle.add_content(msg.build())
                 
 
-            if cue['midi cue number']:
+            if cue.get('midi cue number'):
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/qNumber")
                 msg.add_arg(f"{cue['midi cue number']}")
                 bundle.add_content(msg.build())
                 
         
         if check_cue_type(cue["type"]) == "network":
-            if cue["message type"]:
+            if cue.get("message type"):
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
                 msg.add_arg(int(cue["message type"]))
                 bundle.add_content(msg.build())
                 
 
-            if cue["command"]:
+            if cue.get('command'):
                 msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCommand")
                 msg.add_arg(int(cue["command"]))
                 bundle.add_content(msg.build())
                 
 
-            if cue["osc cue number"]:
+            if cue.get('osc cue number'):
                 msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
                 msg.add_arg(cue["osc cue number"])
                 bundle.add_content(msg.build())
@@ -116,14 +126,14 @@ def send_csv(ip, document):
                 bundle.add_content(msg.build())
                 
 
-        if cue['target']:
+        if cue.get('target'):
             msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
             msg.add_arg(f"{cue['target']}")
             bundle.add_content(msg.build())
             
 
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/colorName")
-        if check_color_type(cue['color']):
+        if cue.get('color'):
             msg.add_arg(check_color_type(cue['color']))
         else:
             msg.add_arg("none")

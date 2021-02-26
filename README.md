@@ -26,6 +26,7 @@ Starting with version 2021.1.0, you no longer need to be as precise about the or
     <li>Page (Will be added to notes)</li>
     <li>Name</li>
     <li>Notes</li>
+    <li>Follow (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercontinuemode-number" target="_blank">Options</a>)</li>
     <li>Color (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string" target="_blank">Options</a>)</li>
     <li>Collumns availible for "midi" cue type:</li>
     <ul>
@@ -39,12 +40,13 @@ Starting with version 2021.1.0, you no longer need to be as precise about the or
     <ul>
         <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number" target="_blank">Options</a>)</li>
         <li>OSC Cue Number (Only if using QLab Message Type)</li>
-        <li>Command (Only if using QLab Message Type)</li>
+        <li>Command (Only if using QLab Message Type) (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number" target="_blank">Options</a>)</li>
     </ul>
 </ul>
 
 - Make sure to save your file in the .csv format. (Not Excel or Numbers)
-- [Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/example.csv)
+- [Full Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/example.csv)
+- [Simple Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/simple.csv)
 
 
 ## To run in development:
