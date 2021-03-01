@@ -40,7 +40,7 @@ coll = COLLECT(exe,
                name='csv-to-qlab')
 app = BUNDLE(coll,
              name='csv-to-qlab.app',
-             icon='icon(big).icns',
+             icon='icon.icns',
              bundle_identifier=None,
              info_plist={
                 'NSPrincipalClass': 'NSApplication',
@@ -48,7 +48,7 @@ app = BUNDLE(coll,
                 'CFBundleDocumentTypes': [
                     {
                         'CFBundleTypeName': 'CSV to QLab',
-                        'CFBundleTypeIconFile': 'icon(big).icns',
+                        'CFBundleTypeIconFile': 'icon.icns',
                         'LSHandlerRank': 'Owner'
                         }
                     ]
