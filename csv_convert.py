@@ -26,9 +26,10 @@ def check_color_type(color):
 def send_csv(ip, document):
     client = udp_client.UDPClient(ip, 53000)
 
-    stream = io.StringIO(document.stream.read().decode("UTF8"), newline=None)
+    stream = io.StringIO(document.stream.read().decode("UTF8"), newline='')
     reader = csv.reader(stream)
     headers = [x.lower() for x in next(reader)]
+    
     cues = []
 
     for line in reader:
@@ -39,7 +40,7 @@ def send_csv(ip, document):
             count+=1
         cues.append(cue)
 
-    for cue in cues:
+    for cue in cues:      
         bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
         msg = osc_message_builder.OscMessageBuilder(address = "/new")
         if check_cue_type(cue["type"]):
@@ -48,9 +49,13 @@ def send_csv(ip, document):
             msg.add_arg("memo")
         bundle.add_content(msg.build())
         
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/number")
-        msg.add_arg(f"{cue['number']}")
-        bundle.add_content(msg.build())
+        if cue.get('number'):
+            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/number")
+            if cue.get('number prefix'):
+                msg.add_arg(f"{cue['number prefix']}{cue['number']}")
+            else:
+                msg.add_arg(f"{cue['number']}")
+            bundle.add_content(msg.build())
 
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/name")
         msg.add_arg(f"{cue['name']}")
@@ -102,29 +107,32 @@ def send_csv(ip, document):
                 bundle.add_content(msg.build())
                 
         
-        if check_cue_type(cue["type"]) == "network":
-            if cue.get("message type"):
-                msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
-                msg.add_arg(int(cue["message type"]))
-                bundle.add_content(msg.build())
-                
+        if check_cue_type(cue["type"]) == "network":            
+            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
+            msg.add_arg(int(cue["message type"]))
+            bundle.add_content(msg.build())
 
-            if cue.get('command'):
-                msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCommand")
-                msg.add_arg(int(cue["command"]))
-                bundle.add_content(msg.build())
-                
+            if cue.get("message type") != "2":
+                if cue.get('command'):
+                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCommand")
+                    msg.add_arg(int(cue["command"]))
+                    bundle.add_content(msg.build())
+                    
 
-            if cue.get('osc cue number'):
-                msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
-                msg.add_arg(cue["osc cue number"])
+                if cue.get('osc cue number'):
+                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
+                    msg.add_arg(cue["osc cue number"])
+                    bundle.add_content(msg.build())
+                    
+                else:
+                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
+                    msg.add_arg(cue["number"])
+                    bundle.add_content(msg.build())
+
+            elif cue.get("message type") == "2":
+                msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/rawString")
+                msg.add_arg(f"/eos/cue/01/{cue['number']}/fire")
                 bundle.add_content(msg.build())
-                
-            else:
-                msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
-                msg.add_arg(cue["number"])
-                bundle.add_content(msg.build())
-                
 
         if cue.get('target'):
             msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
