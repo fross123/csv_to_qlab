@@ -40,7 +40,12 @@ Starting with version 2021.1.0, you no longer need to be as precise about the or
     <ul>
         <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number" target="_blank">Options</a>)</li>
         <li>OSC Cue Number (Only if using QLab Message Type)</li>
-        <li>Command (Only if using QLab Message Type) (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number" target="_blank">Options</a>)</li>
+        <li>Command (Only if using QLab Message Type)
+            <ul>
+                <li>For QLab Messages (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number" target="_blank">Options</a>)
+                </li>
+                <li>For an OSC message, you may now include a raw string in this collumn</li>
+            </ul>
     </ul>
 </ul>
 

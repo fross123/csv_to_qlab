@@ -112,7 +112,8 @@ def send_csv(ip, document):
             msg.add_arg(int(cue["message type"]))
             bundle.add_content(msg.build())
 
-            if cue.get("message type") != "2":
+            if cue.get("message type") == "1":
+                # For a qlab message
                 if cue.get('command'):
                     msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCommand")
                     msg.add_arg(int(cue["command"]))
@@ -130,9 +131,15 @@ def send_csv(ip, document):
                     bundle.add_content(msg.build())
 
             elif cue.get("message type") == "2":
-                msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/rawString")
-                msg.add_arg(f"/eos/cue/01/{cue['number']}/fire")
-                bundle.add_content(msg.build())
+                # For an OSC message
+                if cue.get('command'):
+                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/rawString")
+                    msg.add_arg(cue["command"])
+                    bundle.add_content(msg.build())
+
+            else:
+                # TODO: Handle UDP messages
+                pass
 
         if cue.get('target'):
             msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
