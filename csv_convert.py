@@ -24,14 +24,20 @@ def check_color_type(color):
         return color
 
 def send_csv(ip, document):
+    """
+    Sends the data in csv file to qlab workspace on machine with given ip.
+    """
     client = udp_client.UDPClient(ip, 53000)
 
     stream = io.StringIO(document.stream.read().decode("UTF8"), newline='')
     reader = csv.reader(stream)
+
+    # Retrieve row one from csv document and use as headers.
     headers = [x.lower() for x in next(reader)]
     
     cues = []
 
+    # Build cue list to be sent to qlab.
     for line in reader:
         count = 0
         cue = {}
@@ -46,6 +52,7 @@ def send_csv(ip, document):
         if check_cue_type(cue["type"]):
             msg.add_arg(check_cue_type(cue["type"]))
         else:
+            # Cue type is invalid, create memo cue.
             msg.add_arg("memo")
         bundle.add_content(msg.build())
         
@@ -57,10 +64,12 @@ def send_csv(ip, document):
                 msg.add_arg(f"{cue['number']}")
             bundle.add_content(msg.build())
 
+        # Name
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/name")
         msg.add_arg(f"{cue['name']}")
         bundle.add_content(msg.build())
 
+        # Page/Notes
         if cue.get('page') or cue.get('notes'):
             msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/notes")
             if cue["page"] and cue["notes"]:
@@ -71,11 +80,13 @@ def send_csv(ip, document):
                 msg.add_arg(f"{cue['notes']}")
             bundle.add_content(msg.build())
 
+        # Continue Mode/Follow
         if cue.get('follow'):
             msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/continueMode")
             msg.add_arg(int(cue["follow"]))
             bundle.add_content(msg.build())
 
+        # Midi Cues
         if check_cue_type(cue["type"]) == "midi":
             if cue.get('message type'):
                 msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
@@ -106,11 +117,13 @@ def send_csv(ip, document):
                 msg.add_arg(f"{cue['midi cue number']}")
                 bundle.add_content(msg.build())
                 
-        
-        if check_cue_type(cue["type"]) == "network":            
-            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
-            msg.add_arg(int(cue["message type"]))
-            bundle.add_content(msg.build())
+
+        # Network Cues
+        if check_cue_type(cue["type"]) == "network":
+            if cue.get("message type"):
+                msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
+                msg.add_arg(int(cue["message type"]))
+                bundle.add_content(msg.build())
 
             if cue.get("message type") == "1":
                 # For a qlab message
@@ -141,12 +154,13 @@ def send_csv(ip, document):
                 # TODO: Handle UDP messages
                 pass
 
+        # Target
         if cue.get('target'):
             msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
             msg.add_arg(f"{cue['target']}")
             bundle.add_content(msg.build())
             
-
+        # Color
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/colorName")
         if cue.get('color'):
             msg.add_arg(check_color_type(cue['color']))
@@ -154,4 +168,5 @@ def send_csv(ip, document):
             msg.add_arg("none")
         bundle.add_content(msg.build())
     
+
         client.send(bundle.build())
