@@ -11,7 +11,7 @@ Follow these steps to send your newly created CSV file over to QLab.
 Open an empty QLab workspace.
 
 :::note
-CSV to QLab will operate with both QLab 3 and QLab 4, however not all functions are availible on QLab 3.
+CSV to QLab will operate with both QLab 3 and QLab 4, however not all functions are available on QLab 3.
 :::
 
 ## Find the IP address
@@ -22,7 +22,7 @@ You will need the local IP address of the machine running QLab.
 You can run CSV to QLab on the same machine.
 :::
 
-On QLab 4 you can find this in Settings -> OSC Controlls.
+On QLab 4 you can find this in Settings -> OSC Controls.
 
 
 ## Fill out the form

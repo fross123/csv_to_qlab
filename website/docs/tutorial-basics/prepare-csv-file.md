@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Prepare a CSV File
 
-Some collumns are required, some are optional.
+Some columns are required, some are optional.
 
 ## Required columns
 - Number
@@ -21,7 +21,7 @@ Some collumns are required, some are optional.
     <li>Notes</li>
     <li>Follow (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercontinuemode-number" target="_blank">Options</a>)</li>
     <li>Color (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string" target="_blank">Options</a>)</li>
-    <li>Columns availible for "midi" cue type:</li>
+    <li>Columns available for "midi" cue type:</li>
     <ul>
         <li>Midi Cue Number</li>
         <li>Device ID</li>
@@ -29,7 +29,7 @@ Some collumns are required, some are optional.
         <li>Command Format (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercommandformat-number" target="_blank">Options</a>)</li>
         <li>Command (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercommand-number" target="_blank">Options</a>)</li>
     </ul>
-    <li>Columns availible for "network" cue type:</li>
+    <li>Columns available for "network" cue type:</li>
     <ul>
         <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number" target="_blank">Options</a>)</li>
         <li>OSC Cue Number (Only if using QLab Message Type)</li>
@@ -37,7 +37,7 @@ Some collumns are required, some are optional.
             <ul>
                 <li>For QLab Messages (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number" target="_blank">Options</a>)
                 </li>
-                <li>For an OSC message, you may now include a raw string in this collumn</li>
+                <li>For an OSC message, you may now include a raw string in this column</li>
             </ul>
         </li>
     </ul>
