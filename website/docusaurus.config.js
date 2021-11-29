@@ -28,10 +28,13 @@ const config = {
           editUrl: 'https://github.com/fross123/csv_to_qlab/edit/main/website/',
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           // Please change this to your repo.
           editUrl:
             'https://github.com/fross123/csv_to_qlab/edit/main/website/blog/',
+          blogTitle: 'Releases!',
+          blogDescription: 'CSV to QLab Release Log',
+          postsPerPage: 'ALL',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -68,7 +71,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: 'Releases', position: 'left'},
           {
             href: 'https://github.com/fross123/csv_to_qlab',
             label: 'GitHub',
@@ -91,10 +94,10 @@ const config = {
           {
             title: 'More',
             items: [
-              // {
-              //   label: 'Blog',
-              //   to: '/blog',
-              // },
+              {
+                label: 'Releases',
+                to: '/blog',
+              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/fross123/csv_to_qlab',
