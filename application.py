@@ -47,5 +47,5 @@ def too_large(e):
     return "File is too large", 413
 
 if __name__ == '__main__':
-    webview.create_window('CSV to QLab', app, frameless=True)
+    webview.create_window('CSV to QLab', app, frameless=True, width=300, height=350)
     webview.start()
