@@ -31,13 +31,20 @@ const config = {
           showReadingTime: false,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/fross123/csv_to_qlab/edit/main/website/blog/',
-          blogTitle: 'Releases!',
+            'https://github.com/fross123/csv_to_qlab/edit/main/website/releases/',
+          blogTitle: 'CSV to QLab Releases',
           blogDescription: 'CSV to QLab Release Log',
+          blogSidebarTitle: "Recent Releases",
           postsPerPage: 'ALL',
+          routeBasePath: "releases",
+          path: './releases',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
         },
       }),
     ],
@@ -71,7 +78,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Releases', position: 'left'},
+          {to: '/releases', label: 'Releases', position: 'left'},
           {
             href: 'https://github.com/fross123/csv_to_qlab',
             label: 'GitHub',
@@ -96,7 +103,7 @@ const config = {
             items: [
               {
                 label: 'Releases',
-                to: '/blog',
+                to: '/releases',
               },
               {
                 label: 'GitHub',
