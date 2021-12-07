@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[740],{2628:function(s){s.exports=JSON.parse('{"allTagsPath":"/csv_to_qlab/releases/tags","slug":"/csv_to_qlab/releases/tags/1-2","name":"1.2","count":1,"permalink":"/csv_to_qlab/releases/tags/1-2"}')}}]);

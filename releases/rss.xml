@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>CSV to QLab Blog</title>
+        <link>https://finlayross.me/csv_to_qlab/releases</link>
+        <description>CSV to QLab Blog</description>
+        <lastBuildDate>Wed, 01 Dec 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Version 2021.1.2]]></title>
+            <link>https://finlayross.me/csv_to_qlab/releases/2021/1/2</link>
+            <guid>2021/1/2</guid>
+            <pubDate>Wed, 01 Dec 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[* Updates UI to match theme colors.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Version 2021.1.15]]></title>
+            <link>https://finlayross.me/csv_to_qlab/releases/2021/1/15</link>
+            <guid>2021/1/15</guid>
+            <pubDate>Wed, 24 Nov 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[* Various Bug Fixes]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Version 2021.1.1]]></title>
+            <link>https://finlayross.me/csv_to_qlab/releases/2021/1/1</link>
+            <guid>2021/1/1</guid>
+            <pubDate>Fri, 26 Feb 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[- Bug Fixes]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Version 2021.1.0]]></title>
+            <link>https://finlayross.me/csv_to_qlab/releases/2021/1/0</link>
+            <guid>2021/1/0</guid>
+            <pubDate>Thu, 25 Feb 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[- More options can be pulled from the csv file. See README.md for more information]]></description>
+        </item>
+        <item>
+            <title><![CDATA[First Release]]></title>
+            <link>https://finlayross.me/csv_to_qlab/releases/0/0/0</link>
+            <guid>0/0/0</guid>
+            <pubDate>Thu, 12 Nov 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[Initial Release. Download zip to demo.]]></description>
+        </item>
+    </channel>
+</rss>
