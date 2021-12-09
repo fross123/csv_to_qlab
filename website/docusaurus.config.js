@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'CSV to QLab',
   tagline: 'Import csv files into a QLab workspace easily and efficiently.',
-  url: 'https://finlayross.me/',
+  url: 'https://finlayross.me',
   baseUrl: '/csv_to_qlab/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -52,6 +52,7 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: 'img/logo.png',
       gtag: {
         trackingID: 'G-VTFHGK2SN2',
         // Optional fields.
