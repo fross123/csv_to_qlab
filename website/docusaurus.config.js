@@ -22,6 +22,11 @@ const config = {
       '@docusaurus/preset-classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        gtag: {
+          trackingID: 'G-VTFHGK2SN2',
+          // Optional fields.
+          anonymizeIP: true, // Should IPs be anonymized?
+        },
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
@@ -53,11 +58,6 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image: 'img/logo.png',
-      gtag: {
-        trackingID: 'G-VTFHGK2SN2',
-        // Optional fields.
-        anonymizeIP: true, // Should IPs be anonymized?
-      },
       announcementBar: {
         id: 'support_us',
         content:
