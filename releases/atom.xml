@@ -13,6 +13,9 @@
         <link href="https://finlayross.me/csv_to_qlab/releases/2021/1/2"/>
         <updated>2021-12-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[* Updates UI to match theme colors.]]></summary>
+        <content type="html"><![CDATA[<ul><li><p>Updates UI to match theme colors.</p></li><li><p>Removes unnecssary content on app and reduces sizing.</p></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.2</a></div>]]></content>
+        <category label="2021" term="2021"/>
+        <category label="1.2" term="1.2"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Version 2021.1.15]]></title>
@@ -20,6 +23,10 @@
         <link href="https://finlayross.me/csv_to_qlab/releases/2021/1/15"/>
         <updated>2021-11-24T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[* Various Bug Fixes]]></summary>
+        <content type="html"><![CDATA[<ul><li><p>Various Bug Fixes</p></li><li><p>Update to OSC handling to allow raw string for standard OSC messages</p></li><li><p>Update to allow "Number Prefix" column to prefix the number of cues.
+Ex: If you have a column already with the number of the cue, you may now add another column with "LX", and the numbers of your cues will start with LX, but will still trigger the number selected. The MIDI or OSC command will not include this prefix.</p></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.15/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.15</a></div>]]></content>
+        <category label="2021" term="2021"/>
+        <category label="1.15" term="1.15"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Version 2021.1.1]]></title>
@@ -27,6 +34,9 @@
         <link href="https://finlayross.me/csv_to_qlab/releases/2021/1/1"/>
         <updated>2021-02-26T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- Bug Fixes]]></summary>
+        <content type="html"><![CDATA[<ul><li>Bug Fixes</li><li>Add in follow options</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.1</a></div>]]></content>
+        <category label="2021" term="2021"/>
+        <category label="1.1" term="1.1"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Version 2021.1.0]]></title>
@@ -34,6 +44,10 @@
         <link href="https://finlayross.me/csv_to_qlab/releases/2021/1/0"/>
         <updated>2021-02-25T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- More options can be pulled from the csv file. See README.md for more information]]></summary>
+        <content type="html"><![CDATA[<ul><li>More options can be pulled from the csv file. See README.md for more information</li><li>Updated function to use header:value dictionary so users do not need to be consistent with their spreadsheets
+empty cells in csv no longer cause errors</li><li>OSC messages are now sent as a bundle per-cue.</li><li>Names in application.spec changed to csv-to-qlab</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.0/csv_to_qlab.zip" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.0</a></div>]]></content>
+        <category label="2021" term="2021"/>
+        <category label="1.0" term="1.0"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[First Release]]></title>
@@ -41,5 +55,7 @@
         <link href="https://finlayross.me/csv_to_qlab/releases/0/0/0"/>
         <updated>2020-11-12T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Initial Release. Download zip to demo.]]></summary>
+        <content type="html"><![CDATA[<p>Initial Release. Download zip to demo.</p><p>Currently only available for MacOS.</p><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v0.0.0/csv_to_qlab.zip" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v0.0.0</a></div>]]></content>
+        <category label="v0.0.0" term="v0.0.0"/>
     </entry>
 </feed>
