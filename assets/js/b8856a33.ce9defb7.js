@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcsv_to_qlab=self.webpackChunkcsv_to_qlab||[]).push([[924],{9068:function(s){s.exports=JSON.parse('{"allTagsPath":"/csv_to_qlab/releases/tags","name":"2021","count":4,"permalink":"/csv_to_qlab/releases/tags/2021"}')}}]);
