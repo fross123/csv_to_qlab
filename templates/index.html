@@ -16,48 +16,50 @@
 
         <title>CSV to QLab</title>
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
         <header>
             <!-- Image and text -->
             <nav class="navbar navbar-light bg-light">
               <a class="navbar-brand" href="#">
-                  <img src="{{ url_for('static', filename='images/csv_to_qlab_logo.svg') }}" height="30px"/>
+                <img src="{{ url_for('static', filename='images/csv_to_qlab_logo.svg') }}" height="30px"/>
                 CSV Import
               </a>
             </nav>
         </header>
-        <section class="container">
-
-            <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
-                <div class="form-group">
-                    <label for="ip_input">IP address of QLab machine:</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" for="ip_input">123.456.7.89</span>
-                        </div>
-                        <input type="text" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" class="form-control" id="ip_input" name="ip" required />
-                        <div class="invalid-feedback">
-                          Please enter a vaild ip address.
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="csv_file" name="file" required>
-                        <label class="custom-file-label" for="customFile">CSV file</label>
-                        <div class="invalid-feedback">
-                            Only .csv files accepted.
+        <main role="main" class="flex-shrink-0">
+            <div class="container">
+                <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="ip_input">IP address of QLab machine:</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" for="ip_input">123.456.7.89</span>
+                            </div>
+                            <input type="text" pattern="((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){4}$" class="form-control" id="ip_input" name="ip" required />
+                            <div class="invalid-feedback">
+                            Please enter a vaild ip address.
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button class="btn btn-block btn-primary" type="submit">Send to QLab</button>
-            </form>
-        </section>
-        <footer class="footer mt-auto py-5">
+                    <div class="form-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="csv_file" name="file" required>
+                            <label class="custom-file-label" for="customFile">CSV file</label>
+                            <div class="invalid-feedback">
+                                Only .csv files accepted.
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-block btn-primary" type="submit">Send to QLab</button>
+                </form>
+            </div>
+        </main>
+        <footer class="footer mt-auto">
           <div class="container">
-              <p>
-                  Need help? <a href="https://www.finlayross.me/csv_to_qlab/" target="_blank">Documentation and Tutorials Page</a>
-              </p>
+            <p>
+                Need help? <a style="color: #f276a0;" href="https://www.finlayross.me/csv_to_qlab/" target="_blank">Documentation and Tutorials Page</a>
+            </p>
+            <p class="text-muted">Version: 2022.0.1</p>
           </div>
         </footer>
     </body>
