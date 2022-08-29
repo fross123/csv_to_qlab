@@ -159,6 +159,12 @@ def send_csv(ip, document):
             msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
             msg.add_arg(f"{cue['target']}")
             bundle.add_content(msg.build())
+
+        # File Target
+        if cue.get('file target'):
+            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/fileTarget")
+            msg.add_arg(f"{cue['file target']}")
+            bundle.add_content(msg.build())
             
         # Color
         msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/colorName")
