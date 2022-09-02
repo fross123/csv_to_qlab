@@ -7,3 +7,8 @@
     background-color: #f597b7;
     border-color: #f597b7;
 }
+
+.custom-control-input:checked~.custom-control-label::before {
+    background-color: #f597b7;
+    border-color: #f597b7;
+}

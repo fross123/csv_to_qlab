@@ -23,7 +23,7 @@ def check_color_type(color):
     else:
         return color
 
-def send_csv(ip, document):
+def send_csv(ip, document, ql5_passcode):
     """
     Sends the data in csv file to qlab workspace on machine with given ip.
     """
@@ -46,7 +46,12 @@ def send_csv(ip, document):
             count+=1
         cues.append(cue)
 
-    for cue in cues:      
+    if ql5_passcode:
+        msg = osc_message_builder.OscMessageBuilder(address="/connect")
+        msg.add_arg(ql5_passcode)
+        client.send(msg.build())
+
+    for cue in cues:        
         bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
         msg = osc_message_builder.OscMessageBuilder(address = "/new")
         if check_cue_type(cue["type"]):

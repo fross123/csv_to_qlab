@@ -27,13 +27,15 @@ def index():
 def upload_file():
     uploaded_file = request.files['file']
     ip = request.form['ip']
+    ql5_passcode = request.form['ql5-passcode']
+
     filename = secure_filename(uploaded_file.filename)
     if uploaded_file.filename != '':
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
             return "Invalid File", 400
 
-        send_csv(ip, uploaded_file)
+        send_csv(ip, uploaded_file, ql5_passcode)
     return redirect(url_for('success'))
 
 

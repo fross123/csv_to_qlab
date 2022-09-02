@@ -14,6 +14,17 @@ Open an empty QLab workspace.
 CSV to QLab will operate with both QLab 3 and QLab 4, however not all functions are available on QLab 3.
 :::
 
+## If you are using QLab 5 and have an OSC Passcode.
+
+* Select the checkbox for QLab5.
+* Enter passcode found in QLab settings.
+
+:::tip
+Make sure that the passcode has full access to the workspace.
+Note that it is also possible to bypass this step and allow access with the "no passcode" option.
+:::
+
+
 ## Find the IP address
 
 You will need the local IP address of the machine running QLab.

@@ -1,4 +1,4 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+// JavaScript for disabling form submissions if there are invalid fields
 (function() {
     'use strict';
     window.addEventListener('load', function() {
@@ -51,3 +51,15 @@ function ValidateSingleInput(oInput) {
     }
     return true;
 }
+
+document.addEventListener('DOMContentLoaded', (e) => {
+    var ql5v = document.querySelector('#qlab-version');
+    var ql5group = document.querySelector('#ql5-passcode-group')
+    ql5v.addEventListener('click', (e) => {
+        if (ql5group.hidden) { // if the form is hidden
+            ql5group.hidden = false;
+        } else { // hide group
+            ql5group.hidden = true;
+        }
+    })
+})
