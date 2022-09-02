@@ -2,11 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://finlayross.me/csv_to_qlab/releases</id>
     <title>CSV to QLab Blog</title>
-    <updated>2022-08-29T00:00:00.000Z</updated>
+    <updated>2022-09-01T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://finlayross.me/csv_to_qlab/releases"/>
     <subtitle>CSV to QLab Blog</subtitle>
     <icon>https://finlayross.me/csv_to_qlab/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Version 2022.3]]></title>
+        <id>2022/9/1</id>
+        <link href="https://finlayross.me/csv_to_qlab/releases/2022/9/1"/>
+        <updated>2022-09-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[* Add feature: passcode use for QLab 5]]></summary>
+        <content type="html"><![CDATA[<ul><li>Add feature: passcode use for QLab 5</li></ul><p>Turn on switch and enter passcode from qlab5 settings.</p><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2022.3/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2022.2</a></div>]]></content>
+        <category label="2022" term="2022"/>
+        <category label="3" term="3"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Version 2022.2]]></title>
         <id>2022/8/29</id>
