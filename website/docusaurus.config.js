@@ -9,7 +9,7 @@ const config = {
   title: 'CSV to QLab',
   tagline: 'Import csv files into a QLab workspace easily and efficiently.',
   url: 'https://csv-to-qlab.finlayross.me',
-  baseUrl: '/csv_to_qlab/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
