@@ -22,6 +22,9 @@ matrix:
   - "website/blog/**/*.html"
   - "website/blog/**/*.md"
   - "website/blog/**/*.mdx"
+  - "website/releases/**/*.html"
+  - "website/releases/**/*.md"
+  - "website/releases/**/*.mdx"
   - "website/docs/**/*.mdx"
   - "website/docs/**/*.md"
   default_encoding: utf-8
