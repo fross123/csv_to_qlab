@@ -4,10 +4,20 @@
         <title>CSV to QLab Blog</title>
         <link>https://csv-to-qlab.finlayross.me/releases</link>
         <description>CSV to QLab Blog</description>
-        <lastBuildDate>Thu, 01 Sep 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 19 Jul 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Version 2023.1]]></title>
+            <link>https://csv-to-qlab.finlayross.me/releases/2023/1</link>
+            <guid>https://csv-to-qlab.finlayross.me/releases/2023/1</guid>
+            <pubDate>Wed, 19 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[- Update application to be backwards compatable and work on more operating systems.]]></description>
+            <content:encoded><![CDATA[<ul><li>Update application to be backwards compatable and work on more operating systems.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.1</a></div>]]></content:encoded>
+            <category>2023</category>
+            <category>1</category>
+        </item>
         <item>
             <title><![CDATA[Version 2022.3]]></title>
             <link>https://csv-to-qlab.finlayross.me/releases/2022/9/1</link>
