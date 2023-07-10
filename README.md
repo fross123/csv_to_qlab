@@ -1,7 +1,7 @@
 # CSV to QLAB
 
 ## To run on mac:
-- download [csv_to_qlab.dmg](https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.15/CSV-To-QLab.dmg) from the latest release
+- download [csv_to_qlab.dmg](https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg) from the latest release
 - unzip the foder
 - open the app
     - *qlab must be open on the recieving computer in order for the messages to be recieved. It automatically picks the qlab workspace that is open and inserts the cues into the current folder.*
@@ -74,6 +74,18 @@ python3 -m pip install pyinstaller
 - Then run:
 ```
 pyinstaller application.spec
+```
+
+
+### If you want to run some tests:
+- Install Pytest
+```
+pip install pytest
+```
+
+- Run Pytest
+```
+pytest
 ```
 
 Recomendations for future features are very welcome!
