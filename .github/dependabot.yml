@@ -9,8 +9,3 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-      
-  - package-ecosystem: "npm"
-    directory: "/website"
-    schedule:
-      interval: "weekly"
