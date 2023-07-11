@@ -13,8 +13,8 @@
             <link>https://csv-to-qlab.finlayross.me/releases/2023/1</link>
             <guid>https://csv-to-qlab.finlayross.me/releases/2023/1</guid>
             <pubDate>Wed, 19 Jul 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[- Update application to be backwards compatable and work on more operating systems.]]></description>
-            <content:encoded><![CDATA[<ul><li>Update application to be backwards compatable and work on more operating systems.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.1</a></div>]]></content:encoded>
+            <description><![CDATA[- Update application to be backwards compatible and work on more operating systems.]]></description>
+            <content:encoded><![CDATA[<ul><li>Update application to be backwards compatible and work on more operating systems.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.1</a></div>]]></content:encoded>
             <category>2023</category>
             <category>1</category>
         </item>
@@ -43,8 +43,8 @@
             <link>https://csv-to-qlab.finlayross.me/releases/2021/1/2</link>
             <guid>https://csv-to-qlab.finlayross.me/releases/2021/1/2</guid>
             <pubDate>Wed, 01 Dec 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[* Updates UI to match theme colors.]]></description>
-            <content:encoded><![CDATA[<ul><li><p>Updates UI to match theme colors.</p></li><li><p>Removes unnecssary content on app and reduces sizing.</p></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.2</a></div>]]></content:encoded>
+            <description><![CDATA[* Updates User Interface to match theme colors.]]></description>
+            <content:encoded><![CDATA[<ul><li><p>Updates User Interface to match theme colors.</p></li><li><p>Removes unnecessary content on app and reduces sizing.</p></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.2</a></div>]]></content:encoded>
             <category>2021</category>
             <category>1.2</category>
         </item>
