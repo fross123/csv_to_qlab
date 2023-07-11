@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 
 from csv_convert import send_csv
 from helper import resource_path
+from error_handler import return_errors, return_success
 
 if getattr(sys, 'frozen', False):
     template_folder = resource_path('templates')
@@ -36,12 +37,15 @@ def upload_file():
             return "Invalid File", 400
 
         send_csv(ip, uploaded_file, ql5_passcode)
+        if return_errors():
+            return render_template('errors.html', errors=return_errors(), success=return_success())
+        
     return redirect(url_for('success'))
 
 
 @app.route('/success')
 def success():
-    return render_template('success.html')
+    return render_template('success.html', successfull_commands=return_success())
 
 
 @app.errorhandler(413)

@@ -1,9 +1,8 @@
 import io
 import csv
-import os
-import time
 
-from pythonosc import osc_message_builder, osc_bundle_builder, udp_client
+from pythonosc import osc_message_builder, osc_bundle_builder, udp_client, osc_server
+from osc_server import async_osc_server
 
 def check_cue_type(type):
     """ Return the valid type of cue, or False """
@@ -181,3 +180,4 @@ def send_csv(ip, document, ql5_passcode):
     
 
         client.send(bundle.build())
+        async_osc_server(ip, 53001)

@@ -15,7 +15,7 @@ def test_simple_csv():
 
     response = app.test_client().post('/', data={
         "file": (resources / "simple.csv").open("rb"),
-        "ip": "10.0.0.64",
+        "ip": "127.0.0.1",
         "ql5-passcode": "3420",
     }, follow_redirects=True)
 
@@ -30,7 +30,7 @@ def test_example_csv():
 
     response = app.test_client().post('/', data={
         "file": (resources / "example.csv").open("rb"),
-        "ip": "10.0.0.64",
+        "ip": "127.0.0.1",
         "ql5-passcode": "3420",
     }, follow_redirects=True)
 
@@ -43,7 +43,7 @@ def test_no_filename():
     # get the resources folder in the tests folder
     response = app.test_client().post('/', data={
         "file": "",
-        "ip": "10.0.0.64",
+        "ip": "127.0.0.1",
     })
 
     assert response.status_code == 400

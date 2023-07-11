@@ -17,17 +17,7 @@
             crossorigin="anonymous"></script>
         <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
-        <style>
-          .body {
-            padding: 2em;
-          }
-          .funny-picture {
-              width: 100%;;
-          }
-    
-        </style>
-
-        <title>Success</title>
+        <title>Errors</title>
     </head>
     <body class="d-flex flex-column h-100">
         <header>
@@ -41,11 +31,14 @@
         </header>
         <main role="main" class="flex-shrink-0">
             <div class="container">
-              <h3>Congratulations! Your request was successful</h3>
-              <h4 class="alert alert-success" role="alert">You had <strong>{{ successfull_commands|length }}</strong> successful commands sent to QLab.</h4>
-              <a href="{{ url_for('index')}}" class="btn btn-block btn-primary my-3">Back</a>
-              <img class="funny-picture" src="{{ url_for('static', filename='images/funny-success-quote-1-picture-quote-1.jpg') }}"
-                alt="Funny success image">
+                <p class="alert alert-danger" role="alert">There were <strong>{{ errors|length }}</strong> errors from QLab we wanted you to know about.</p>
+                <p class="alert alert-success" role="alert">You also had <strong>{{ success|length }} Successfull</strong> commands sent to QLab.</p>
+                {% for error in errors %}
+                <p>
+                    <strong>Error Status: {{ error.status }}</strong><br>
+                    {{ error.message }}
+                </p>
+                {% endfor %}
             </div>
         </main>
         <footer class="footer mt-auto">
