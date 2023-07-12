@@ -5,7 +5,7 @@ import webview
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
-from csv_convert import send_csv
+from csv_parser import send_csv
 from helper import resource_path
 from error_success_handler import return_errors, return_success
 
