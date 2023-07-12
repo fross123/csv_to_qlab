@@ -1,4 +1,3 @@
-import pytest
 from pathlib import Path
 from application import app
 
@@ -10,7 +9,7 @@ def test_home_page():
 
 def test_simple_csv():
     # get the resources folder in the tests folder
-    resources = Path(__file__).parent / "static" / "example_file"
+    resources = Path(__file__).parent.parent / "static" / "example_file"
 
     response = app.test_client().post(
         "/",
@@ -29,7 +28,7 @@ def test_simple_csv():
 
 def test_example_csv():
     # get the resources folder in the tests folder
-    resources = Path(__file__).parent / "static" / "example_file"
+    resources = Path(__file__).parent.parent / "static" / "example_file"
 
     response = app.test_client().post(
         "/",
