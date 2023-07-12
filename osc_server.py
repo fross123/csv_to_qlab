@@ -2,7 +2,7 @@ from pythonosc.osc_server import AsyncIOOSCUDPServer
 from pythonosc.dispatcher import Dispatcher
 import asyncio
 import json
-from error_handler import handle_errors, count_success
+from error_success_handler import handle_errors, count_success
 
 
 def filter_handler(address, *args):
