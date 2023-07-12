@@ -1,5 +1,6 @@
 from pythonosc import osc_message_builder, osc_bundle_builder
 
+
 def alwaysReply(number):
     """
     By default, QLab will only reply to an incoming OSC message
@@ -22,7 +23,7 @@ def alwaysReply(number):
     If number is given and is 0, stop sending replies to messages
     that do not generate replies.
     """
-    msg = osc_message_builder.OscMessageBuilder(address = "/alwaysReply")
+    msg = osc_message_builder.OscMessageBuilder(address="/alwaysReply")
     msg.add_arg(int(number))
     return msg
 
@@ -46,8 +47,9 @@ def disconnect():
     remain connected until they send /disconnect or until the TCP connection
     itself is disconnected.
     """
-    msg = osc_message_builder.OscMessageBuilder(address = "/disconnect")
+    msg = osc_message_builder.OscMessageBuilder(address="/disconnect")
     return msg
+
 
 def liveFadePreview(boolean):
     """
@@ -55,7 +57,7 @@ def liveFadePreview(boolean):
     beginning of this section. If no argument is given, return the current
     status of live fade preview.
     """
-    msg = osc_message_builder.OscMessageBuilder(address = "/liveFadePreview")
+    msg = osc_message_builder.OscMessageBuilder(address="/liveFadePreview")
     return msg
 
 
@@ -83,7 +85,7 @@ def new_cue(cue_type):
     {cart_column}, which must be integers.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/new")
+    msg = osc_message_builder.OscMessageBuilder(address="/new")
     msg.add_arg(cue_type)
     return msg
 
@@ -96,7 +98,7 @@ def cue_armed(boolean):
     specified cue. See details on booleans at the beginning of this section.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/armed")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/armed")
     msg.add_arg(bool(boolean))
     return msg
 
@@ -109,8 +111,8 @@ def cue_autoLoad(boolean):
     the specified cue to not auto-load. See details on booleans at the beginning
     of this section.
     """
-    
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/autoLoad")
+
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/autoLoad")
     msg.add_arg(bool(boolean))
     return msg
 
@@ -146,10 +148,10 @@ def cue_colorName(string):
     and
 
     none
-    
+
     """
-    
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/colorName")
+
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/colorName")
     msg.add_arg(string)
     return msg
 
@@ -165,8 +167,8 @@ def cue_continueMode(number):
     1 - Auto-continue
     2 - Auto-follow
     """
-    
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/continueMode")
+
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/continueMode")
     msg.add_arg(int(number))
     return msg
 
@@ -181,7 +183,7 @@ def cue_cueTargetNumber(string):
     string must be a valid cue number of a cue in the workspace.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/cueTargetNumber")
     msg.add_arg(string)
     return msg
 
@@ -194,7 +196,7 @@ def cue_duration(number):
     set the duration of the specified cue to number.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/duration")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/duration")
     msg.add_arg(int(number))
     return msg
 
@@ -214,12 +216,16 @@ def cue_fadeAndStopOthers(number):
     """
 
     if number < 3:
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/fadeAndStopOthers")
+        msg = osc_message_builder.OscMessageBuilder(
+            address="/cue/selected/fadeAndStopOthers"
+        )
         msg.add_arg(int(number))
         return msg
     else:
-        return ValueError("Fade and Stop Others Number not valid. Must be 0-3. See QLab OSC Dictionary.")
-    
+        return ValueError(
+            "Fade and Stop Others Number not valid. Must be 0-3. See QLab OSC Dictionary."
+        )
+
 
 def cue_fadeAndStopOthersTime(number):
     """
@@ -228,7 +234,9 @@ def cue_fadeAndStopOthersTime(number):
     Write: If number is given, set the Fade and stop others time of the specified cue to number.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/fadeAndStopOthersTime")
+    msg = osc_message_builder.OscMessageBuilder(
+        address="/cue/selected/fadeAndStopOthersTime"
+    )
     msg.add_arg(int(number))
     return msg
 
@@ -253,7 +261,7 @@ def cue_fileTarget(string):
     Use the /workingDirectory application message to set or get the current working directory.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/fileTarget")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/fileTarget")
     msg.add_arg(string)
     return msg
 
@@ -265,10 +273,9 @@ def cue_flagged(boolean):
     Write: Set the flagged state of the specified cue. See details on booleans at the
     beginning of this section.
     """
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/flagged")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/flagged")
     msg.add_arg(bool(boolean))
     return msg
-
 
 
 def cue_name(string):
@@ -278,7 +285,7 @@ def cue_name(string):
     Write: If string is given, set the name of the specified cue to string.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/name")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/name")
     msg.add_arg(string)
     return msg
 
@@ -290,7 +297,7 @@ def cue_notes(string):
     Write: If string is given, set the notes of the specified cue to string.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/notes")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/notes")
     msg.add_arg(string)
     return msg
 
@@ -302,7 +309,7 @@ def cue_number(string):
     Write: If string is given, set the cue number of the specified cue to string.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/number")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/number")
     msg.add_arg(string)
     return msg
 
@@ -314,7 +321,7 @@ def cue_postWait(number):
     Write: If number is given, set the post-wait of the specified cue to number.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/postWait")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/postWait")
     msg.add_arg(int(number))
     return msg
 
@@ -326,7 +333,7 @@ def cue_preWait(number):
     Write: If number is given, set the pre-wait of the specified cue to number.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/preWait")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/preWait")
     msg.add_arg(int(number))
     return msg
 
@@ -334,6 +341,7 @@ def cue_preWait(number):
 # def cue_midi(command_num, commandFormat_num):
 #     midi_bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
 #     return
+
 
 def midi_command(command_num):
     """
@@ -345,11 +353,13 @@ def midi_command(command_num):
     """
 
     if command_num < 127 and command_num > 0:
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/command")
+        msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/command")
         msg.add_arg(int(command_num))
         return msg
     else:
-        return ValueError("MIDI Command must be a number from 0-127. See QLab OSC Dictionary.")
+        return ValueError(
+            "MIDI Command must be a number from 0-127. See QLab OSC Dictionary."
+        )
 
 
 def midi_commandFormat(commandFormat_num):
@@ -361,22 +371,41 @@ def midi_commandFormat(commandFormat_num):
     format, a list of which can be found in the Parameter Reference page of this manual.
     """
     if commandFormat_num < 127 and commandFormat_num > 0:
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/commandFormat")
+        msg = osc_message_builder.OscMessageBuilder(
+            address="/cue/selected/commandFormat"
+        )
         msg.add_arg(int(commandFormat_num))
         return msg
     else:
-        return ValueError("MIDI Command Format must be a number from 0-127. See QLab OSC Dictionary.")
+        return ValueError(
+            "MIDI Command Format must be a number from 0-127. See QLab OSC Dictionary."
+        )
 
 
 def midi_controlNumber(controlNumber):
-
     if controlNumber < 16383 and controlNumber > 0:
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/controlNumber")
+        msg = osc_message_builder.OscMessageBuilder(
+            address="/cue/selected/controlNumber"
+        )
         msg.add_arg(int(controlNumber))
         return msg
     else:
-        return ValueError("MIDI Control Number must be a number from 0-16383. See QLab OSC Dictionary.")
-    
+        return ValueError(
+            "MIDI Control Number must be a number from 0-16383. See QLab OSC Dictionary."
+        )
+
+
+def midi_controlValue(number):
+    if number < 16383 and number > 0:
+        msg = osc_message_builder.OscMessageBuilder(
+            address="/cue/selected/controlValue"
+        )
+        msg.add_arg(int(number))
+        return msg
+    else:
+        return ValueError(
+            "MIDI Control Value must be a number from 0-16383. See QLab OSC Dictionary."
+        )
 
 
 def midi_deviceID(number):
@@ -387,11 +416,13 @@ def midi_deviceID(number):
     number must be a whole number from 0 to 127.
     """
     if number < 127 and number > 0:
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/deviceID")
+        msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/deviceID")
         msg.add_arg(int(number))
         return msg
     else:
-        return ValueError("MIDI Device ID must be a number from 0-127. See QLab OSC Dictionary.")
+        return ValueError(
+            "MIDI Device ID must be a number from 0-127. See QLab OSC Dictionary."
+        )
 
 
 def midi_messageType(number):
@@ -405,7 +436,7 @@ def midi_messageType(number):
     2 - MIDI Show Control Message (MSC)
     3 - MIDI SysEx Message
     """
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/messageType")
     msg.add_arg(int(number))
     return msg
 
@@ -420,7 +451,7 @@ def midi_midiPatchName(string):
     un-patch the specified cue. If string is anything else, this message has no effect.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/midiPatchName")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/midiPatchName")
     msg.add_arg(string)
     return msg
 
@@ -436,7 +467,7 @@ def midi_midiPatchNumber(number):
     this message has no effect. number must be a whole number
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/midiPatchNumber")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/midiPatchNumber")
     msg.add_arg(int(number))
     return msg
 
@@ -448,7 +479,7 @@ def midi_qList(string):
     Write: If number is given, set the outgoing MSC cue list number of the specified cue to number.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/qList")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qList")
     msg.add_arg(string)
     return msg
 
@@ -459,7 +490,7 @@ def midi_qNumber(string):
 
     Write: If number is given, set the outgoing MSC cue number of the specified cue to number.
     """
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/qNumber")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qNumber")
     msg.add_arg(string)
     return msg
 
@@ -470,7 +501,7 @@ def midi_qPath(string):
 
     Write: If number is given, set the outgoing MSC cue path number of the specified cue to number.
     """
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/qPath")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qPath")
     msg.add_arg(string)
     return msg
 
@@ -483,7 +514,7 @@ def midi_rawString(string):
     string must be a valid SysEx string, formatted in hexadecimal, and omitting the starting F0 and ending F7.
     """
 
-    msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/rawString")
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/rawString")
     msg.add_arg(string)
     return msg
 
@@ -504,10 +535,8 @@ def midi_status(number):
     """
 
     if number < 6 and number > 0:
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/status")
+        msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/status")
         msg.add_arg(int(number))
         return msg
     else:
         return ValueError("Midi Status must be 0-6. See QLab OSC Dictionary.")
-    
-

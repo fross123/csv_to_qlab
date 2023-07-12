@@ -110,6 +110,18 @@ def send_csv(ip, document, ql5_passcode):
         if cue.get("follow") or cue.get("continueMode"):
             continue_mode = cue.get("continueMode")
             bundle.add_content(cue_continueMode(continue_mode).build())
+        
+        # Target
+        if cue.get("target"):
+            bundle.add_content(cue_cueTargetNumber(f"{cue['target']}").build())
+
+        # File Target
+        if cue.get("filetarget"):
+            bundle.add_content(cue_fileTarget(f"{cue['filetarget']}"))
+
+        # Color
+        if cue.get("color"):
+            bundle.add_content(cue_colorName(check_color_type(cue["color"])).build())
 
         # Midi Cues
         if check_cue_type(cue["type"]) == "midi":
@@ -129,12 +141,14 @@ def send_csv(ip, document, ql5_passcode):
             if cue.get("midideviceid"):
                 bundle.add_content(midi_deviceID(int(cue["midideviceid"])).build())
 
-            if cue.get("midiqnumber"):
-                bundle.add_content(midi_qNumber(cue["midiqnumber"]).build())
-
             if cue.get("midicontrolnumber"):
                 bundle.add_content(
                     midi_controlNumber(int(cue["midicontrolnumber"])).build()
+                )
+
+            if cue.get("midicontrolvalue"):
+                bundle.add_content(
+                    midi_controlValue(int(cue["midicontrolvalue"])).build()
                 )
 
             if cue.get("midipatchname"):
@@ -196,17 +210,7 @@ def send_csv(ip, document, ql5_passcode):
                 # TODO: Handle UDP messages
                 pass
 
-        # Target
-        if cue.get("target"):
-            bundle.add_content(cue_cueTargetNumber(f"{cue['target']}").build())
-
-        # File Target
-        if cue.get("filetarget"):
-            bundle.add_content(cue_fileTarget(f"{cue['filetarget']}"))
-
-        # Color
-        if cue.get("color"):
-            bundle.add_content(cue_colorName(check_color_type(cue["color"])).build())
+        
 
         client.send(bundle.build())
         async_osc_server(ip, 53001)
