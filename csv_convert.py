@@ -3,18 +3,53 @@ import csv
 
 from pythonosc import osc_message_builder, osc_bundle_builder, udp_client, osc_server
 from osc_server import async_osc_server
+from qlab_osc_dictionary import *
+
 
 def check_cue_type(type):
-    """ Return the valid type of cue, or False """
-    valid_types = ["audio", "mic", "video", "camera", "text", "light", "fade", "network", "midi", "midi file", "timecode", "group", "start", "stop", "pause", "load", "reset", "devamp", "goto", "target", "arm", "disarm", "wait", "memo", "script", "list", "cuelist", "cue list", "cart", "cuecart", "cue cart"]
+    """Return the valid type of cue, or False"""
+    valid_types = [
+        "audio",
+        "mic",
+        "video",
+        "camera",
+        "text",
+        "light",
+        "fade",
+        "network",
+        "midi",
+        "midi file",
+        "timecode",
+        "group",
+        "start",
+        "stop",
+        "pause",
+        "load",
+        "reset",
+        "devamp",
+        "goto",
+        "target",
+        "arm",
+        "disarm",
+        "wait",
+        "memo",
+        "script",
+        "list",
+        "cuelist",
+        "cue list",
+        "cart",
+        "cuecart",
+        "cue cart",
+    ]
     type = type.lower()
     if type not in valid_types:
         return False
     else:
         return type
 
+
 def check_color_type(color):
-    """ Returns the valid color, or false """
+    """Returns the valid color, or false"""
     valid_colors = ["none", "red", "orange", "green", "blue", "purple"]
     color = color.lower()
     if color not in valid_colors:
@@ -22,18 +57,19 @@ def check_color_type(color):
     else:
         return color
 
+
 def send_csv(ip, document, ql5_passcode):
     """
     Sends the data in csv file to qlab workspace on machine with given ip.
     """
     client = udp_client.UDPClient(ip, 53000)
 
-    stream = io.StringIO(document.stream.read().decode("UTF8"), newline='')
+    stream = io.StringIO(document.stream.read().decode("UTF8"), newline="")
     reader = csv.reader(stream)
 
     # Retrieve row one from csv document and use as headers.
-    headers = [x.lower() for x in next(reader)]
-    
+    headers = [x.lower().replace(" ", "") for x in next(reader)]
+
     cues = []
 
     # Build cue list to be sent to qlab.
@@ -42,7 +78,7 @@ def send_csv(ip, document, ql5_passcode):
         cue = {}
         for header in headers:
             cue[header] = line[count]
-            count+=1
+            count += 1
         cues.append(cue)
 
     if ql5_passcode:
@@ -50,107 +86,109 @@ def send_csv(ip, document, ql5_passcode):
         msg.add_arg(ql5_passcode)
         client.send(msg.build())
 
-    for cue in cues:        
+    for cue in cues:
         bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
-        msg = osc_message_builder.OscMessageBuilder(address = "/new")
+        msg = osc_message_builder.OscMessageBuilder(address="/new")
         if check_cue_type(cue["type"]):
-            msg.add_arg(check_cue_type(cue["type"]))
+            bundle.add_content(new_cue(check_cue_type(cue["type"])).build())
         else:
             # Cue type is invalid, create memo cue.
-            msg.add_arg("memo")
-        bundle.add_content(msg.build())
-        
-        if cue.get('number'):
-            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/number")
-            if cue.get('number prefix'):
-                msg.add_arg(f"{cue['number prefix']}{cue['number']}")
-            else:
-                msg.add_arg(f"{cue['number']}")
-            bundle.add_content(msg.build())
+            bundle.add_content(new_cue("memo").build())
+
+        # Number
+        if cue.get("number"):
+            bundle.add_content(cue_number(f"{cue['number']}").build())
 
         # Name
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/name")
-        msg.add_arg(f"{cue['name']}")
-        bundle.add_content(msg.build())
+        bundle.add_content(cue_name(f"{cue['name']}").build())
 
         # Page/Notes
-        if cue.get('page') or cue.get('notes'):
-            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/notes")
-            if cue["page"] and cue["notes"]:
-                msg.add_arg(f"p:{cue['page']} Notes: {cue['notes']}")
-            elif cue["page"]:
-                msg.add_arg(f"p:{cue['page']}")
-            elif cue["notes"]:
-                msg.add_arg(f"{cue['notes']}")
-            bundle.add_content(msg.build())
+        if cue.get("notes"):
+            bundle.add_content(cue_notes(cue["notes"]).build())
 
         # Continue Mode/Follow
-        if cue.get('follow'):
-            msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/continueMode")
-            msg.add_arg(int(cue["follow"]))
-            bundle.add_content(msg.build())
+        if cue.get("follow") or cue.get("continueMode"):
+            continue_mode = cue.get("continueMode")
+            bundle.add_content(cue_continueMode(continue_mode).build())
 
         # Midi Cues
         if check_cue_type(cue["type"]) == "midi":
-            if cue.get('message type'):
-                msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
-                msg.add_arg(int(cue["message type"]))
-                bundle.add_content(msg.build())
-                
+            if cue.get("midimessagetype"):
+                bundle.add_content(
+                    midi_messageType(int(cue["midimessagetype"])).build()
+                )
 
-            if cue.get("command format"):
-                msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/commandFormat")
-                msg.add_arg(int(cue['command format']))
-                bundle.add_content(msg.build())
-                
+            if cue.get("midicommandformat"):
+                bundle.add_content(
+                    midi_commandFormat(int(cue["midicommandformat"])).build()
+                )
 
-            if cue.get("command"):
-                msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/command")
-                msg.add_arg(int(cue["command"]))
-                bundle.add_content(msg.build())
-                
+            if cue.get("midicommand"):
+                bundle.add_content(midi_command(int(cue["midicommand"])).build())
 
-            if cue.get("device id"):
-                msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/deviceID")
-                msg.add_arg(int(cue["device id"]))
-                bundle.add_content(msg.build())
-                
+            if cue.get("midideviceid"):
+                bundle.add_content(midi_deviceID(int(cue["midideviceid"])).build())
 
-            if cue.get('midi cue number'):
-                msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/qNumber")
-                msg.add_arg(f"{cue['midi cue number']}")
-                bundle.add_content(msg.build())
-                
+            if cue.get("midiqnumber"):
+                bundle.add_content(midi_qNumber(cue["midiqnumber"]).build())
+
+            if cue.get("midicontrolnumber"):
+                bundle.add_content(
+                    midi_controlNumber(int(cue["midicontrolnumber"])).build()
+                )
+
+            if cue.get("midipatchname"):
+                bundle.add_content(midi_midiPatchName(cue["midipatchname"]).build())
+
+            if cue.get("midipatchnumber"):
+                bundle.add_content(
+                    midi_midiPatchNumber(int(cue["midipatchnumber"])).build()
+                )
+
+            if cue.get("midiqlist"):
+                bundle.add_content(midi_qList(cue["midiqlist"]).build())
+
+            if cue.get("midiqnumber"):
+                bundle.add_content(midi_qNumber(cue["midiqnumber"]).build())
 
         # Network Cues
         if check_cue_type(cue["type"]) == "network":
             if cue.get("message type"):
-                msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/messageType")
+                msg = osc_message_builder.OscMessageBuilder(
+                    address="/cue/selected/messageType"
+                )
                 msg.add_arg(int(cue["message type"]))
                 bundle.add_content(msg.build())
 
             if cue.get("message type") == "1":
                 # For a qlab message
-                if cue.get('command'):
-                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCommand")
+                if cue.get("command"):
+                    msg = osc_message_builder.OscMessageBuilder(
+                        address="/cue/selected/qlabCommand"
+                    )
                     msg.add_arg(int(cue["command"]))
                     bundle.add_content(msg.build())
-                    
 
-                if cue.get('osc cue number'):
-                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
+                if cue.get("osc cue number"):
+                    msg = osc_message_builder.OscMessageBuilder(
+                        address="/cue/selected/qlabCueNumber"
+                    )
                     msg.add_arg(cue["osc cue number"])
                     bundle.add_content(msg.build())
-                    
+
                 else:
-                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/qlabCueNumber")
+                    msg = osc_message_builder.OscMessageBuilder(
+                        address="/cue/selected/qlabCueNumber"
+                    )
                     msg.add_arg(cue["number"])
                     bundle.add_content(msg.build())
 
             elif cue.get("message type") == "2":
                 # For an OSC message
-                if cue.get('command'):
-                    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/rawString")
+                if cue.get("command"):
+                    msg = osc_message_builder.OscMessageBuilder(
+                        address="/cue/selected/rawString"
+                    )
                     msg.add_arg(cue["command"])
                     bundle.add_content(msg.build())
 
@@ -159,25 +197,16 @@ def send_csv(ip, document, ql5_passcode):
                 pass
 
         # Target
-        if cue.get('target'):
-            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/cueTargetNumber")
-            msg.add_arg(f"{cue['target']}")
-            bundle.add_content(msg.build())
+        if cue.get("target"):
+            bundle.add_content(cue_cueTargetNumber(f"{cue['target']}").build())
 
         # File Target
-        if cue.get('file target'):
-            msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/fileTarget")
-            msg.add_arg(f"{cue['file target']}")
-            bundle.add_content(msg.build())
-            
+        if cue.get("filetarget"):
+            bundle.add_content(cue_fileTarget(f"{cue['filetarget']}"))
+
         # Color
-        msg = osc_message_builder.OscMessageBuilder(address = "/cue/selected/colorName")
-        if cue.get('color'):
-            msg.add_arg(check_color_type(cue['color']))
-        else:
-            msg.add_arg("none")
-        bundle.add_content(msg.build())
-    
+        if cue.get("color"):
+            bundle.add_content(cue_colorName(check_color_type(cue["color"])).build())
 
         client.send(bundle.build())
         async_osc_server(ip, 53001)

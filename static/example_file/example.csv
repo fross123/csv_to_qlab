@@ -1,8 +1,8 @@
-Number,Target,midi cue number,Page,Type,follow,Name,Notes,Color,device id,command format,command
-1,1,,,start,1,house and works,FYI this will only “Target” currently created cues.,green,,,
-5,5,,,START,2,lamp warmup,FYI this will only “Target” currently created cues.,green,,,
+Number,Target,qNumber,Page,Type,continueMode,Name,Notes,Color,device id,command format,command
+1,,,,start,1,house and works,FYI this will only “Target” currently created cues.,green,,,
+5,1,,,START,2,lamp warmup,FYI this will only “Target” currently created cues.,green,,,
 LX 5.1,,5.1,,midi,2,house and works,,red,2,127,2
-SQ 10,10,,,start,1,Preshow,FYI this will only “Target” currently created cues.,green,,,
+SQ 10,5,,,start,1,Preshow,FYI this will only “Target” currently created cues.,green,,,
 PQ 15,,,,network,1,House Half,,purple,,,
 PQ 20,,,,network,2,House out,“16 counts”,purple,,,
 PQ 20,,,,network,2,Stage Up,complete with finish in music,purple,,,
