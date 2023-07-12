@@ -33,7 +33,7 @@ def test_example_csv():
     response = app.test_client().post(
         "/",
         data={
-            "file": (resources / "example.csv").open("rb"),
+            "file": (resources / "csv_test_doc.csv").open("rb"),
             "ip": "127.0.0.1",
             "ql5-passcode": "3420",
         },
