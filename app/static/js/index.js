@@ -53,8 +53,8 @@ function ValidateSingleInput(oInput) {
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    var ql5v = document.querySelector('#qlab-version');
-    var ql5group = document.querySelector('#ql5-passcode-group')
+    var ql5v = document.querySelector('#passcode-switch');
+    var ql5group = document.querySelector('#passcode-group')
     ql5v.addEventListener('click', (e) => {
         if (ql5group.hidden) { // if the form is hidden
             ql5group.hidden = false;

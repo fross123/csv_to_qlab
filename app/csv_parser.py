@@ -58,7 +58,7 @@ def check_color_type(color):
         return color
 
 
-def send_csv(ip, document, ql5_passcode):
+def send_csv(ip, document, qlab_version, passcode):
     """
     Sends the data in csv file to qlab workspace on machine with given ip.
     """
@@ -81,9 +81,9 @@ def send_csv(ip, document, ql5_passcode):
             count += 1
         cues.append(cue)
 
-    if ql5_passcode:
+    if passcode:
         msg = osc_message_builder.OscMessageBuilder(address="/connect")
-        msg.add_arg(ql5_passcode)
+        msg.add_arg(passcode)
         client.send(msg.build())
 
     for cue in cues:
@@ -167,50 +167,58 @@ def send_csv(ip, document, ql5_passcode):
 
         # Network Cues
         if check_cue_type(cue["type"]) == "network":
-            if cue.get("message type"):
-                msg = osc_message_builder.OscMessageBuilder(
-                    address="/cue/selected/messageType"
-                )
-                msg.add_arg(int(cue["message type"]))
-                bundle.add_content(msg.build())
 
-            if cue.get("message type") == "1":
-                # For a qlab message
-                if cue.get("command"):
+            if qlab_version == 5:
+                # QLab 5 only supports custom strings or key/value pairs.
+                if cue.get("networkpatchnumber"):
+                    bundle.add_content(nw_networkPatchNumber(int(cue["networkpatchnumber"])).build())
+
+                if cue.get("networkpatchname"):
+                    bundle.add_content(nw_networkPatchName(cue["networkpatchname"]).build())
+
+                if cue.get("customstring"):
+                    bundle.add_content(nw_customString(cue["customstring"]).build())
+
+            elif qlab_version == 4:
+                if cue.get("messagetype"):
                     msg = osc_message_builder.OscMessageBuilder(
-                        address="/cue/selected/qlabCommand"
+                        address="/cue/selected/messageType"
                     )
-                    msg.add_arg(int(cue["command"]))
+                    msg.add_arg(int(cue["messagetype"]))
                     bundle.add_content(msg.build())
 
-                if cue.get("osc cue number"):
-                    msg = osc_message_builder.OscMessageBuilder(
-                        address="/cue/selected/qlabCueNumber"
-                    )
-                    msg.add_arg(cue["osc cue number"])
-                    bundle.add_content(msg.build())
+                if cue.get("messagetype") == "1":
+                    # For a qlab message
+                    if cue.get("command"):
+                        msg = osc_message_builder.OscMessageBuilder(
+                            address="/cue/selected/qlabCommand"
+                        )
+                        msg.add_arg(int(cue["command"]))
+                        bundle.add_content(msg.build())
 
-                else:
-                    msg = osc_message_builder.OscMessageBuilder(
-                        address="/cue/selected/qlabCueNumber"
-                    )
-                    msg.add_arg(cue["number"])
-                    bundle.add_content(msg.build())
+                    if cue.get("osccuenumber"):
+                        msg = osc_message_builder.OscMessageBuilder(
+                            address="/cue/selected/qlabCueNumber"
+                        )
+                        msg.add_arg(cue["osccuenumber"])
+                        bundle.add_content(msg.build())
 
-            elif cue.get("message type") == "2":
-                # For an OSC message
-                if cue.get("command"):
-                    msg = osc_message_builder.OscMessageBuilder(
-                        address="/cue/selected/rawString"
-                    )
-                    msg.add_arg(cue["command"])
-                    bundle.add_content(msg.build())
+                    else:
+                        msg = osc_message_builder.OscMessageBuilder(
+                            address="/cue/selected/qlabCueNumber"
+                        )
+                        msg.add_arg(cue["number"])
+                        bundle.add_content(msg.build())
 
-            else:
-                # TODO: Handle UDP messages
-                pass
+                elif cue.get("messagetype") == "2":
+                    # For an OSC message
+                    if cue.get("command"):
+                        msg = osc_message_builder.OscMessageBuilder(
+                            address="/cue/selected/rawString"
+                        )
+                        msg.add_arg(cue["command"])
+                        bundle.add_content(msg.build())
 
-        
 
         client.send(bundle.build())
         async_osc_server(ip, 53001)

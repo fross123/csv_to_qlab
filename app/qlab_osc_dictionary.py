@@ -540,3 +540,50 @@ def midi_status(number):
         return msg
     else:
         return ValueError("Midi Status must be 0-6. See QLab OSC Dictionary.")
+
+
+def nw_customString(string):
+    """
+    Read: If no argument is given, return the message of the specified cue.
+
+    Write: If string is given, and the specified cue’s patch is set to
+    “OSC Message,” set the OSC message of the specified cue to string.
+    If string is given, and the specified cue’s patch is set to “Plain Text,”
+    set the text of the specified cue to string. In all other cases,
+    this message has no effect.
+    """
+
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/customString")
+    msg.add_arg(string)
+    return msg
+
+
+def nw_networkPatchName(string):
+    """
+    Read: If no argument is given, return the name of the network patch
+    currently in use by the specified cue. String "none" means that the cue is un-patched.
+
+    Write: If string is given and matches the name of a network patch
+    in the workspace, set the network patch of the specified cue to that patch.
+    If string is "none" or empty (""), un-patch the specified cue.
+    If string is anything else, this message has no effect.
+    """
+
+    msg = osc_message_builder.OscMessageBuilder(
+        address="/cue/selected/networkPatchName"
+    )
+    msg.add_arg(string)
+    return msg
+
+
+def nw_networkPatchNumber(number):
+    """
+    Read: If no argument is given, return the index of the network patch currently in use by the specified cue. Index 0 means that the cue is un-patched, index 1 means the first patch in the patch list in Workspace Settings, 2 means the second patch, and so on.
+
+    Write: If number is given, set the network patch of the specified cue to that patch. If number is 0, un-patch the specified cue. If number is greater than the number of network patches in the workspace, this message has no effect. number must be a whole number.
+    """
+    msg = osc_message_builder.OscMessageBuilder(
+        address="/cue/selected/networkPatchNumber"
+    )
+    msg.add_arg(number)
+    return msg

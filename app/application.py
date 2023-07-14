@@ -30,7 +30,8 @@ def index():
 def upload_file():
     uploaded_file = request.files["file"]
     ip = request.form["ip"]
-    ql5_passcode = request.form["ql5-passcode"]
+    qlab_version = request.form["qlab-version"]
+    passcode = request.form["passcode"]
 
     filename = secure_filename(uploaded_file.filename)
     if uploaded_file.filename != "":
@@ -38,7 +39,7 @@ def upload_file():
         if file_ext not in app.config["UPLOAD_EXTENSIONS"]:
             return "Invalid File", 400
 
-        send_csv(ip, uploaded_file, ql5_passcode)
+        send_csv(ip, uploaded_file, int(qlab_version), passcode)
         if return_errors():
             return render_template(
                 "errors.html", errors=return_errors(), success=return_success()
@@ -58,5 +59,5 @@ def too_large(e):
 
 
 if __name__ == "__main__":
-    webview.create_window("CSV to QLab", app, frameless=True, width=300, height=350)
+    webview.create_window("CSV to QLab", app, frameless=True, width=300, height=450)
     webview.start()

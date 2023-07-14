@@ -32,16 +32,23 @@
         <main role="main" class="flex-shrink-0">
             <div class="container">
                 <form method="POST" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="qlab-version" name="qlab5">
-                        <label class="custom-control-label" for="qlab-version">QLab 5</label>
+                    <div class="form-group select-version">
+                        <label class="custom-select-label" for="custom-select">Chose version:</label>
+                        <select class="custom-select" name="qlab-version" required>
+                            <option selected value="5">QLab Five &#40;5&#41;</option>
+                            <option value="4">QLab Five &#40;4&#41;</option>
+                        </select>
                     </div>
-                    <div class="form-group" id="ql5-passcode-group" hidden>
+                    <div class="form-group custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="passcode-switch">
+                        <label class="custom-control-label" for="passcode-switch">Passcode</label>
+                    </div>
+                    <div class="form-group" id="passcode-group" hidden>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" for="ql5-passcode">Passcode</span>
+                                <span class="input-group-text" for="passcode">Passcode</span>
                             </div>
-                            <input type="text" id="ql5-passcode" class="form-control" name="ql5-passcode">
+                            <input type="text" id="passcode" class="form-control" name="passcode">
                         </div>
                     </div>
                     <div class="form-group">
