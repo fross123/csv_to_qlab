@@ -110,7 +110,7 @@ def send_csv(ip, document, qlab_version, passcode):
         if cue.get("follow") or cue.get("continueMode"):
             continue_mode = cue.get("continueMode")
             bundle.add_content(cue_continueMode(continue_mode).build())
-        
+
         # Target
         if cue.get("target"):
             bundle.add_content(cue_cueTargetNumber(f"{cue['target']}").build())
@@ -167,14 +167,17 @@ def send_csv(ip, document, qlab_version, passcode):
 
         # Network Cues
         if check_cue_type(cue["type"]) == "network":
-
             if qlab_version == 5:
                 # QLab 5 only supports custom strings or key/value pairs.
                 if cue.get("networkpatchnumber"):
-                    bundle.add_content(nw_networkPatchNumber(int(cue["networkpatchnumber"])).build())
+                    bundle.add_content(
+                        nw_networkPatchNumber(int(cue["networkpatchnumber"])).build()
+                    )
 
                 if cue.get("networkpatchname"):
-                    bundle.add_content(nw_networkPatchName(cue["networkpatchname"]).build())
+                    bundle.add_content(
+                        nw_networkPatchName(cue["networkpatchname"]).build()
+                    )
 
                 if cue.get("customstring"):
                     bundle.add_content(nw_customString(cue["customstring"]).build())
@@ -218,7 +221,6 @@ def send_csv(ip, document, qlab_version, passcode):
                         )
                         msg.add_arg(cue["command"])
                         bundle.add_content(msg.build())
-
 
         client.send(bundle.build())
         async_osc_server(ip, 53001)
