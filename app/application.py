@@ -59,5 +59,5 @@ def too_large(e):
 
 
 if __name__ == "__main__":
-    webview.create_window("CSV to QLab", app, frameless=True, width=300, height=450)
+    webview.create_window("CSV to QLab", app, frameless=True, width=300, height=465)
     webview.start()
