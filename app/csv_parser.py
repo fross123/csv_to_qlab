@@ -151,8 +151,8 @@ def send_csv(ip, document, qlab_version, passcode):
                     midi_controlValue(int(cue["midicontrolvalue"])).build()
                 )
 
-            if cue.get("midipatchname"):
-                bundle.add_content(midi_midiPatchName(cue["midipatchname"]).build())
+            if cue.get("midipatchnamel"):
+                bundle.add_content(midi_midiPatchName(cue["midipatchnamel"]).build())
 
             if cue.get("midipatchnumber"):
                 bundle.add_content(
@@ -174,9 +174,9 @@ def send_csv(ip, document, qlab_version, passcode):
                         nw_networkPatchNumber(int(cue["networkpatchnumber"])).build()
                     )
 
-                if cue.get("networkpatchname"):
+                if cue.get("networkpatchnamel"):
                     bundle.add_content(
-                        nw_networkPatchName(cue["networkpatchname"]).build()
+                        nw_networkPatchName(cue["networkpatchnamel"]).build()
                     )
 
                 if cue.get("customstring"):
