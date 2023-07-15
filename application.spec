@@ -3,12 +3,12 @@
 block_cipher = None
 
 
-a = Analysis(['application.py'],
+a = Analysis(['app/application.py'],
              pathex=['.'],
              binaries=[],
              datas=[
-               ('static', 'static'),
-               ('templates', 'templates'),
+               ('app/static', 'static'),
+               ('app/templates', 'templates'),
              ],
              hiddenimports=[],
              hookspath=[],

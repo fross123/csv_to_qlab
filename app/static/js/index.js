@@ -1,12 +1,12 @@
 // JavaScript for disabling form submissions if there are invalid fields
-(function() {
+(function () {
     'use strict';
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
                 var validFileExtensions = [".csv"];
                 var fileElement = document.getElementById('csv_file');
                 if (form.checkValidity() === false) {
@@ -17,7 +17,7 @@
             }, false);
         });
 
-        document.getElementById("csv_file").onchange = function() {
+        document.getElementById("csv_file").onchange = function () {
 
             ValidateSingleInput(document.getElementById("csv_file"))
         }
@@ -28,7 +28,7 @@ var _validFileExtensions = [".csv"];
 function ValidateSingleInput(oInput) {
     if (oInput.type == "file") {
         var sFileName = oInput.value;
-         if (sFileName.length > 0) {
+        if (sFileName.length > 0) {
             var blnValid = false;
             for (var j = 0; j < _validFileExtensions.length; j++) {
                 var sCurExtension = _validFileExtensions[j];
@@ -53,8 +53,8 @@ function ValidateSingleInput(oInput) {
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    var ql5v = document.querySelector('#qlab-version');
-    var ql5group = document.querySelector('#ql5-passcode-group')
+    var ql5v = document.querySelector('#passcode-switch');
+    var ql5group = document.querySelector('#passcode-group')
     ql5v.addEventListener('click', (e) => {
         if (ql5group.hidden) { // if the form is hidden
             ql5group.hidden = false;

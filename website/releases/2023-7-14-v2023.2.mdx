@@ -1,0 +1,28 @@
+---
+slug: 2023/2
+title: Version 2023.2
+tags: ["2023", "2"]
+---
+
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from '@site/src/pages/index.module.css';
+
+
+- Minor updates to row headers.
+- Error handling. Response from QLab will be displayed to the user.
+- Users now choose which version of QLab they are using.
+- Added a generic "Passcode" option for QLab work spaces that are secured by a pin.
+- Network cue updates for QLab 5.
+    - QLab 5 changed network cues significantly. The best use of CSV to QLab is to still do custom OSC commands rather than utilizing the new features.
+    - Another option is to use CSV to QLab to import the cues, but then edit the network patch for all the network cues that are added.
+        - For example, if you just need to trigger "GO" to another QLab machine and do not necessarily need to send a cue number in the OSC message.
+
+
+<div className={styles.buttons}>
+    <Link
+    className="button button--primary button--lg"
+    to="https://github.com/fross123/csv_to_qlab/releases/download/v2023.2/CSV-To-QLab.dmg">
+    Download Release v2023.2
+    </Link>
+</div>

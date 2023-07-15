@@ -11,17 +11,21 @@ Follow these steps to send your newly created CSV file over to QLab.
 Open an empty QLab workspace.
 
 :::note
-CSV to QLab will operate with both QLab 3 and QLab 4, however not all functions are available on QLab 3.
+CSV to QLab will operate with both QLab 4 and QLab 5, however not all functions are available on QLab 4.
 :::
 
-## If you are using QLab 5 and have an OSC Passcode.
+## Select your QLab version.
+* There are not many differences, but QLab 5 handles some incoming messages slightly differently.
 
-* Select the checkbox for QLab5.
+
+## If you are have an OSC Passcode.
+
+* Select the checkbox for passcode.
 * Enter passcode found in QLab settings.
 
 :::tip
 Make sure that the passcode has full access to the workspace.
-Note that it is also possible to bypass this step and allow access with the "no passcode" option.
+Note that it on QLab 5is also possible to bypass this step and allow access with the "no passcode" option.
 :::
 
 
@@ -30,10 +34,8 @@ Note that it is also possible to bypass this step and allow access with the "no 
 You will need the local IP address of the machine running QLab.
 
 :::tip
-You can run CSV to QLab on the same machine.
+You can run CSV to QLab on the same computer as QLab by using "127.0.0.1".
 :::
-
-On QLab 4 you can find this in Settings -> OSC Controls.
 
 
 ## Fill out the form

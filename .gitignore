@@ -6,3 +6,4 @@ build
 icon.svg
 icon(big).icns
 .pytest_cache
+.vscode
