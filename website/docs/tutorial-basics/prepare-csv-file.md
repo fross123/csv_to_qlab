@@ -7,7 +7,7 @@ sidebar_position: 2
 Some columns are required, some are optional.
 
 :::warning
-Some of these headers changed with version 2023.2! Please check your CSV headers.
+Some of these headers changed with version [2023.2](/releases/2023/2)! Please check your CSV headers.
 :::
 
 ## Required columns
