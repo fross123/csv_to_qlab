@@ -4,15 +4,25 @@
         <title>CSV to QLab Blog</title>
         <link>https://csv-to-qlab.finlayross.me/releases</link>
         <description>CSV to QLab Blog</description>
-        <lastBuildDate>Wed, 19 Jul 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 14 Jul 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <item>
+            <title><![CDATA[Version 2023.2]]></title>
+            <link>https://csv-to-qlab.finlayross.me/releases/2023/2</link>
+            <guid>https://csv-to-qlab.finlayross.me/releases/2023/2</guid>
+            <pubDate>Fri, 14 Jul 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[- Minor updates to row headers.]]></description>
+            <content:encoded><![CDATA[<ul><li>Minor updates to row headers.</li><li>Error handling. Response from QLab will be displayed to the user.</li><li>Users now choose which version of QLab they are using.</li><li>Added a generic "Passcode" option for QLab work spaces that are secured by a pin.</li><li>Network cue updates for QLab 5.<ul><li>QLab 5 changed network cues significantly. The best use of CSV to QLab is to still do custom OSC commands rather than utilizing the new features.</li><li>Another option is to use CSV to QLab to import the cues, but then edit the network patch for all the network cues that are added.<ul><li>For example, if you just need to trigger "GO" to another QLab machine and do not necessarily need to send a cue number in the OSC message.</li></ul></li></ul></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.2</a></div>]]></content:encoded>
+            <category>2023</category>
+            <category>2</category>
+        </item>
+        <item>
             <title><![CDATA[Version 2023.1]]></title>
             <link>https://csv-to-qlab.finlayross.me/releases/2023/1</link>
             <guid>https://csv-to-qlab.finlayross.me/releases/2023/1</guid>
-            <pubDate>Wed, 19 Jul 2023 00:00:00 GMT</pubDate>
+            <pubDate>Sun, 09 Jul 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[- Update application to be backwards compatible and work on more operating systems.]]></description>
             <content:encoded><![CDATA[<ul><li>Update application to be backwards compatible and work on more operating systems.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.1</a></div>]]></content:encoded>
             <category>2023</category>
