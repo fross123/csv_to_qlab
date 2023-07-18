@@ -34,16 +34,16 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
         <li>MIDI Q Number</li>
         <li>MIDI Device ID</li>
         <li>MIDI Message Type</li>
-        <li>MIDI Control Number</li>
-        <li>MIDI Control Value</li>
-        <li>MIDI Patch Channel</li>
-        <li>MIDI Patch Number</li>
-        <li>MIDI Q List</li>
         <ul>
             <li>1 - MIDI Voice Message ("Musical MIDI")</li>
             <li>2 - MIDI Show Control Message (MSC)</li>
             <li>3 - MIDI SysEx Message</li>
         </ul>
+        <li>MIDI Control Number</li>
+        <li>MIDI Control Value</li>
+        <li>MIDI Patch Channel</li>
+        <li>MIDI Patch Number</li>
+        <li>MIDI Q List</li>
         <li>MIDI Command Format (<a href="https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-command-format-types" target="_blank">Options</a>)</li>
         <li>MIDI Command (<a href="https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-commands" target="_blank">Options</a>)</li>
     </ul>

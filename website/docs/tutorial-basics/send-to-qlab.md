@@ -18,7 +18,7 @@ CSV to QLab will operate with both QLab 4 and QLab 5, however not all functions 
 * There are not many differences, but QLab 5 handles some incoming messages slightly differently.
 
 
-## If you are have an OSC Passcode.
+## If you have an OSC Passcode.
 
 * Select the checkbox for passcode.
 * Enter passcode found in QLab settings.

@@ -120,6 +120,10 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+    scripts: [
+      // String format.
+      '/js/brevo.js'
+    ],
 };
 
 module.exports = config;
