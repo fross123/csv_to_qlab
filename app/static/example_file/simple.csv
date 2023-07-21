@@ -1,56 +1,56 @@
-Number,Type,Name,
-1,audio,house and works,
-5,midi,Sound Start,
-5.1,midi,house and works,
-10,midi,Preshow,
-15,midi,House Half,
-20,midi,House out,
-21,midi,Stage Up,
-30,midi,more up in well,
-35,midi,add more upstairs,
-40,midi,well out,
-45,midi,well up,
-50,midi,well out,
-55,midi,well up,
-60,midi,well out,
-65,midi,pull down upstairs,
-70,midi,blackout,
-75,midi,INTERMISSION,
-80,midi,House Half,
-85,midi,House out,
-90,midi,Stage down,
-95,midi,Up on Tim,
-96,midi,Stage Up for scene light,
-100,midi,add light on stairs/second level,
-105,midi,lights up “onstage”,
-110,midi,lights change onstage,
-115,midi,wrong lighting cue,
-116,midi,restore back to correct light cue,
-120,midi,lights flicker,
-125,midi,lights flicker twice,
-130,midi,backstage lights snap off,
-135,midi,“Stage” lights snap off,
-140,midi,INTERMISSION,
-145,midi,House Half,
-150,midi,House out,
-155,midi,Stage Out,
-156,midi,False start / stage up,
-157,midi,blackout,
-160,midi,Stage Up; Tim in “spotlight”,
-165,midi,“follow spot” follows Tim,
-166,midi,“,
-167,midi,“,
-168,midi,“,
-169,midi,“,
-170,midi,spot out,
-175,midi,First look of “Nothing On”,
-180,midi,add more upstairs,
-185,midi,lights flicker twice (?),
-190,midi,lights flicker (biggest),
-193,midi,smoke from fireplace,
-195,midi,quick blackout,
-200,midi,stage up for curtain call,
-205,midi,bow lights?,
-210,midi,stage down,
-215,midi,House Up,
-220,midi,house and works,
+Number,Type,Name
+1,audio,house and works
+5,midi,Sound Start
+5.1,midi,house and works
+10,midi,Preshow
+15,midi,House Half
+20,midi,House out
+21,midi,Stage Up
+30,midi,more up in well
+35,midi,add more upstairs
+40,midi,well out
+45,midi,well up
+50,midi,well out
+55,midi,well up
+60,midi,well out
+65,midi,pull down upstairs
+70,midi,blackout
+75,midi,INTERMISSION
+80,midi,House Half
+85,midi,House out
+90,midi,Stage down
+95,midi,Up on Tim
+96,midi,Stage Up for scene light
+100,midi,add light on stairs/second level
+105,midi,lights up “onstage”
+110,midi,lights change onstage
+115,midi,wrong lighting cue
+116,midi,restore back to correct light cue
+120,midi,lights flicker
+125,midi,lights flicker twice
+130,midi,backstage lights snap off
+135,midi,“Stage” lights snap off
+140,midi,INTERMISSION
+145,midi,House Half
+150,midi,House out
+155,midi,Stage Out
+156,midi,False start / stage up
+157,midi,blackout
+160,midi,Stage Up; Tim in “spotlight”
+165,midi,“follow spot” follows Tim
+166,midi,“
+167,midi,“
+168,midi,“
+169,midi,“
+170,midi,spot out
+175,midi,First look of “Nothing On”
+180,midi,add more upstairs
+185,midi,lights flicker twice (?)
+190,midi,lights flicker (biggest)
+193,midi,smoke from fireplace
+195,midi,quick blackout
+200,midi,stage up for curtain call
+205,midi,bow lights?
+210,midi,stage down
+215,midi,House Up
+220,midi,house and works

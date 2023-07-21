@@ -75,9 +75,9 @@ Some columns are required, some are optional.
 
 ### Examples
 
-- [Full Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/example.csv)
+- [Full Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/88bb34fb51fbb54c9e84db0c0361a7054d37f172/app/static/example_file/example.csv)
 
-- [Simple Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/master/static/example_file/simple.csv)
+- [Simple Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/88bb34fb51fbb54c9e84db0c0361a7054d37f172/app/static/example_file/simple.csv)
 
 
 ## To run in development:
