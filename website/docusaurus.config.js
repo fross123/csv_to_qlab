@@ -81,6 +81,13 @@ const config = {
           },
           {to: '/releases', label: 'Releases', position: 'left'},
           {
+            href: 'https://www.paypal.com/paypalme/finlayross',
+            label: 'Donate',
+            position: 'right',
+            className: 'button button--primary button--large'
+
+          },
+          {
             href: 'https://github.com/fross123/csv_to_qlab',
             label: 'GitHub',
             position: 'right',
