@@ -74,6 +74,6 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
 
 ## Examples
 
-- [Full Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/88bb34fb51fbb54c9e84db0c0361a7054d37f172/app/static/example_file/example.csv)
+- [Full Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/main/app/static/example_file/example.csv)
 
-- [Simple Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/88bb34fb51fbb54c9e84db0c0361a7054d37f172/app/static/example_file/simple.csv)
+- [Simple Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/main/app/static/example_file/simple.csv)
