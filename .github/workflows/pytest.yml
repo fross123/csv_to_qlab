@@ -4,10 +4,17 @@
 name: Pytest
 
 on:
+
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - 'website/**'
+      - '.github/workflows/documentation.yml'
   pull_request:
     branches: [ "main" ]
+    paths-ignore:
+      - 'website/**'
+      - '.github/workflows/documentation.yml'
 
 permissions:
   contents: read
