@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 import HomepageFeatures from '../components/HomepageFeatures';
+import Badges from '../components/StatusBadges.js';
 import Logo from '@site/static/img/logo.svg';
 
 
@@ -30,6 +31,7 @@ function HomepageHeader() {
             Skip Ahead and Download Now
           </Link>
         </div>
+        <Badges />
       </div>
     </header>
   );
