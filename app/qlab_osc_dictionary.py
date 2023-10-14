@@ -587,3 +587,16 @@ def nw_networkPatchNumber(number):
     )
     msg.add_arg(number)
     return msg
+
+
+def text_text(string):
+    """
+    If string is given, set the text of the specified cue to string.
+    If not, return the text of the specified cue.
+    When setting text, the formatting will match the first character of the existing text.
+    """
+    msg = osc_message_builder.OscMessageBuilder(
+        address="/cue/selected/text"
+    )
+    msg.add_arg(string)
+    return msg

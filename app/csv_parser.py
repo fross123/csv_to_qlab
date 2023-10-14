@@ -123,6 +123,9 @@ def send_csv(ip, document, qlab_version, passcode):
         if cue.get("color"):
             bundle.add_content(cue_colorName(check_color_type(cue["color"])).build())
 
+        if cue.get("text"):
+            bundle.add_content(text_text(cue['text']).build())
+
         # Midi Cues
         if check_cue_type(cue["type"]) == "midi":
             if cue.get("midimessagetype"):

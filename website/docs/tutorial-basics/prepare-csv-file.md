@@ -31,6 +31,10 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
     <li>Color (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string" target="_blank">Options</a>)</li>
     <li>Target</li>
     <li>File Target</li>
+    <li>Columns for Text cues. As of v.2023.3</li>
+    <ul>
+        <li>Text</li>
+    </ul>
     <li>Columns available for "midi" cue type:</li>
     <ul>
         <li>MIDI Q Number</li>
