@@ -4,10 +4,20 @@
         <title>CSV to QLab Blog</title>
         <link>https://csv-to-qlab.finlayross.me/releases</link>
         <description>CSV to QLab Blog</description>
-        <lastBuildDate>Fri, 14 Jul 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 14 Oct 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Version 2023.3]]></title>
+            <link>https://csv-to-qlab.finlayross.me/releases/2023/3</link>
+            <guid>https://csv-to-qlab.finlayross.me/releases/2023/3</guid>
+            <pubDate>Sat, 14 Oct 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[- For text cues, add header of "text" to csv file for text cue content.]]></description>
+            <content:encoded><![CDATA[<ul><li>For text cues, add header of "text" to csv file for text cue content.</li><li>Various updates and bug fixes.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.3/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.3</a></div>]]></content:encoded>
+            <category>2023</category>
+            <category>3</category>
+        </item>
         <item>
             <title><![CDATA[Version 2023.2]]></title>
             <link>https://csv-to-qlab.finlayross.me/releases/2023/2</link>
