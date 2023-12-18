@@ -36,11 +36,11 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
     <ul>
         <li>Text</li>
     </ul>
-    <li>Columns availible for "fade" cue type:</li>
+    <li>Columns available for "fade" cue type:</li>
     <ul>
         <li>Stop Target When Done (true or false)</li>
     </ul>
-    <li>Columns availible for "video" cue type:</li>
+    <li>Columns available for "video" cue type:</li>
     <ul>
         <li>Stage Number (In order of list in video outputs setting)</li>
     </ul>
