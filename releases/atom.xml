@@ -2,11 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://csv-to-qlab.finlayross.me/releases</id>
     <title>CSV to QLab Blog</title>
-    <updated>2023-10-14T00:00:00.000Z</updated>
+    <updated>2023-12-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://csv-to-qlab.finlayross.me/releases"/>
     <subtitle>CSV to QLab Blog</subtitle>
     <icon>https://csv-to-qlab.finlayross.me/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Version 2023.4]]></title>
+        <id>https://csv-to-qlab.finlayross.me/releases/2023/4</id>
+        <link href="https://csv-to-qlab.finlayross.me/releases/2023/4"/>
+        <updated>2023-12-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Bug Fixes:]]></summary>
+        <content type="html"><![CDATA[<p>Bug Fixes:</p><ul><li>Fixed an error with setting "File Path" header.</li></ul><p>New Features:</p><ul><li>"Stop Target When Done" for fade cues. Either true or false.</li><li>"Video Stage" number.<ul><li>If number is given, set the video stage of the specified cue to that stage. If number is 0, unpatch the specified cue. If number is greater than the number of video stages in the workspace, this message has no effect. number must be a whole number.</li></ul></li></ul><p>Known Issues:</p><ul><li>Non-standard colors appear to not be accepted by qlab as of this latest release. This seems to be an issue with QLab not with csv-to-qlab.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.4/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.4</a></div>]]></content>
+        <category label="2023" term="2023"/>
+        <category label="4" term="4"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Version 2023.3]]></title>
         <id>https://csv-to-qlab.finlayross.me/releases/2023/3</id>
