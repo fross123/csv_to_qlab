@@ -20,6 +20,7 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
 | 12 | start | Cue 12 GO |
 
 ## Optional Columns
+
 <ul>
     <li>Notes</li>
     <li>Follow</li>
@@ -35,6 +36,21 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
     <ul>
         <li>Text</li>
     </ul>
+    <li>Columns availible for "fade" cue type:</li>
+    <ul>
+        <li>Stop Target When Done (true or false)</li>
+    </ul>
+    <li>Columns availible for "video" cue type:</li>
+    <ul>
+        <li>Stage Number (In order of list in video outputs setting)</li>
+    </ul>
+</ul>
+
+:::note
+Stages are in QLab 5 only.
+:::
+
+<ul>
     <li>Columns available for "midi" cue type:</li>
     <ul>
         <li>MIDI Q Number</li>

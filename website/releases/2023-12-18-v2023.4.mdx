@@ -1,0 +1,30 @@
+---
+slug: 2023/4
+title: Version 2023.4
+tags: ["2023", "4"]
+---
+
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from '@site/src/pages/index.module.css';
+
+
+Bug Fixes:
+- Fixed an error with setting "File Path" header.
+
+New Features:
+- "Stop Target When Done" for fade cues. Either true or false.
+- "Video Stage" number.
+    - If number is given, set the video stage of the specified cue to that stage. If number is 0, un-patch the specified cue. If number is greater than the number of video stages in the workspace, this message has no effect. number must be a whole number.
+
+Known Issues:
+- Non-standard colors appear to not be accpeted by qlab as of this latest release. This seems to be an issue with QLab not with csv-to-qlab.
+
+
+<div className={styles.buttons}>
+    <Link
+    className="button button--primary button--lg"
+    to="https://github.com/fross123/csv_to_qlab/releases/download/v2023.4/CSV-To-QLab.dmg">
+    Download Release v2023.4
+    </Link>
+</div>

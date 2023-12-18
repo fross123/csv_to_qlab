@@ -240,6 +240,18 @@ def cue_fadeAndStopOthersTime(number):
     msg.add_arg(int(number))
     return msg
 
+def fade_stopTargetWhenDone(boolean):
+    """
+    Read: If no argument is given, return the state of the Stop target when done checkbox of the specified cue.
+
+    Write: Set the state of the Stop target when done checkbox of the specified cue.
+    See details on booleans at the beginning of this section.
+    """
+
+    msg = osc_message_builder.OscMessageBuilder(address="/cue/selected/stopTargetWhenDone")
+    msg.add_arg(boolean)
+    return msg
+
 
 def cue_fileTarget(string):
     """
@@ -599,4 +611,22 @@ def text_text(string):
         address="/cue/selected/text"
     )
     msg.add_arg(string)
+    return msg
+
+
+def vid_stageNumber(number):
+    """
+    Read: If no argument is given, return the index of the video stage currently in use by the specified cue.
+    Index 0 means that the cue is un-patched, index 1 means the first stage in the video stage list in
+    Workspace Settings, 2 means the second stage, and so on.
+
+    Write: If number is given, set the video stage of the specified cue to that stage.
+    If number is 0, un-patch the specified cue. If number is greater than the number of
+    video stages in the workspace, this message has no effect. number must be a whole number.
+    """
+
+    msg = osc_message_builder.OscMessageBuilder(
+        address="/cue/selected/stageNumber"
+    )
+    msg.add_arg(int(number))
     return msg

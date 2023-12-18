@@ -117,7 +117,9 @@ def send_csv(ip, document, qlab_version, passcode):
 
         # File Target
         if cue.get("filetarget"):
-            bundle.add_content(cue_fileTarget(f"{cue['filetarget']}"))
+            bundle.add_content(cue_fileTarget(f"{cue['filetarget']}").build())
+
+       
 
         # Color
         if cue.get("color"):
@@ -125,6 +127,19 @@ def send_csv(ip, document, qlab_version, passcode):
 
         if cue.get("text"):
             bundle.add_content(text_text(cue['text']).build())
+
+        # fade cues
+        if check_cue_type(cue["type"]) == "fade":
+            # Stop Target When Done
+            if cue.get("stoptargetwhendone"):
+                bundle.add_content(fade_stopTargetWhenDone(bool(cue['stoptargetwhendone'])).build())
+
+        # Video Cues
+        if check_cue_type(cue["type"]) == "video":
+            # Set video stage
+            if cue.get("stagenumber"):
+                bundle.add_content(vid_stageNumber(cue["stagenumber"]).build())
+            
 
         # Midi Cues
         if check_cue_type(cue["type"]) == "midi":

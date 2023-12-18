@@ -42,7 +42,7 @@ Navigate to the csv_to_qlab directory.
 cd csv_to_qlab
 ```
 
-Create the virtual environment.
+Create a virtual environment.
 ```bash
 python3 -m venv env
 ```
@@ -70,8 +70,12 @@ python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 ```
 
+## Step 5: Navigate to the application directory
+```bash
+cd app
+```
 
-## Step 5: Start the application
+## Step 6: Start the application
 ```bash
 python3 application.py
 ```

@@ -2,6 +2,7 @@ __pycache__
 .DS_Store
 env
 dist
+dist-2
 build
 icon.svg
 icon(big).icns
