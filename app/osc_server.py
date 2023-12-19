@@ -18,7 +18,6 @@ def async_osc_server(ip, port):
     dispatcher.map("/reply/*", filter_handler)
 
     async def loop():
-        """Example main loop that only runs for 10 iterations before finishing"""
         for i in range(1):
             await asyncio.sleep(0.05)
 

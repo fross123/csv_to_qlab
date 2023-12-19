@@ -54,26 +54,26 @@ def test_example_csv():
     assert response.request.path == "/success"
 
 
-# def test_ql4_csv():
-#     """
-#     Test .csv doc and test for previous versions of qlab.
-#     """
-#     resources = Path(__file__).parent.parent / "static" / "example_file"
+def test_ql4_csv():
+    """
+    Test .csv doc and test for previous versions of qlab.
+    """
+    resources = Path(__file__).parent.parent / "static" / "example_file"
 
-#     response = app.test_client().post(
-#         "/",
-#         data={
-#             "file": (resources / "csv_test_doc_qlab_4.csv").open("rb"),
-#             "ip": "127.0.0.1",
-#             "passcode": "3420",
-#             "qlab-version": "4",
-#         },
-#         follow_redirects=True,
-#     )
+    response = app.test_client().post(
+        "/",
+        data={
+            "file": (resources / "csv_test_doc_qlab_4.csv").open("rb"),
+            "ip": "127.0.0.1",
+            "passcode": "3420",
+            "qlab-version": "4",
+        },
+        follow_redirects=True,
+    )
 
-#     assert response.status_code == 200
-#     assert len(response.history) == 1
-#     assert response.request.path == "/success"
+    assert response.status_code == 200
+    assert len(response.history) == 1
+    assert response.request.path == "/success"
 
 
 def test_no_filename():
