@@ -50,7 +50,29 @@ def check_cue_type(type):
 
 def check_color_type(color):
     """Returns the valid color, or false"""
-    valid_colors = ["none", "red", "orange", "green", "blue", "purple"]
+    valid_colors = [
+        "none",
+        "berry",
+        "blue",
+        "crimson",
+        "cyan",
+        "forest",
+        "gray",
+        "green",
+        "hot pink",
+        "indigo",
+        "lavender",
+        "magenta",
+        "midnight",
+        "olive",
+        "orange",
+        "peach",
+        "plum",
+        "purple",
+        "red",
+        "sky blue",
+        "yellow",
+    ]
     color = color.lower()
     if color not in valid_colors:
         return False
