@@ -132,7 +132,8 @@ def send_csv(ip, document, qlab_version, passcode):
         if check_cue_type(cue["type"]) == "fade":
             # Stop Target When Done
             if cue.get("stoptargetwhendone"):
-                bundle.add_content(fade_stopTargetWhenDone(bool(cue['stoptargetwhendone'])).build())
+                if cue.get("stoptargetwhendone") == "true":
+                    bundle.add_content(fade_stopTargetWhenDone(bool(cue['stoptargetwhendone'])).build())
 
         # Video Cues
         if check_cue_type(cue["type"]) == "video":
