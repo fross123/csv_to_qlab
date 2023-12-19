@@ -18,3 +18,7 @@ def count_success(status, message):
 
 def return_success():
     return success
+
+def clear_errors_and_success():
+    errors.clear()
+    success.clear()

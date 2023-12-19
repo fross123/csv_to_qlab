@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 
 from csv_parser import send_csv
 from helper import resource_path
-from error_success_handler import return_errors, return_success
+from error_success_handler import return_errors, return_success, clear_errors_and_success
 
 if getattr(sys, "frozen", False):
     template_folder = resource_path("templates")
@@ -23,6 +23,7 @@ app.config["UPLOAD_PATH"] = resource_path("static/csv_files")
 
 @app.route("/")
 def index():
+    clear_errors_and_success()
     return render_template("index.html")
 
 
