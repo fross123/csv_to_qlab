@@ -11,31 +11,8 @@ permissions:
 
 jobs:
 
-#   createrelease:
-#     name: Create Release
-#     runs-on: [ubuntu-latest]
-#     steps:
-#     - name: Create Release
-#       id: create_release
-#       uses: actions/create-release@v1
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#       with:
-#         tag_name: ${{ github.ref }}
-#         release_name: Release ${{ github.ref }}
-#         draft: true
-#         prerelease: false
-#     - name: Output Release URL File
-#       run: echo "${{ steps.create_release.outputs.upload_url }}" > release_url.txt
-#     - name: Save Release URL File for publish
-#       uses: actions/upload-artifact@v1
-#       with:
-#         name: release_url
-#         path: release_url.txt
-
   build:
     name: Build packages
-    # needs: createrelease
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -48,11 +25,6 @@ jobs:
                 ls -lah         
             OUT_FILE_NAME: csv-to-qlab.app
             TEST_OUT_NAME: csv-to-qlab
-        #   - os: windows-latest
-        #     TARGET: windows
-        #     CMD_BUILD: pyinstaller -F -w -n clipster -i resources/clipster.ico cli.py
-        #     OUT_FILE_NAME: clipster.exe
-        #     ASSET_MIME: application/vnd.microsoft.portable-executable
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.8
@@ -66,21 +38,15 @@ jobs:
         pip install pyinstaller
     - name: Build with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
-    # - name: Load Release URL File from release job
-    #   uses: actions/download-artifact@v1
-    #   with:
-    #     name: release_url
-    # - name: Get Release File Name & Upload URL
-    #   id: get_release_info
-    #   shell: bash
-    #   run: |
-    #     value=`cat release_url/release_url.txt`
-    #     echo ::set-output name=upload_url::$value        
+    - name: create DMG
+      uses: QQxiaoming/create-dmg-action@v0.0.2
+      with:
+        name: 'CSV-To-QLab'
+        srcdir: './dist/${{ matrix.OUT_FILE_NAME }}'
     - name: Draft Release
       id: draft-release
       uses: softprops/action-gh-release@v1
       with:
         draft: true
         files: |
-          dist/${{ matrix.OUT_FILE_NAME }}
-          dist/${{ matrix.TEST_OUT_NAME }}
+          dist/CSV-To-QLab.dmg
