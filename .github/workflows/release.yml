@@ -82,5 +82,5 @@ jobs:
       with:
         draft: true
         files: |
-          ./dist/${{ matrix.OUT_FILE_NAME }}
-          ./dist/${{ matrix.TEST_OUT_NAME }}
+          dist/${{ matrix.OUT_FILE_NAME }}
+          dist/${{ matrix.TEST_OUT_NAME }}
