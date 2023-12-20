@@ -20,9 +20,31 @@ jobs:
             CMD_BUILD: >
                 pyinstaller application.spec &&
                 cd dist/ &&
+                mv csv-to-qlab.app csv-to-qlab-macos11.app &&
+                zip -r9 csv-to-qlab-macos11.zip csv-to-qlab-macos11.app
+            OUT_FILE_NAME: csv-to-qlab-macos11.app
+            ZIP_FILE_NAME: csv-to-qlab-macos11.zip
+            BASE_FILE_NAME: CSV-To-QLab-macos11
+          - os: macos-12
+            TARGET: macos
+            CMD_BUILD: >
+                pyinstaller application.spec &&
+                cd dist/ &&
+                mv csv-to-qlab.app csv-to-qlab-macos12.app &&
+                zip -r9 csv-to-qlab-macos12.zip csv-to-qlab-macos12.app
+            OUT_FILE_NAME: csv-to-qlab-macos12.app
+            ZIP_FILE_NAME: csv-to-qlab-macos12.zip
+            BASE_FILE_NAME: CSV-To-QLab-macos12
+          - os: macos-latest
+            TARGET: macos
+            CMD_BUILD: >
+                pyinstaller application.spec &&
+                cd dist/ &&
                 zip -r9 csv-to-qlab.zip csv-to-qlab.app
             OUT_FILE_NAME: csv-to-qlab.app
             ZIP_FILE_NAME: csv-to-qlab.zip
+            BASE_FILE_NAME: CSV-To-QLab
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.8
@@ -40,13 +62,13 @@ jobs:
       run: |
         brew install create-dmg
         create-dmg \
-        --volname "CSV-To-QLab" \
+        --volname "${{ matrix.BASE_FILE_NAME }}" \
         --window-pos 300 200 \
         --window-size 450 300 \
         --icon-size 100 \
         --app-drop-link 330 150 \
         --icon ${{ matrix.OUT_FILE_NAME }} 100 150 \
-        CSV-To-QLab.dmg \
+        ${{ matrix.BASE_FILE_NAME }}.dmg \
         ./dist/${{ matrix.OUT_FILE_NAME }}
     - name: Draft Release
       id: draft-release
@@ -54,5 +76,5 @@ jobs:
       with:
         draft: true
         files: |
-          ./CSV-To-QLab.dmg
+          ./${{ matrix.BASE_FILE_NAME }}.dmg
           ./dist/${{ matrix.ZIP_FILE_NAME }}
