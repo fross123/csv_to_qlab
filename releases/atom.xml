@@ -2,18 +2,53 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://csv-to-qlab.finlayross.me/releases</id>
     <title>CSV to QLab Blog</title>
-    <updated>2023-12-18T00:00:00.000Z</updated>
+    <updated>2023-12-20T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://csv-to-qlab.finlayross.me/releases"/>
     <subtitle>CSV to QLab Blog</subtitle>
     <icon>https://csv-to-qlab.finlayross.me/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Version 2023.5]]></title>
+        <id>https://csv-to-qlab.finlayross.me/releases/2023/5</id>
+        <link href="https://csv-to-qlab.finlayross.me/releases/2023/5"/>
+        <updated>2023-12-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Bug Fixes:]]></summary>
+        <content type="html"><![CDATA[<p>Bug Fixes:</p>
+<ul>
+<li>Stop Target When Done option will now only check the box when "true". "false" or empty cell will be ignored. Issue #92</li>
+<li>All color selections may not have been sent to QLab. Current colors as of 12/2023 are validated. Issue #91</li>
+<li>Clear errors on consecutive run. In some cases errors continued to be displayed on second run of CSV-To-QLab</li>
+</ul>
+<p>Various other minor updates and fixes.</p>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.5/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2023.5</p></a></div>]]></content>
+        <category label="2023" term="2023"/>
+        <category label="5" term="5"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Version 2023.4]]></title>
         <id>https://csv-to-qlab.finlayross.me/releases/2023/4</id>
         <link href="https://csv-to-qlab.finlayross.me/releases/2023/4"/>
         <updated>2023-12-18T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Bug Fixes:]]></summary>
-        <content type="html"><![CDATA[<p>Bug Fixes:</p><ul><li>Fixed an error with setting "File Path" header.</li></ul><p>New Features:</p><ul><li>"Stop Target When Done" for fade cues. Either true or false.</li><li>"Video Stage" number.<ul><li>If number is given, set the video stage of the specified cue to that stage. If number is 0, unpatch the specified cue. If number is greater than the number of video stages in the workspace, this message has no effect. number must be a whole number.</li></ul></li></ul><p>Known Issues:</p><ul><li>Non-standard colors appear to not be accepted by qlab as of this latest release. This seems to be an issue with QLab not with csv-to-qlab.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.4/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.4</a></div>]]></content>
+        <content type="html"><![CDATA[<p>Bug Fixes:</p>
+<ul>
+<li>Fixed an error with setting "File Path" header.</li>
+</ul>
+<p>New Features:</p>
+<ul>
+<li>"Stop Target When Done" for fade cues. Either true or false.</li>
+<li>"Video Stage" number.<!-- -->
+<ul>
+<li>If number is given, set the video stage of the specified cue to that stage. If number is 0, unpatch the specified cue. If number is greater than the number of video stages in the workspace, this message has no effect. number must be a whole number.</li>
+</ul>
+</li>
+</ul>
+<p>Known Issues:</p>
+<ul>
+<li>Non-standard colors appear to not be accepted by qlab as of this latest release.</li>
+</ul>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Fixed in <a href="https://csv-to-qlab.finlayross.me/releases/2023/5/">v.2023.5</a></p></div></div>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.4/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2023.4</p></a></div>]]></content>
         <category label="2023" term="2023"/>
         <category label="4" term="4"/>
     </entry>
@@ -23,7 +58,11 @@
         <link href="https://csv-to-qlab.finlayross.me/releases/2023/3"/>
         <updated>2023-10-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- For text cues, add header of "text" to csv file for text cue content.]]></summary>
-        <content type="html"><![CDATA[<ul><li>For text cues, add header of "text" to csv file for text cue content.</li><li>Various updates and bug fixes.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.3/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.3</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>For text cues, add header of "text" to csv file for text cue content.</li>
+<li>Various updates and bug fixes.</li>
+</ul>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.3/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2023.3</p></a></div>]]></content>
         <category label="2023" term="2023"/>
         <category label="3" term="3"/>
     </entry>
@@ -33,7 +72,23 @@
         <link href="https://csv-to-qlab.finlayross.me/releases/2023/2"/>
         <updated>2023-07-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- Minor updates to row headers.]]></summary>
-        <content type="html"><![CDATA[<ul><li>Minor updates to row headers.</li><li>Error handling. Response from QLab will be displayed to the user.</li><li>Users now choose which version of QLab they are using.</li><li>Added a generic "Passcode" option for QLab work spaces that are secured by a pin.</li><li>Network cue updates for QLab 5.<ul><li>QLab 5 changed network cues significantly. The best use of CSV to QLab is to still do custom OSC commands rather than utilizing the new features.</li><li>Another option is to use CSV to QLab to import the cues, but then edit the network patch for all the network cues that are added.<ul><li>For example, if you just need to trigger "GO" to another QLab machine and do not necessarily need to send a cue number in the OSC message.</li></ul></li></ul></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.2</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>Minor updates to row headers.</li>
+<li>Error handling. Response from QLab will be displayed to the user.</li>
+<li>Users now choose which version of QLab they are using.</li>
+<li>Added a generic "Passcode" option for QLab work spaces that are secured by a pin.</li>
+<li>Network cue updates for QLab 5.<!-- -->
+<ul>
+<li>QLab 5 changed network cues significantly. The best use of CSV to QLab is to still do custom OSC commands rather than utilizing the new features.</li>
+<li>Another option is to use CSV to QLab to import the cues, but then edit the network patch for all the network cues that are added.<!-- -->
+<ul>
+<li>For example, if you just need to trigger "GO" to another QLab machine and do not necessarily need to send a cue number in the OSC message.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2023.2</p></a></div>]]></content>
         <category label="2023" term="2023"/>
         <category label="2" term="2"/>
     </entry>
@@ -43,7 +98,10 @@
         <link href="https://csv-to-qlab.finlayross.me/releases/2023/1"/>
         <updated>2023-07-09T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- Update application to be backwards compatible and work on more operating systems.]]></summary>
-        <content type="html"><![CDATA[<ul><li>Update application to be backwards compatible and work on more operating systems.</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2023.1</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>Update application to be backwards compatible and work on more operating systems.</li>
+</ul>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2023.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2023.1</p></a></div>]]></content>
         <category label="2023" term="2023"/>
         <category label="1" term="1"/>
     </entry>
@@ -53,7 +111,11 @@
         <link href="https://csv-to-qlab.finlayross.me/releases/2022/9/1"/>
         <updated>2022-09-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[* Add feature: passcode use for QLab 5]]></summary>
-        <content type="html"><![CDATA[<ul><li>Add feature: passcode use for QLab 5</li></ul><p>Turn on switch and enter passcode from qlab5 settings.</p><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2022.3/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2022.2</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>Add feature: passcode use for QLab 5</li>
+</ul>
+<p>Turn on switch and enter passcode from qlab5 settings.</p>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2022.3/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2022.2</p></a></div>]]></content>
         <category label="2022" term="2022"/>
         <category label="3" term="3"/>
     </entry>
@@ -63,7 +125,11 @@
         <link href="https://csv-to-qlab.finlayross.me/releases/2022/8/29"/>
         <updated>2022-08-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[* Add feature: "file target" is now an option for audio cues.]]></summary>
-        <content type="html"><![CDATA[<ul><li>Add feature: "file target" is now an option for audio cues.</li></ul><p>To use, add "file target" as a header. Files can be referenced per <a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberfiletarget-string" target="_blank" rel="noopener noreferrer">qlab docs</a>.</p><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2022.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2022.2</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>Add feature: "file target" is now an option for audio cues.</li>
+</ul>
+<p>To use, add "file target" as a header. Files can be referenced per <a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberfiletarget-string" target="_blank" rel="noopener noreferrer">qlab docs</a>.</p>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2022.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2022.2</p></a></div>]]></content>
         <category label="2022" term="2022"/>
         <category label="2" term="2"/>
     </entry>
@@ -73,7 +139,15 @@
         <link href="https://csv-to-qlab.finlayross.me/releases/2021/1/2"/>
         <updated>2021-12-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[* Updates User Interface to match theme colors.]]></summary>
-        <content type="html"><![CDATA[<ul><li><p>Updates User Interface to match theme colors.</p></li><li><p>Removes unnecessary content on app and reduces sizing.</p></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.2</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p>Updates User Interface to match theme colors.</p>
+</li>
+<li>
+<p>Removes unnecessary content on app and reduces sizing.</p>
+</li>
+</ul>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.2/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2021.1.2</p></a></div>]]></content>
         <category label="2021" term="2021"/>
         <category label="1.2" term="1.2"/>
     </entry>
@@ -83,8 +157,19 @@
         <link href="https://csv-to-qlab.finlayross.me/releases/2021/1/15"/>
         <updated>2021-11-24T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[* Various Bug Fixes]]></summary>
-        <content type="html"><![CDATA[<ul><li><p>Various Bug Fixes</p></li><li><p>Update to OSC handling to allow raw string for standard OSC messages</p></li><li><p>Update to allow "Number Prefix" column to prefix the number of cues.
-Ex: If you have a column already with the number of the cue, you may now add another column with "LX", and the numbers of your cues will start with LX, but will still trigger the number selected. The MIDI or OSC command will not include this prefix.</p></li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.15/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.15</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p>Various Bug Fixes</p>
+</li>
+<li>
+<p>Update to OSC handling to allow raw string for standard OSC messages</p>
+</li>
+<li>
+<p>Update to allow "Number Prefix" column to prefix the number of cues.
+Ex: If you have a column already with the number of the cue, you may now add another column with "LX", and the numbers of your cues will start with LX, but will still trigger the number selected. The MIDI or OSC command will not include this prefix.</p>
+</li>
+</ul>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.15/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2021.1.15</p></a></div>]]></content>
         <category label="2021" term="2021"/>
         <category label="1.15" term="1.15"/>
     </entry>
@@ -94,7 +179,11 @@ Ex: If you have a column already with the number of the cue, you may now add ano
         <link href="https://csv-to-qlab.finlayross.me/releases/2021/1/1"/>
         <updated>2021-02-26T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- Bug Fixes]]></summary>
-        <content type="html"><![CDATA[<ul><li>Bug Fixes</li><li>Add in follow options</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.1</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>Bug Fixes</li>
+<li>Add in follow options</li>
+</ul>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.1/CSV-To-QLab.dmg" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2021.1.1</p></a></div>]]></content>
         <category label="2021" term="2021"/>
         <category label="1.1" term="1.1"/>
     </entry>
@@ -104,8 +193,14 @@ Ex: If you have a column already with the number of the cue, you may now add ano
         <link href="https://csv-to-qlab.finlayross.me/releases/2021/1/0"/>
         <updated>2021-02-25T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- More options can be pulled from the csv file. See README.md for more information]]></summary>
-        <content type="html"><![CDATA[<ul><li>More options can be pulled from the csv file. See README.md for more information</li><li>Updated function to use header:value dictionary so users do not need to be consistent with their spreadsheets
-empty cells in csv no longer cause errors</li><li>OSC messages are now sent as a bundle per-cue.</li><li>Names in application.spec changed to csv-to-qlab</li></ul><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.0/csv_to_qlab.zip" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v2021.1.0</a></div>]]></content>
+        <content type="html"><![CDATA[<ul>
+<li>More options can be pulled from the csv file. See README.md for more information</li>
+<li>Updated function to use header<!-- -->:value<!-- --> dictionary so users do not need to be consistent with their spreadsheets
+empty cells in csv no longer cause errors</li>
+<li>OSC messages are now sent as a bundle per-cue.</li>
+<li>Names in application.spec changed to csv-to-qlab</li>
+</ul>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v2021.1.0/csv_to_qlab.zip" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v2021.1.0</p></a></div>]]></content>
         <category label="2021" term="2021"/>
         <category label="1.0" term="1.0"/>
     </entry>
@@ -115,7 +210,9 @@ empty cells in csv no longer cause errors</li><li>OSC messages are now sent as a
         <link href="https://csv-to-qlab.finlayross.me/releases/0/0/0"/>
         <updated>2020-11-12T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Initial Release. Download zip to demo.]]></summary>
-        <content type="html"><![CDATA[<p>Initial Release. Download zip to demo.</p><p>Currently only available for MacOS.</p><div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v0.0.0/csv_to_qlab.zip" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg">Download Release v0.0.0</a></div>]]></content>
+        <content type="html"><![CDATA[<p>Initial Release. Download zip to demo.</p>
+<p>Currently only available for MacOS.</p>
+<div class="buttons_AeoN"><a href="https://github.com/fross123/csv_to_qlab/releases/download/v0.0.0/csv_to_qlab.zip" target="_blank" rel="noopener noreferrer" class="button button--primary button--lg"><p>Download Release v0.0.0</p></a></div>]]></content>
         <category label="v0.0.0" term="v0.0.0"/>
     </entry>
 </feed>
