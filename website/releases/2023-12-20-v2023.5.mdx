@@ -1,0 +1,25 @@
+---
+slug: 2023/5
+title: Version 2023.5
+tags: ["2023", "5"]
+---
+
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from '@site/src/pages/index.module.css';
+
+Bug Fixes:
+- Stop Target When Done option will now only check the box when "true". "false" or empty cell will be ignored. Issue #92
+- All color selections may not have been sent to QLab. Current colors as of 12/2023 are validated. Issue #91
+- Clear errors on consecutive run. In some cases errors continued to be displayed on second run of CSV-To-QLab
+
+Various other minor updates and fixes.
+
+
+<div className={styles.buttons}>
+    <Link
+    className="button button--primary button--lg"
+    to="https://github.com/fross123/csv_to_qlab/releases/download/v2023.5/CSV-To-QLab.dmg">
+    Download Release v2023.5
+    </Link>
+</div>

@@ -81,9 +81,11 @@ Stages are in QLab 5 only.
         <ul>
             <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number" target="_blank">Options</a>)</li>
             <li>OSC Cue Number (Only if using QLab Message Type)</li>
-            <li>Command
+            <li>
+                Command
                 <ul>
-                    <li>For QLab Messages (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number" target="_blank">Options</a>)
+                    <li>
+                    For QLab Messages (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number" target="_blank">Options</a>)
                     </li>
                     <li>For an OSC message, you may now include a raw string in this column</li>
                 </ul>
