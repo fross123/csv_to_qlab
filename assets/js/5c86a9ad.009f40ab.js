@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcsv_to_qlab=self.webpackChunkcsv_to_qlab||[]).push([[1004],{3898:s=>{s.exports=JSON.parse('{"label":"2022","permalink":"/releases/tags/2022","allTagsPath":"/releases/tags","count":2,"unlisted":false}')}}]);
