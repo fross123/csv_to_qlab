@@ -175,6 +175,11 @@ def send_csv(ip, document, qlab_version, passcode):
                     midi_messageType(int(cue["midimessagetype"])).build()
                 )
 
+            if cue.get("midirawstring"):
+                bundle.add_content(
+                    midi_rawString(cue["midirawstring"]).build()
+                )
+
             if cue.get("midicommandformat"):
                 bundle.add_content(
                     midi_commandFormat(int(cue["midicommandformat"])).build()

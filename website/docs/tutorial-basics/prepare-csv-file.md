@@ -74,6 +74,8 @@ Stages are in QLab 5 only.
         <li>MIDI Patch Channel</li>
         <li>MIDI Patch Number</li>
         <li>MIDI Q List</li>
+        <li>Midi Raw String</li>
+        <ul><li>For SysEx Messages</li></ul>
         <li>MIDI Command Format (<a href="https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-command-format-types" target="_blank">Options</a>)</li>
         <li>MIDI Command (<a href="https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-commands" target="_blank">Options</a>)</li>
     </ul>
