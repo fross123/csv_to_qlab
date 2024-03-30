@@ -112,7 +112,25 @@ def send_csv(ip, document, qlab_version, passcode):
         bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
         msg = osc_message_builder.OscMessageBuilder(address="/new")
         if check_cue_type(cue["type"]):
-            bundle.add_content(new_cue(check_cue_type(cue["type"])).build())
+
+            if cue.get("groupid"):
+                if cue.get("type") == "group":
+                    cue_id = cue.get("groupid")
+                    bundle.add_content(new_cue(check_cue_type(cue["type"]), f"{cue_id}").build())
+                    print(f"group type and groupid. cueID: {cue_id}")
+                else:
+                    cue_index = 0
+                    parent_id = cue.get("groupid")
+                    cue_id=None
+                    bundle.add_content(new_cue(check_cue_type(cue["type"]), cue_id).build())
+                    bundle.add_content(move_cue(int(cue_index), f"{parent_id}").build())
+                    print(f"not group type of cue but has group id. NewParentID: {parent_id}")
+            else:
+                cue_id = None
+                bundle.add_content(new_cue(check_cue_type(cue["type"]), cue_id).build())
+                print("neither just new cue")
+
+
         else:
             # Cue type is invalid, create memo cue.
             bundle.add_content(new_cue("memo").build())

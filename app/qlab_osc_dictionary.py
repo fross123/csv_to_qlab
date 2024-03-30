@@ -61,7 +61,7 @@ def liveFadePreview(boolean):
     return msg
 
 
-def new_cue(cue_type):
+def new_cue(cue_type, cue_id):
     """
     Create a new cue. cue_type is a string stating the type of cue to create.
     Supported strings include:
@@ -87,6 +87,36 @@ def new_cue(cue_type):
 
     msg = osc_message_builder.OscMessageBuilder(address="/new")
     msg.add_arg(cue_type)
+
+    if cue_id:
+        msg.add_arg(cue_id)
+        print(cue_id)
+    
+    return msg
+
+def move_cue(cue_index, parent_id):
+    """
+    If new_parent_cue_id is not provided, move the specified cue (cue_id) from its current position to the given new_index position within the cue’s current parent Group, Cart, or List. new_index is required and must be an integer.
+
+    If new_parent_cue_id is provided, move the specified cue from its current position to the given new_index position within the Group, Cart, or List whose unique ID is new_parent_cue_id.
+
+    If the move fails for any reason (i.e. a Group cue cannot be moved inside of another Group cue that it already contains), QLab will send an error reply.
+
+    If the move succeeds, QLab will reply with "status": "ok" and "data" containing a dictionary with 2 key/value pairs:
+
+    [
+        {
+            "parent_cue_id": string,
+            "index": integer
+        }
+    ]
+    parent_cue_id is a string with the unique ID of the Group, Cart, or List that contains the cue that was moved. index is an integer with the index of the position of the moved cue in its new parent.
+    """
+
+    msg = osc_message_builder.OscMessageBuilder(address="/move/selected")
+    msg.add_arg(cue_index)
+    # msg.add_arg(parent_id)
+    print(f"moving cue to: {cue_index} in group {parent_id}")
     return msg
 
 def group_mode(int):
