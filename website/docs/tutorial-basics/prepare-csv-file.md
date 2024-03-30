@@ -38,7 +38,15 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
     </ul>
     <li>Columns available for "fade" cue type:</li>
     <ul>
-        <li>Stop Target When Done (true or false)</li>
+        <li>Stop Target When Done</li>
+        <ul>
+            <li>"True" or "False"</li>
+        </ul>
+        <li>Fade Opacity</li>
+        <ul>
+            <li>(ONLY 0 or 1 per QLab docs)</li>
+            <li>Note: Also activates the checkbox for the fade.</li>
+        </ul>
     </ul>
     <li>Columns available for "video" cue type:</li>
     <ul>

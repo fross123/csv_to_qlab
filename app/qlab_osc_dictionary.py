@@ -630,3 +630,28 @@ def vid_stageNumber(number):
     )
     msg.add_arg(int(number))
     return msg
+
+
+def fade_opacity(number):
+    """
+    Read: If no argument is given, return the opacity of the specified cue.
+
+    Write: If number is given, set the opacity of the specified cue to number. number can be any decimal number from 0 to 1, where 0 represents 0% opacity and 1 represents 100% opacity.
+
+    Note: If using both increment/decrement and live at the same time, the /live part of the address must come last, after the /+ or /- part.
+    """
+
+    msg = osc_message_builder.OscMessageBuilder(
+        address="/cue/selected/opacity"
+    )
+    msg.add_arg(int(number))
+
+    return msg
+
+def fade_do_opacity():
+    msg = osc_message_builder.OscMessageBuilder(
+        address="/cue/selected/doOpacity"
+    )
+    msg.add_arg(bool(True))
+
+    return msg
