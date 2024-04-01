@@ -4,8 +4,8 @@ previous_cue_id = ["Fou"]
 
 
 def handle_errors(status, message):
-    # print("There was an error:")
-    # print(message)
+    print("There was an error:")
+    print(message)
     errors.append({"status": status, "message": message})
 
 
