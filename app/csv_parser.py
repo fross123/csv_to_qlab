@@ -85,7 +85,6 @@ groups = {}
 def group_map_helper(qlab_group_id, human_group_id):
 
     groups[human_group_id] = qlab_group_id
-    print(groups)
 
 
 def send_csv(ip, document, qlab_version, passcode):
