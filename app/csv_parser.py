@@ -1,9 +1,10 @@
 import io
 import csv
 
-from pythonosc import osc_message_builder, osc_bundle_builder, udp_client, osc_server
+from pythonosc import osc_message_builder, osc_bundle_builder, udp_client
 from osc_server import async_osc_server
 from qlab_osc_dictionary import *
+from error_success_handler import retrieve_previous_cue_id
 
 
 def check_cue_type(type):
@@ -79,6 +80,13 @@ def check_color_type(color):
     else:
         return color
 
+groups = {}
+
+def group_map_helper(qlab_group_id, human_group_id):
+
+    groups[human_group_id] = qlab_group_id
+    print(groups)
+
 
 def send_csv(ip, document, qlab_version, passcode):
     """
@@ -112,25 +120,7 @@ def send_csv(ip, document, qlab_version, passcode):
         bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
         msg = osc_message_builder.OscMessageBuilder(address="/new")
         if check_cue_type(cue["type"]):
-
-            if cue.get("groupid"):
-                if cue.get("type") == "group":
-                    cue_id = cue.get("groupid")
-                    bundle.add_content(new_cue(check_cue_type(cue["type"]), f"{cue_id}").build())
-                    print(f"group type and groupid. cueID: {cue_id}")
-                else:
-                    cue_index = 0
-                    parent_id = cue.get("groupid")
-                    cue_id=None
-                    bundle.add_content(new_cue(check_cue_type(cue["type"]), cue_id).build())
-                    bundle.add_content(move_cue(int(cue_index), f"{parent_id}").build())
-                    print(f"not group type of cue but has group id. NewParentID: {parent_id}")
-            else:
-                cue_id = None
-                bundle.add_content(new_cue(check_cue_type(cue["type"]), cue_id).build())
-                print("neither just new cue")
-
-
+            bundle.add_content(new_cue(check_cue_type(cue["type"])).build())
         else:
             # Cue type is invalid, create memo cue.
             bundle.add_content(new_cue("memo").build())
@@ -300,3 +290,10 @@ def send_csv(ip, document, qlab_version, passcode):
 
         client.send(bundle.build())
         async_osc_server(ip, 53001)
+
+        if cue.get("groupid"):
+            if cue.get("type") == "group":
+                group_map_helper(retrieve_previous_cue_id(), int(cue["groupid"]))
+            else:
+                group_id = int(cue["groupid"])
+                client.send(move_cue(retrieve_previous_cue_id(), -1, groups[group_id]).build())
