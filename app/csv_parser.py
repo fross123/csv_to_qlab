@@ -4,7 +4,7 @@ import csv
 from pythonosc import osc_message_builder, osc_bundle_builder, udp_client
 from osc_server import async_osc_server
 from qlab_osc_dictionary import *
-from error_success_handler import retrieve_previous_cue_id
+from error_success_handler import handle_errors, retrieve_previous_cue_id
 
 
 def check_cue_type(type):
@@ -290,5 +290,8 @@ def send_csv(ip, document, qlab_version, passcode):
             if cue.get("type") == "group":
                 group_map_helper(retrieve_previous_cue_id(), int(cue["groupid"]))
             else:
-                group_id = int(cue["groupid"])
-                client.send(move_cue(retrieve_previous_cue_id(), -1, groups[group_id]).build())
+                try:
+                    group_id = int(cue["groupid"])
+                    client.send(move_cue(retrieve_previous_cue_id(), -1, groups[group_id]).build())
+                except KeyError:
+                    handle_errors("KeyError", "A cue has a Group ID for a group that was not created.")
