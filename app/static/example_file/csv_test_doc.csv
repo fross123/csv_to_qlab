@@ -1,7 +1,7 @@
 Type,Number,Name,Notes,continueMode,Target,File Target,Color,MIDI Message Type,Midi Command Format,Midi Command,Midi Device ID,Midi Control Number,Midi Control Value,Midi Patch Name,Midi Patch Number,Midi Q List,Midi Q Number,Network Patch Number,Custom String,Stop Target When Done,Stage Number,Fade Opacity,Midi Raw String,group id
 audio,audio-1,Test 1,,1,,,red,,,,,,,,,,,,,,,,,
 mic,mic-5,Test 2,,2,,,orange,,,,,,,,,,,,,,,,,
-video,vid-9,Test 3,,3,,app/static/example_file/broken_heart.png,green,,,,,,,,,,,,,,1,,,
+video,vid-9,Test 3,,3,,,green,,,,,,,,,,,,,,,,,
 camera,cam-13,Test 4,,1,,,blue,,,,,,,,,,,,,,,,,
 text,txt-17,Test 5,,2,,,purple,,,,,,,,,,,,,,,,,
 light,lx-21,Test 6,,3,,,red,,,,,,,,,,,,,,,,,
@@ -11,18 +11,18 @@ network,nw-29,Test 8,,3,,,green,,,,,,,,,,,,,,,,,
 midi,midi-33,Test 9,,1,,,blue,,,,,,,,,,,,,,,,,
 midi file,midi-f-37,Test 10,,2,,,purple,,,,,,,,,,,,,,,,,
 timecode,tc-41,Test 11,,3,,,red,,,,,,,,,,,,,,,,,
-group,grp-45,Test 12,,2,,,orange,,,,,,,,,,,,,,,,,
-start,start-49,Test 13,,3,5,,green,,,,,,,,,,,,,,,,,
-stop,stop-53,Test 14,,1,5,,blue,,,,,,,,,,,,,,,,,
-pause,pause-57,Test 15,,2,5,,purple,,,,,,,,,,,,,,,,,
-load,load-61,Test 16,,3,5,,red,,,,,,,,,,,,,,,,,
-reset,reset-65,Test 17,,2,5,,orange,,,,,,,,,,,,,,,,,
-devamp,devamp-69,Test 18,,3,9,,green,,,,,,,,,,,,,,,,,
-goto,goto-73,Test 19,,1,5,,blue,,,,,,,,,,,,,,,,,
-target,target-77,Test 20,,2,57,,purple,,,,,,,,,,,,,,,,,
-arm,arm-81,Test 21,,3,5,,red,,,,,,,,,,,,,,,,,
-disarm,disarm-85,Test 22,,2,5,,orange,,,,,,,,,,,,,,,,,
-wait,wait-89,Test 23,,3,,,green,,,,,,,,,,,,,,,,,
+group,grp-45,Test 12,,2,,,orange,,,,,,,,,,,,,,,,,12
+start,start-49,Test 13,,3,audio-1,,green,,,,,,,,,,,,,,,,,
+stop,stop-53,Test 14,,1,audio-1,,blue,,,,,,,,,,,,,,,,,
+pause,pause-57,Test 15,,2,audio-1,,purple,,,,,,,,,,,,,,,,,
+load,load-61,Test 16,,3,mic-5,,red,,,,,,,,,,,,,,,,,
+reset,reset-65,Test 17,,2,audio-1,,orange,,,,,,,,,,,,,,,,,
+devamp,devamp-69,Test 18,,3,audio-1,,green,,,,,,,,,,,,,,,,,
+goto,goto-73,Test 19,,1,vid-9,,blue,,,,,,,,,,,,,,,,,12
+target,target-77,Test 20,,2,,,purple,,,,,,,,,,,,,,,,,
+arm,arm-81,Test 21,,3,lx-21,,red,,,,,,,,,,,,,,,,,
+disarm,disarm-85,Test 22,,2,fade-1,,orange,,,,,,,,,,,,,,,,,12
+wait,wait-89,Test 23,,3,,,green,,,,,,,,,,,,,,,,,12
 memo,memo-93,Test 24,,0,,,blue,,,,,,,,,,,,,,,,,
 script,script-97,Test 25,,0,,,purple,,,,,,,,,,,,,,,,,
 midi,midi-MT 1,Midi Test 1,Midi Test 1,,,,orange,2,1,1,12,,,,,50,50,,,,,,,
@@ -30,7 +30,7 @@ midi,MT 2,Midi Test 2,Midi Test 2,,,,green,2,16,2,10,10,10,,,25,20,,,,,,,
 network,NW 1,Network Test 1,,,,,purple,,,,,,,,,,,1,/go,,,,,
 network,NW 2,Network Test 2,,,,,purple,,,,,,,,,,,1,/go,,,,,
 memo,color-1,color-1,,,,,berry,,,,,,,,,,,,,,,,,
-memo,color-2,color-2,,,,,blue,,,,,,,,,,,,,,,,,
+memo,color-2,color-2,,,,,blue,,,,,,,,,,,,,,,,,12
 memo,color-3,color-3,,,,,crimson,,,,,,,,,,,,,,,,,
 memo,color-4,color-4,,,,,cyan,,,,,,,,,,,,,,,,,
 memo,color-5,color-5,,,,,forest,,,,,,,,,,,,,,,,,
@@ -50,6 +50,6 @@ group,group-test-1,Testing Groups,Should be able to add to group with ID's Match
 memo,color-18,color-18,,,,,red,,,,,,,,,,,,,,,,,1528
 memo,color-19,color-19,,,,,sky blue,,,,,,,,,,,,,,,,,1528
 memo,color-20,color-20,,,,,yellow,,,,,,,,,,,,,,,,,1528
-video,vid-test-fade,Video Test Fade,,,,,,,,,,,,,,,,,,,1,,,1528
+video,vid-test-fade,Video Test Fade,,,,,,,,,,,,,,,,,,,,,,1528
 fade,video-fade-out,Video Fade Opacity Zero,,,vid-test-fade,,,,,,,,,,,,,,,,,0,,1528
 midi,midi-sysex-test-1,Midi SysEx Test 1,,,,,,3,,,,,,,,,,,,,,,testing-raw-string,1528

@@ -1,4 +1,4 @@
-from pythonosc.osc_server import AsyncIOOSCUDPServer
+from pythonosc.osc_server import AsyncIOOSCUDPServer, ThreadingOSCUDPServer
 from pythonosc.dispatcher import Dispatcher
 import asyncio
 import json
@@ -19,8 +19,8 @@ def async_osc_server(ip, port):
     dispatcher.map("/reply/*", filter_handler)
 
     async def loop():
-        for i in range(1):
-            await asyncio.sleep(0.05)
+        for i in range(4):
+            await asyncio.sleep(0.04)
 
     async def init_main():
         server = AsyncIOOSCUDPServer((ip, port), dispatcher, asyncio.get_event_loop())
@@ -36,3 +36,12 @@ def async_osc_server(ip, port):
         transport.close()  # Clean up serve endpoint
 
     asyncio.run(init_main())
+
+
+def threading_osc_server(ip, port):
+    dispatcher = Dispatcher()
+    dispatcher.map("/reply/*", filter_handler)
+
+    server = ThreadingOSCUDPServer((ip, port), dispatcher)
+
+    return server
