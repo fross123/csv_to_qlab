@@ -4,11 +4,11 @@ sidebar_position: 2
 
 # Prepare a CSV File
 
-Some columns are required, some are optional.
+## Examples
+- [Full Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/main/app/static/example_file/example.csv)
 
-:::warning
-Some of these headers changed with version [2023.2](/releases/2023/2)! Please check your CSV headers.
-:::
+- [Simple Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/main/app/static/example_file/simple.csv)
+
 
 ## Required columns
 - Number
@@ -19,108 +19,143 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
 | ------ | ------ | ------ |
 | 12 | start | Cue 12 GO |
 
+----
+
 ## Optional Columns
 
-<ul>
-    <li>Notes</li>
-    <li>Follow</li>
-    <ul>
-        <li>0 - No Follow</li>
-        <li>1 - Auto-Continue</li>
-        <li>2 - Auto-Follow</li>
-    </ul>
-    <li>Color (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string" target="_blank">Options</a>)</li>
-    <li>Target</li>
-    <li>File Target</li>
-    <li>Columns for Group cues.</li>
-    <ul>
-        <li>Group Mode</li>
-        <ul>
-            <li><a href="https://qlab.app/docs/v5/scripting/osc-dictionary-v5/#cuecue_numbermode-number">Options:</a></li>
-            <ul>
-                <li>0 - List</li>
-                <li>1 - Start first and enter</li>
-                <li>2 - Start first</li>
-                <li>3 - Timeline</li>
-                <li>4 - Start random</li>
-                <li>6 - Playlist <strong>(This is not a typo, 6 is the command for Playlist type per QLab Docs)</strong></li>
-            </ul>
-        </ul>
-    </ul>
-    <li>Columns for Text cues. As of v.2023.3</li>
-    <ul>
-        <li>Text</li>
-    </ul>
-    <li>Columns available for "fade" cue type:</li>
-    <ul>
-        <li>Stop Target When Done</li>
-        <ul>
-            <li>"True" or "False"</li>
-        </ul>
-        <li>Fade Opacity</li>
-        <ul>
-            <li>(ONLY 0 or 1 per QLab docs)</li>
-            <li>Note: Also activates the checkbox for the fade.</li>
-        </ul>
-    </ul>
-    <li>Columns available for "video" cue type:</li>
-    <ul>
-        <li>Stage Number (In order of list in video outputs setting)</li>
-    </ul>
-</ul>
+#### Notes
+Anything you would like to go in the "Notes" area of the cue.
 
+#### Follow
 :::note
+0, 1, 2 are the only options and the data must be a single number.
+:::
+- 0 - No Follow
+- 1 - Auto-Continue
+- 2 - Auto-Follow
+
+#### Color
+The color of the cue. See [QLab's Color Options]("https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string")
+
+#### Target
+The cue's target. The cue being targeted must be above the cue being created.
+
+#### File Target
+The location of assets for QLab to retrieve.
+
+Availible types:
+- Full paths, e.g. /Volumes/MyDisk/path/to/some/file.wav
+- Paths beginning with a tilde, e.g. ~/path/to some/file.mov
+- Relative paths, e.g. this/is/a/relative/path.mid
+- Paths beginning with a tilde (~) will be expanded; the tilde signifies “relative to the user’s home directory”.
+
+----
+
+## Cue types with additional options
+
+### Group Cues
+#### Group Mode
+:::note
+Below are the only options for "Group Mode" and the data in the row must be a number.
+:::
+
+[Options]("https://qlab.app/docs/v5/scripting/osc-dictionary-v5/#cuecue_numbermode-number"):
+- 0 - List
+- 1 - Start first and enter
+- 2 - Start first
+- 3 - Timeline
+- 4 - Start random
+- 6 - Playlist
+:::warning
+This is not a typo, "6" is for Playlist type.
+:::
+
+----
+
+### Text Cues
+#### Text
+The text to enter into the text cue.
+
+----
+
+### Fade Cues
+#### Stop Target When Done
+This accepts either "true" or "false" to check the box for "Stop Target When Done"
+
+#### Fade Opacity
+Per QLab Docs, only 0 or 1 is accpeted.
+:::note
+Also activates the checkbox next to opacity
+:::
+
+----
+
+### Video Cues
+#### Stage Number
+The stage number in order of the list in the "video outputs" setting
+
+:::warning
 Stages are in QLab 5 only.
 :::
 
-<ul>
-    <li>Columns available for "midi" cue type:</li>
-    <ul>
-        <li>MIDI Q Number</li>
-        <li>MIDI Device ID</li>
-        <li>MIDI Message Type</li>
-        <ul>
-            <li>1 - MIDI Voice Message ("Musical MIDI")</li>
-            <li>2 - MIDI Show Control Message (MSC)</li>
-            <li>3 - MIDI SysEx Message</li>
-        </ul>
-        <li>MIDI Control Number</li>
-        <li>MIDI Control Value</li>
-        <li>MIDI Patch Channel</li>
-        <li>MIDI Patch Number</li>
-        <li>MIDI Q List</li>
-        <li>Midi Raw String</li>
-        <ul><li>For SysEx Messages</li></ul>
-        <li>MIDI Command Format (<a href="https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-command-format-types" target="_blank">Options</a>)</li>
-        <li>MIDI Command (<a href="https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-commands" target="_blank">Options</a>)</li>
-    </ul>
-    <li>Columns available for "network" cue type:</li>
-    <ul>
-        <li>QLab 5</li>
-        <ul>
-            <li>Network Patch Number</li>
-            <li>Network Patch Channel</li>
-            <li>Custom String</li>
-        </ul>
-        <li>QLab 4</li>
-        <ul>
-            <li>Message Type (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number" target="_blank">Options</a>)</li>
-            <li>OSC Cue Number (Only if using QLab Message Type)</li>
-            <li>
-                Command
-                <ul>
-                    <li>
-                    For QLab Messages (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number" target="_blank">Options</a>)
-                    </li>
-                    <li>For an OSC message, you may now include a raw string in this column</li>
-                </ul>
-            </li>
-        </ul>
-    </ul>
-</ul>
+----
 
-## Examples
+### MIDI Cues
 
-- [Full Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/main/app/static/example_file/example.csv)
+#### MIDI Message Type
+- 1 - MIDI Voice Message ("Musical MIDI")
+- 2 - MIDI Show Control Message (MSC)
+- 3 - MIDI SysEx Message
 
-- [Simple Example Spreadsheet](https://github.com/fross123/csv_to_qlab/blob/main/app/static/example_file/simple.csv)
+#### MIDI Q Number
+The number of the cue. Specific to MSC cue types.
+
+#### MIDI Q List
+The Cue List for the MSC cue.
+
+#### MIDI Device ID
+#### MIDI Control Number
+#### MIDI Control Value
+#### MIDI Patch Name
+The Name of the MIDI Patch
+
+#### MIDI Patch Number
+The patch of the MIDI cue in order by the workspace settings. Index 1 means the first patch in the patch list in Workspace Settings.
+
+#### MIDI Raw String
+For Midi SysEx Messages
+
+#### MIDI Command Format
+[Reference QLab Docs]("https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-command-format-types")
+
+#### MIDI Command
+[Reference QLab Docs]("https://qlab.app/docs/v5/scripting/parameter-reference/#midi-show-control-commands")
+
+----
+
+### Network Cues
+The way network cues work is slightly differen in QLab 4 vs QLab 5
+
+#### QLab 5
+##### Network Patch Number
+The number of the network patch.
+
+##### Network Patch Name
+The Name of the network patch.
+
+##### Custom String
+The best way to facilitate the vast amount of commands availible in QLab 5 was to use custom string. You should be able to craft desired strings easily using common spreadsheet formulas and tools.
+
+#### QLab 4
+There are no plans to remove these features, but we will post here on this site if/when support for QLab 4 ends.
+
+##### Message Type
+Reference [QLab Docs]("https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbermessagetype-number")
+
+##### OSC Cue Number
+Only if using QLab Message Type
+
+##### Command
+For QLab Messages, review the [QLab Docs]("https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number")
+
+For OSC Messages, you may now include a raw string in the collumn.
