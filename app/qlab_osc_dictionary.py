@@ -89,6 +89,26 @@ def new_cue(cue_type):
     msg.add_arg(cue_type)
     return msg
 
+def group_mode(int):
+    """
+    Read: If no argument is given, return the mode of the specified Group cue, list, or cart.
+
+    Write: If number is given, set the mode of the specified Group cue. Valid modes are:
+
+    0 - List
+    1 - Start first and enter
+    2 - Start first
+    3 - Timeline
+    4 - Start random
+    5 - Cart
+    6 - Playlist
+    Modes 0 and 5 are read-only; a cue list will return mode 0, but mode cannot be set to 0,
+    and a cue cart will return mode 5, but mode cannot be set to 5.
+    
+    """
+    msg = osc_message_builder.OscMessageBuilder(address="cue/selected/mode")
+    msg.add_arg(int)
+    return msg
 
 def cue_armed(boolean):
     """

@@ -124,6 +124,10 @@ def send_csv(ip, document, qlab_version, passcode):
         # Name
         bundle.add_content(cue_name(f"{cue['name']}").build())
 
+        # Group Mode
+        if cue.get("groupmode"):
+            bundle.add_content(group_mode(cue["groupmode"]).build())
+
         # Page/Notes
         if cue.get("notes"):
             bundle.add_content(cue_notes(cue["notes"]).build())

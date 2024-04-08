@@ -32,6 +32,21 @@ Some of these headers changed with version [2023.2](/releases/2023/2)! Please ch
     <li>Color (<a href="https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string" target="_blank">Options</a>)</li>
     <li>Target</li>
     <li>File Target</li>
+    <li>Columns for Group cues.</li>
+    <ul>
+        <li>Group Mode</li>
+        <ul>
+            <li><a href="https://qlab.app/docs/v5/scripting/osc-dictionary-v5/#cuecue_numbermode-number">Options:</a></li>
+            <ul>
+                <li>0 - List</li>
+                <li>1 - Start first and enter</li>
+                <li>2 - Start first</li>
+                <li>3 - Timeline</li>
+                <li>4 - Start random</li>
+                <li>6 - Playlist <strong>(This is not a typo, 6 is the command for Playlist type per QLab Docs)</strong></li>
+            </ul>
+        </ul>
+    </ul>
     <li>Columns for Text cues. As of v.2023.3</li>
     <ul>
         <li>Text</li>
