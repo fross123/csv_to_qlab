@@ -1,3 +1,4 @@
+import threading
 from pythonosc.osc_server import AsyncIOOSCUDPServer, ThreadingOSCUDPServer
 from pythonosc.dispatcher import Dispatcher
 import asyncio
@@ -6,8 +7,13 @@ from error_success_handler import handle_errors, count_success, store_cue_id
 
 
 def filter_handler(address, *args):
-    data = json.loads(args[0])
+    """
+    Handles the replies from QLab.
+    """
+
+    data = json.loads(args[1])
     if not data["status"] == "ok":
+        store_cue_id(data)
         handle_errors(data["status"], f"{address}: {args}")
     else:
         store_cue_id(data["data"])
@@ -15,6 +21,9 @@ def filter_handler(address, *args):
 
 
 def async_osc_server(ip, port):
+    """
+    No longer in use. Deprecieated, will remove with next release.
+    """
     dispatcher = Dispatcher()
     dispatcher.map("/reply/*", filter_handler)
 
@@ -39,9 +48,16 @@ def async_osc_server(ip, port):
 
 
 def threading_osc_server(ip, port):
+    """
+    Threading OSC Server.
+
+    Dispatcher /reply/* -> filter_handler()
+
+    Args: ip, port
+    """
     dispatcher = Dispatcher()
-    dispatcher.map("/reply/*", filter_handler)
+    dispatcher.map("/reply/*", filter_handler, ip, port)
 
     server = ThreadingOSCUDPServer((ip, port), dispatcher)
-
+    
     return server
