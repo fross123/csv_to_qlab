@@ -91,8 +91,8 @@ def send_csv(ip, document, qlab_version, passcode):
     """
     Sends the data in csv file to qlab workspace on machine with given ip.
     """
-    server = threading_osc_server(ip, 53001)
-    client = udp_client.UDPClient(ip, 53000)
+    server = threading_osc_server(ip, 53001) # QLab sends messages on port 53001
+    client = udp_client.UDPClient(ip, 53000) # QLab recieves on port 53000. Possibly allow an option in future.
 
     stream = io.StringIO(document.stream.read().decode("UTF8"), newline="")
     reader = csv.reader(stream)
@@ -302,3 +302,5 @@ def send_csv(ip, document, qlab_version, passcode):
                     server.handle_request()
                 except KeyError:
                     handle_errors("KeyError", "A cue has a Group ID for a group that was not created.")
+
+    server.server_close()
