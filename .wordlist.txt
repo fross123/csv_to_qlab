@@ -1,5 +1,6 @@
 csv
 QLab
+QLab's
 css
 Docusaurus
 docusaurus
@@ -17,3 +18,14 @@ passcode
 MSC
 SysEx
 unpatch
+cuecue
+https
+numbercolorname
+osc
+numbermessagetype
+numberqlabcommand
+MyDisk
+mov
+wav
+numbermode
+pre
