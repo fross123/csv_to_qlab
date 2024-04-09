@@ -30,3 +30,13 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
 .button {
   margin: 10px;
 }
+
+.download-select-button {
+  padding-left: 5em;
+  padding-right: 5em;
+  border-radius: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  color: black;
+ }

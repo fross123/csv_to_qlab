@@ -8,9 +8,20 @@ import HomepageFeatures from '../components/HomepageFeatures';
 import Badges from '../components/StatusBadges.js';
 import Logo from '@site/static/img/logo.svg';
 
+import DropdownButton from './../components/DropdownButton.js';
+
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
+  const options = [
+    { label: 'macOS 13 (Latest)', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
+    { label: 'macOS 12', value: 'macos12', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos12.dmg' },
+    { label: 'macOS 11', value: 'macos11', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos11.dmg' },
+    // { label: 'macOS-13', value: 'Option3', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos13.dmg' },
+];
+  const buttonClassName = "button button--secondary button--lg"
+
+
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -24,13 +35,11 @@ function HomepageHeader() {
             CSV Import Tutorial
           </Link>
         </div>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg">
-            Skip Ahead and Download Now
-          </Link>
-        </div>
+        <hr></hr>
+        <p className='hero__subtitle'>Or... skip ahead and download now!</p>
+
+        <DropdownButton buttonClassName={buttonClassName} options={options} />
+        
         <Badges />
       </div>
     </header>

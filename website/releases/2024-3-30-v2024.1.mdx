@@ -7,17 +7,18 @@ tags: ["2024", "1"]
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from '@site/src/pages/index.module.css';
+import DropdownButton from '@site/src/components/DropdownButton.js';
+
+export const options = [
+    { label: 'macOS 13 (Latest)', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2024.1/CSV-To-QLab.dmg' },
+    { label: 'macOS 12', value: 'macos12', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2024.1/CSV-To-QLab-macos12.dmg' },
+    { label: 'macOS 11', value: 'macos11', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2024.1/CSV-To-QLab-macos11.dmg' },
+];
+export const buttonClassName = "button button--primary button--lg"
 
 Features Added:
 - New option to adjust video opacity of fade cues.
 
 Various other minor updates and fixes.
 
-
-<div className={styles.buttons}>
-    <Link
-    className="button button--primary button--lg"
-    to="https://github.com/fross123/csv_to_qlab/releases/download/v2024.1/CSV-To-QLab.dmg">
-    Download Release v2024.1
-    </Link>
-</div>
+<DropdownButton buttonClassName={buttonClassName} options={options} />

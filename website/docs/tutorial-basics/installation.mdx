@@ -6,6 +6,9 @@ import Link from '@docusaurus/Link';
 import styles from '@site/src/pages/index.module.css';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+import DropdownButton from '@site/src/components/DropdownButton.js';
+
+
 # Installation
 
 :::info
@@ -14,13 +17,15 @@ Please Note... There have been reports of the application crashing even after fo
 
 Download CSV to QLab from the [latest GitHub release](https://github.com/fross123/csv_to_qlab/releases/). Check out the [latest release notes](/releases) for the latest updates.
 
-<div className={styles.buttons}>
-    <Link
-    className="button button--primary button--lg"
-    to="https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg">
-    Download CSV to QLab
-    </Link>
-</div>
+export const options = [
+    { label: 'macOS 13 (Latest)', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
+    { label: 'macOS 12', value: 'macos12', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos12.dmg' },
+    { label: 'macOS 11', value: 'macos11', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos11.dmg' },
+    // { label: 'macOS-13', value: 'Option3', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos13.dmg' },
+];
+export const buttonClassName = "button button--primary button--lg"
+
+<DropdownButton buttonClassName={buttonClassName} options={options} />
 
 :::note
 You will eventually need QLab by Figure53. Download at [qlab.app](https://qlab.app/)
