@@ -74,6 +74,29 @@ Pre-Release - "Group Mode" is only available when run from source code.
 This is not a typo, "6" is for Playlist type.
 :::
 
+
+#### Group ID
+This is used to identify which cues should go into which group.
+
+Let's look at an example...
+
+| Number | Type | Name | Group ID
+| ------ | ------ | ------ | ------ |
+| 10 | group | Group ID 10 | 10
+| 2 | audio | Audio Cue 2 | 10
+| 3 | audio | Audio Cue 3 |
+| 20 | group | Group ID 20 | 20
+| 5 | audio | Audio Cue 5 | 20
+| 6 | audio | Audio Cue 6 | 20
+
+
+In our example, we have two groups. Idenfieid by Group ID 10 and Group ID 20.
+
+The group ID column is a reference for the group, and is used again for each cue that needs to go into the group. The ID can be any number you chose.
+
+In our example above. Group 10 will have Audio cue 2, and Group 20 will have audio cue 5 and 6. Audio cue 3 will not be added to any groups.
+
+
 ----
 
 ### Text Cues
