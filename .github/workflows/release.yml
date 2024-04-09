@@ -40,6 +40,7 @@ jobs:
             CMD_BUILD: >
                 pyinstaller application.spec &&
                 cd dist/ &&
+                mv csv-to-qlab.app csv-to-qlab-macos13.app &&
                 zip -r9 csv-to-qlab-macos13.zip csv-to-qlab-macos13.app
             OUT_FILE_NAME: csv-to-qlab-macos13.app
             ZIP_FILE_NAME: csv-to-qlab-macos13.zip
@@ -56,10 +57,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python 3.8
+    - name: Set up Python 3.10
       uses: actions/setup-python@v5
       with:
-        python-version: 3.8
+        python-version: "3.10"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -77,7 +78,7 @@ jobs:
         --icon-size 100 \
         --app-drop-link 330 150 \
         --icon ${{ matrix.OUT_FILE_NAME }} 100 150 \
-        --eula ../COPYING \
+        --eula COPYING \
         ${{ matrix.BASE_FILE_NAME }}.dmg \
         ./dist/${{ matrix.OUT_FILE_NAME }}
     - name: Draft Release
