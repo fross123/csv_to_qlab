@@ -14,11 +14,11 @@ import DropdownButton from './../components/DropdownButton.js';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const options = [
-    { label: 'macOS 13 (Latest)', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
+    { label: 'macOS 14 (Latest)', value: 'macos14', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
+    { label: 'macOS 13', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos13.dmg' },
     { label: 'macOS 12', value: 'macos12', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos12.dmg' },
     { label: 'macOS 11', value: 'macos11', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos11.dmg' },
-    // { label: 'macOS-13', value: 'Option3', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos13.dmg' },
-];
+  ];
   const buttonClassName = "button button--secondary button--lg"
 
 

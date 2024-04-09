@@ -35,7 +35,16 @@ jobs:
             OUT_FILE_NAME: csv-to-qlab-macos12.app
             ZIP_FILE_NAME: csv-to-qlab-macos12.zip
             BASE_FILE_NAME: CSV-To-QLab-macos12
-          - os: macos-latest
+          - os: macos-13
+            TARGET: macos
+            CMD_BUILD: >
+                pyinstaller application.spec &&
+                cd dist/ &&
+                zip -r9 csv-to-qlab-macos13.zip csv-to-qlab-macos13.app
+            OUT_FILE_NAME: csv-to-qlab-macos13.app
+            ZIP_FILE_NAME: csv-to-qlab-macos13.zip
+            BASE_FILE_NAME: CSV-To-QLab-macos13
+          - os: macos-14
             TARGET: macos
             CMD_BUILD: >
                 pyinstaller application.spec &&
@@ -68,6 +77,7 @@ jobs:
         --icon-size 100 \
         --app-drop-link 330 150 \
         --icon ${{ matrix.OUT_FILE_NAME }} 100 150 \
+        --eula ../COPYING \
         ${{ matrix.BASE_FILE_NAME }}.dmg \
         ./dist/${{ matrix.OUT_FILE_NAME }}
     - name: Draft Release
