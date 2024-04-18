@@ -90,7 +90,7 @@ Let's look at an example...
 | 6 | audio | Audio Cue 6 | 20
 
 
-In our example, we have two groups. Idenfieid by Group ID 10 and Group ID 20.
+In our example, we have two groups. Identified by Group ID 10 and Group ID 20.
 
 The group ID column is a reference for the group, and is used again for each cue that needs to go into the group. The ID can be any number you chose.
 
