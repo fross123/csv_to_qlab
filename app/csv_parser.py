@@ -133,8 +133,12 @@ def send_csv(ip, document, qlab_version, passcode):
             bundle.add_content(cue_notes(cue["notes"]).build())
 
         # Continue Mode/Follow
-        if cue.get("follow") or cue.get("continueMode"):
-            continue_mode = cue.get("continueMode")
+        if cue.get("continuemode"):
+            continue_mode = cue.get("continuemode")
+            bundle.add_content(cue_continueMode(continue_mode).build())
+        
+        if cue.get("follow"):
+            continue_mode = cue.get("follow")
             bundle.add_content(cue_continueMode(continue_mode).build())
 
         # Target
