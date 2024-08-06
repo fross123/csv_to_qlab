@@ -1,10 +1,1 @@
-(function(d, w, c) {
-    w.BrevoConversationsID = '64b6bf4e19792c25ca0c68bf';
-    w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-    };
-    var s = d.createElement('script');
-    s.async = true;
-    s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
-    if (d.head) d.head.appendChild(s);
-})(document, window, 'BrevoConversations');
+!function(e,n,o){n.BrevoConversationsID="64b6bf4e19792c25ca0c68bf",n[o]=n[o]||function(){(n[o].q=n[o].q||[]).push(arguments)};var s=e.createElement("script");s.async=!0,s.src="https://conversations-widget.brevo.com/brevo-conversations.js",e.head&&e.head.appendChild(s)}(document,window,"BrevoConversations");
