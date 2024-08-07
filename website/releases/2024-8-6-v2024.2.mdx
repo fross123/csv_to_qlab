@@ -1,0 +1,23 @@
+---
+slug: 2024/2
+title: Version 2024.2
+tags: ["2024", "2"]
+---
+
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from '@site/src/pages/index.module.css';
+import DropdownButton from '@site/src/components/DropdownButton.js';
+
+export const options = [
+    { label: 'macOS 14 (Latest)', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2024.1/CSV-To-QLab.dmg' },
+    { label: 'macOS 13', value: 'macos11', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2024.1/CSV-To-QLab-macos13.dmg' },
+    { label: 'macOS 12', value: 'macos12', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2024.1/CSV-To-QLab-macos12.dmg' },
+];
+export const buttonClassName = "button button--primary button--lg"
+
+Bug fix for an error with "follow" vs "Continue Mode".
+
+Various other minor updates and fixes.
+
+<DropdownButton buttonClassName={buttonClassName} options={options} />

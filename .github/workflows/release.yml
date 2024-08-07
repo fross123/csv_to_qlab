@@ -15,16 +15,17 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-11
-            TARGET: macos
-            CMD_BUILD: >
-                pyinstaller application.spec &&
-                cd dist/ &&
-                mv csv-to-qlab.app csv-to-qlab-macos11.app &&
-                zip -r9 csv-to-qlab-macos11.zip csv-to-qlab-macos11.app
-            OUT_FILE_NAME: csv-to-qlab-macos11.app
-            ZIP_FILE_NAME: csv-to-qlab-macos11.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos11
+          # MacOS11 no longer supported.
+          # - os: macos-11
+          #   TARGET: macos
+          #   CMD_BUILD: >
+          #       pyinstaller application.spec &&
+          #       cd dist/ &&
+          #       mv csv-to-qlab.app csv-to-qlab-macos11.app &&
+          #       zip -r9 csv-to-qlab-macos11.zip csv-to-qlab-macos11.app
+          #   OUT_FILE_NAME: csv-to-qlab-macos11.app
+          #   ZIP_FILE_NAME: csv-to-qlab-macos11.zip
+          #   BASE_FILE_NAME: CSV-To-QLab-macos11
           - os: macos-12
             TARGET: macos
             CMD_BUILD: >

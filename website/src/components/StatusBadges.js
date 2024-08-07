@@ -38,7 +38,7 @@ const BadgeList = [
 
 const OperatingSystemsList = [
     {
-        link: 'https://img.shields.io/badge/Works_On-MacOS_11_or_later-blue?style=for-the-badge&logo=apple',
+        link: 'https://img.shields.io/badge/Works_On-MacOS_12_or_later-blue?style=for-the-badge&logo=apple',
         alt: 'works on logo',
     },
 ]
