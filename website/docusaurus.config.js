@@ -81,8 +81,8 @@ const config = {
           },
           {to: '/releases', label: 'Releases', position: 'left'},
           {
-            href: 'https://www.paypal.com/paypalme/finlayross',
-            label: 'Donate',
+            href: 'https://buymeacoffee.com/finlayross',
+            label: 'Buy Me A Coffee',
             position: 'right',
             className: 'button button--primary button--large'
 
