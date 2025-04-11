@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcsv_to_qlab=self.webpackChunkcsv_to_qlab||[]).push([[1903],{1912:s=>{s.exports=JSON.parse('{"blogBasePath":"/releases","blogTitle":"CSV to QLab Releases","authorsListPath":"/releases/authors"}')}}]);
