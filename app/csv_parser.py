@@ -1,9 +1,10 @@
 import io
 import csv
 
-from pythonosc import osc_message_builder, osc_bundle_builder, udp_client, osc_server
-from osc_server import async_osc_server
+from pythonosc import osc_message_builder, osc_bundle_builder, udp_client
+from osc_server import threading_osc_server
 from qlab_osc_dictionary import *
+from error_success_handler import handle_errors, retrieve_previous_cue_id
 
 
 def check_cue_type(type):
@@ -79,12 +80,19 @@ def check_color_type(color):
     else:
         return color
 
+groups = {}
+
+def group_map_helper(qlab_group_id, human_group_id):
+
+    groups[human_group_id] = qlab_group_id
+
 
 def send_csv(ip, document, qlab_version, passcode):
     """
     Sends the data in csv file to qlab workspace on machine with given ip.
     """
-    client = udp_client.UDPClient(ip, 53000)
+    server = threading_osc_server(ip, 53001) # QLab sends messages on port 53001
+    client = udp_client.UDPClient(ip, 53000) # QLab recieves on port 53000. Possibly allow an option in future.
 
     stream = io.StringIO(document.stream.read().decode("UTF8"), newline="")
     reader = csv.reader(stream)
@@ -107,6 +115,7 @@ def send_csv(ip, document, qlab_version, passcode):
         msg = osc_message_builder.OscMessageBuilder(address="/connect")
         msg.add_arg(passcode)
         client.send(msg.build())
+        server.handle_request()
 
     for cue in cues:
         bundle = osc_bundle_builder.OscBundleBuilder(osc_bundle_builder.IMMEDIATELY)
@@ -281,4 +290,17 @@ def send_csv(ip, document, qlab_version, passcode):
                         bundle.add_content(msg.build())
 
         client.send(bundle.build())
-        async_osc_server(ip, 53001)
+        server.handle_request()
+
+        if cue.get("groupid"):
+            if cue.get("type") == "group":
+                group_map_helper(retrieve_previous_cue_id(), int(cue["groupid"]))
+            else:
+                try:
+                    group_id = int(cue["groupid"])
+                    client.send(move_cue(retrieve_previous_cue_id(), -1, groups[group_id]).build())
+                    server.handle_request()
+                except KeyError:
+                    handle_errors("KeyError", "A cue has a Group ID for a group that was not created.")
+
+    server.server_close()

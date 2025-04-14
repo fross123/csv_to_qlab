@@ -20,10 +20,10 @@ sidebar_position: 2
 
 ## Optional Columns
 
-#### Notes
+### Notes
 Anything you would like to go in the "Notes" area of the cue.
 
-#### Follow
+### Follow
 - 0 - No Follow
 - 1 - Auto-Continue
 - 2 - Auto-Follow
@@ -32,13 +32,13 @@ Anything you would like to go in the "Notes" area of the cue.
 0, 1, 2 are the only options and the data must be a single number.
 :::
 
-#### Color
+### Color
 The color of the cue. See [QLab's Color Options](https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string)
 
-#### Target
+### Target
 The cue's target. The cue being targeted must be above the cue being created.
 
-#### File Target
+### File Target
 The location of assets for QLab to retrieve.
 
 Available types:
@@ -73,6 +73,32 @@ Pre-Release - "Group Mode" is only available when run from source code.
 :::tip
 This is not a typo, "6" is for Playlist type.
 :::
+
+
+#### Group ID
+This is used to identify which cues should go into which group.
+
+Let's look at an example...
+
+| Number | Type | Name | Group ID
+| ------ | ------ | ------ | ------ |
+| 10 | group | Group ID 10 | 10
+| 2 | audio | Audio Cue 2 | 10
+| 3 | audio | Audio Cue 3 |
+| 20 | group | Group ID 20 | 20
+| 5 | audio | Audio Cue 5 | 20
+| 6 | audio | Audio Cue 6 | 20
+
+
+In our example, we have two groups. Identified by Group ID 10 and Group ID 20.
+
+The group ID column is a reference for the group, and is used again for each cue that needs to go into the group. The ID can be any number you chose.
+
+#### In our example above:
+- Group 10 will have Audio cue 2
+- Group 20 will have audio cue 5 and 6
+- Audio cue 3 will not be added to any groups
+
 
 ----
 
