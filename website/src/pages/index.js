@@ -14,10 +14,9 @@ import DropdownButton from './../components/DropdownButton.js';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const options = [
-    { label: 'macOS 15 (Latest)', value: 'macos15', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
-    { label: 'macOS 15 ARM', value: 'macos15-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos15-arm.dmg' },
-    { label: 'macOS 14', value: 'macos14', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos14.dmg' },
-    { label: 'macOS 14 ARM', value: 'macos14-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos14-arm.dmg' },
+    { label: 'macOS 15 ARM (Latest)', value: 'macos15-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macOS15-ARM.dmg' },
+    { label: 'macOS 14 ARM', value: 'macos14-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macOS14-ARM.dmg' },
+    { label: 'macOS 11+ Intel', value: 'macos-intel', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
   ];
   const buttonClassName = "button button--secondary button--lg"
 

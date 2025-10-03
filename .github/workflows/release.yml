@@ -15,17 +15,17 @@ jobs:
     strategy:
       matrix:
         include:
-          # MacOS 11, 12, 13 no longer supported by GitHub Actions
-          - os: macos-14-large
+          # Intel build via self-hosted runner (macOS 11.7, supports macOS 11+)
+          - os: [self-hosted, macOS, X64]
             TARGET: macos
             CMD_BUILD: >
                 pyinstaller application.spec &&
                 cd dist/ &&
-                mv csv-to-qlab.app csv-to-qlab-macos14.app &&
-                zip -r9 csv-to-qlab-macos14.zip csv-to-qlab-macos14.app
-            OUT_FILE_NAME: csv-to-qlab-macos14.app
-            ZIP_FILE_NAME: csv-to-qlab-macos14.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos14
+                zip -r9 csv-to-qlab.zip csv-to-qlab.app
+            OUT_FILE_NAME: csv-to-qlab.app
+            ZIP_FILE_NAME: csv-to-qlab.zip
+            BASE_FILE_NAME: CSV-To-QLab
+          # ARM builds via GitHub-hosted runners
           - os: macos-14
             TARGET: macos
             CMD_BUILD: >
@@ -35,16 +35,7 @@ jobs:
                 zip -r9 csv-to-qlab-macos14-arm.zip csv-to-qlab-macos14-arm.app
             OUT_FILE_NAME: csv-to-qlab-macos14-arm.app
             ZIP_FILE_NAME: csv-to-qlab-macos14-arm.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos14-arm
-          - os: macos-15-large
-            TARGET: macos
-            CMD_BUILD: >
-                pyinstaller application.spec &&
-                cd dist/ &&
-                zip -r9 csv-to-qlab.zip csv-to-qlab.app
-            OUT_FILE_NAME: csv-to-qlab.app
-            ZIP_FILE_NAME: csv-to-qlab.zip
-            BASE_FILE_NAME: CSV-To-QLab
+            BASE_FILE_NAME: CSV-To-QLab-macOS14-ARM
           - os: macos-15
             TARGET: macos
             CMD_BUILD: >
@@ -54,24 +45,25 @@ jobs:
                 zip -r9 csv-to-qlab-macos15-arm.zip csv-to-qlab-macos15-arm.app
             OUT_FILE_NAME: csv-to-qlab-macos15-arm.app
             ZIP_FILE_NAME: csv-to-qlab-macos15-arm.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos15-arm
+            BASE_FILE_NAME: CSV-To-QLab-macOS15-ARM
 
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
+      if: ${{ !contains(matrix.os, 'self-hosted') }}
       uses: actions/setup-python@v5
       with:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pyinstaller
+        python3 -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+        pip3 install pyinstaller
     - name: Build with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
     - name: Create DMG
       run: |
-        brew install create-dmg
+        brew install create-dmg || true
         create-dmg \
         --volname "${{ matrix.BASE_FILE_NAME }}" \
         --window-pos 300 200 \
