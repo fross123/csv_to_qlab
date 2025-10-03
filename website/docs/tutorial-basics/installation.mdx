@@ -11,6 +11,13 @@ import DropdownButton from '@site/src/components/DropdownButton.js';
 
 # Installation
 
+:::info
+CSV to QLab is FINALLY available as both a GUI application (Mac only) and a cross-platform command-line interface.
+If you prefer a CLI, [follow these instructions](/docs/tutorial-basics/cli).
+:::
+
+## GUI Application (Recommended for Mac Users)
+
 Download CSV to QLab from the [latest GitHub release](https://github.com/fross123/csv_to_qlab/releases/). Check out the [latest release notes](/releases) for the latest updates.
 
 export const options = [
@@ -86,3 +93,25 @@ This instruction is not to be taken as advice to ignore Apple policies and/or st
 ## CSV to QLab should open
 
 ![Application Screenshot](/img/tutorial/app-screenshot-ud.png)
+
+---
+
+## Command-Line Interface (CLI)
+
+For automation, scripting, or cross-platform use, install the CLI with pip:
+
+```bash
+# Clone the repository
+git clone https://github.com/fross123/csv_to_qlab.git
+cd csv_to_qlab
+
+# Install
+pip install .
+```
+
+See the [CLI Documentation](/docs/tutorial-basics/cli) for detailed usage instructions.
+
+:::tip When to Use CLI vs GUI
+- **Use CLI**: Automation, scripting, batch processing, remote/SSH sessions, Linux/Windows
+- **Use GUI**: Quick one-off imports, visual feedback, Mac users
+:::

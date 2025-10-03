@@ -24,6 +24,10 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
+        <div className="alert alert--success" role="alert" style={{marginBottom: "1em"}}>
+          <strong>New with v2025.1</strong><br />CSV to QLab is now available as a CLI as well as a macOS application!
+          <br />Download below, or read the <Link to="/docs/tutorial-basics/installation">installation instructions</Link>.
+        </div>
         <Logo title="CSV to QLab Logo" className="logo" height="10em"/>
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
@@ -34,6 +38,7 @@ function HomepageHeader() {
             CSV Import Tutorial
           </Link>
         </div>
+        
         <hr></hr>
         <p className='hero__subtitle'>Or... skip ahead and download now!</p>
 

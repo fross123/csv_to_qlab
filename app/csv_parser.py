@@ -6,10 +6,17 @@ from osc_server import async_osc_server
 from osc_config import get_osc_config
 
 
-def send_csv(ip, document, qlab_version, passcode):
+def send_csv(ip, document, qlab_version, passcode, error_handler=None):
     """
     Sends the data in csv file to qlab workspace on machine with given ip.
     Uses dynamic configuration from qlab_osc_config.json
+
+    Args:
+        ip: IP address of QLab machine
+        document: File-like object containing CSV data
+        qlab_version: QLab version (4 or 5)
+        passcode: Optional passcode for QLab connection
+        error_handler: Optional ErrorHandler instance. If None, uses global handler.
     """
     # Get OSC configuration
     osc_config = get_osc_config()
@@ -94,4 +101,4 @@ def send_csv(ip, document, qlab_version, passcode):
 
         # Send the bundle
         client.send(bundle.build())
-        async_osc_server(ip, 53001)
+        async_osc_server(ip, 53001, error_handler)

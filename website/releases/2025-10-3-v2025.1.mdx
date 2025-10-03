@@ -31,6 +31,12 @@ Older release versions remain available in [release history](https://github.com/
 
 ### New Features
 
+- **Command-Line Interface (CLI)** - New cross-platform CLI for automation and scripting workflows
+  - Install with `pip install .` for CLI-only or `pip install .[gui]` for full GUI support
+  - Run with `csv-to-qlab show.csv 127.0.0.1 5`
+  - Supports verbose, quiet, and JSON output modes
+  - Perfect for batch processing, automation, and remote/SSH sessions
+  - See [CLI Documentation](/docs/tutorial-basics/cli) for details
 - **JSON-Based Configuration** - All OSC properties now defined in `qlab_osc_config.json`
 - **Enhanced Property Support** - Added many new global and cue-specific properties
 - **Auto-Properties** - Automatic enabling of related settings (e.g., setting fade opacity auto-enables the checkbox)
@@ -47,12 +53,14 @@ Older release versions remain available in [release history](https://github.com/
 
 - **No-Code Property Addition** - Add new OSC properties by editing JSON config only
 - **Comprehensive Documentation** - New developer and reference documentation
-- **Better Error Handling** - Improved validation and error reporting
-- **Comprehensive Test Suite** - 50 tests with 86% code coverage
+- **Better Error Handling** - Improved validation and error reporting with instance-based error handlers
+- **Comprehensive Test Suite** - 69 tests with 86% code coverage (added 19 CLI tests)
 - **Duplicate Property Detection** - Automated tests prevent configuration conflicts
+- **Package Setup** - New `setup.py` for pip installation with separate GUI and CLI dependencies
 
 ### Documentation
 
+- New [CLI Documentation](/docs/tutorial-basics/cli) with installation and usage examples
 - New [Developer Documentation](/docs/developer/architecture) section
 - New [CSV Column Reference](/docs/reference/csv-columns) with all available properties
 - New [Testing Guide](/docs/developer/testing) for contributors
