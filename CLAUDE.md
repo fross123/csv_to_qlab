@@ -1,0 +1,1 @@
+- when running python commands make sure you are in the virtual environment by running: source env/bin/activate

@@ -15,38 +15,28 @@ jobs:
     strategy:
       matrix:
         include:
-          # MacOS11 no longer supported.
-          # - os: macos-11
-          #   TARGET: macos
-          #   CMD_BUILD: >
-          #       pyinstaller application.spec &&
-          #       cd dist/ &&
-          #       mv csv-to-qlab.app csv-to-qlab-macos11.app &&
-          #       zip -r9 csv-to-qlab-macos11.zip csv-to-qlab-macos11.app
-          #   OUT_FILE_NAME: csv-to-qlab-macos11.app
-          #   ZIP_FILE_NAME: csv-to-qlab-macos11.zip
-          #   BASE_FILE_NAME: CSV-To-QLab-macos11
-          - os: macos-12
+          # MacOS 11, 12, 13 no longer supported by GitHub Actions
+          - os: macos-14-large
             TARGET: macos
             CMD_BUILD: >
                 pyinstaller application.spec &&
                 cd dist/ &&
-                mv csv-to-qlab.app csv-to-qlab-macos12.app &&
-                zip -r9 csv-to-qlab-macos12.zip csv-to-qlab-macos12.app
-            OUT_FILE_NAME: csv-to-qlab-macos12.app
-            ZIP_FILE_NAME: csv-to-qlab-macos12.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos12
-          - os: macos-13
-            TARGET: macos
-            CMD_BUILD: >
-                pyinstaller application.spec &&
-                cd dist/ &&
-                mv csv-to-qlab.app csv-to-qlab-macos13.app &&
-                zip -r9 csv-to-qlab-macos13.zip csv-to-qlab-macos13.app
-            OUT_FILE_NAME: csv-to-qlab-macos13.app
-            ZIP_FILE_NAME: csv-to-qlab-macos13.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos13
+                mv csv-to-qlab.app csv-to-qlab-macos14.app &&
+                zip -r9 csv-to-qlab-macos14.zip csv-to-qlab-macos14.app
+            OUT_FILE_NAME: csv-to-qlab-macos14.app
+            ZIP_FILE_NAME: csv-to-qlab-macos14.zip
+            BASE_FILE_NAME: CSV-To-QLab-macos14
           - os: macos-14
+            TARGET: macos
+            CMD_BUILD: >
+                pyinstaller application.spec &&
+                cd dist/ &&
+                mv csv-to-qlab.app csv-to-qlab-macos14-arm.app &&
+                zip -r9 csv-to-qlab-macos14-arm.zip csv-to-qlab-macos14-arm.app
+            OUT_FILE_NAME: csv-to-qlab-macos14-arm.app
+            ZIP_FILE_NAME: csv-to-qlab-macos14-arm.zip
+            BASE_FILE_NAME: CSV-To-QLab-macos14-arm
+          - os: macos-15-large
             TARGET: macos
             CMD_BUILD: >
                 pyinstaller application.spec &&
@@ -55,6 +45,16 @@ jobs:
             OUT_FILE_NAME: csv-to-qlab.app
             ZIP_FILE_NAME: csv-to-qlab.zip
             BASE_FILE_NAME: CSV-To-QLab
+          - os: macos-15
+            TARGET: macos
+            CMD_BUILD: >
+                pyinstaller application.spec &&
+                cd dist/ &&
+                mv csv-to-qlab.app csv-to-qlab-macos15-arm.app &&
+                zip -r9 csv-to-qlab-macos15-arm.zip csv-to-qlab-macos15-arm.app
+            OUT_FILE_NAME: csv-to-qlab-macos15-arm.app
+            ZIP_FILE_NAME: csv-to-qlab-macos15-arm.zip
+            BASE_FILE_NAME: CSV-To-QLab-macos15-arm
 
     steps:
     - uses: actions/checkout@v4

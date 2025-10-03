@@ -18,12 +18,15 @@ sidebar_position: 2
 
 ----
 
-## Optional Columns
+## Global Properties (All Cue Types)
+
+These columns work with any cue type:
 
 #### Notes
 Anything you would like to go in the "Notes" area of the cue.
 
 #### Follow
+Continue mode for the cue:
 - 0 - No Follow
 - 1 - Auto-Continue
 - 2 - Auto-Follow
@@ -33,7 +36,9 @@ Anything you would like to go in the "Notes" area of the cue.
 :::
 
 #### Color
-The color of the cue. See [QLab's Color Options](https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numbercolorname-string)
+The color of the cue. Available colors: none, berry, blue, crimson, cyan, forest, gray, green, hot pink, indigo, lavender, magenta, midnight, olive, orange, peach, plum, purple, red, sky blue, yellow.
+
+See [QLab's Color Options](https://qlab.app/docs/v5/scripting/osc-dictionary-v5/#cuecue_numbercolorname-string) for details.
 
 #### Target
 The cue's target. The cue being targeted must be above the cue being created.
@@ -45,7 +50,25 @@ Available types:
 - Full paths, e.g. /Volumes/MyDisk/path/to/some/file.wav
 - Paths beginning with a tilde, e.g. ~/path/to some/file.mov
 - Relative paths, e.g. this/is/a/relative/path.mid
-- Paths beginning with a tilde (~) will be expanded; the tilde signifies “relative to the user’s home directory”.
+- Paths beginning with a tilde (~) will be expanded; the tilde signifies "relative to the user's home directory".
+
+#### Armed
+Set the armed state: `true` or `false`
+
+#### Flagged
+Flag a cue: `true` or `false`
+
+#### Auto Load
+Enable auto-load: `true` or `false`
+
+#### Duration
+Cue duration in seconds
+
+#### Pre Wait
+Pre-wait time in seconds
+
+#### Post Wait
+Post-wait time in seconds
 
 ----
 
@@ -87,30 +110,99 @@ The text to enter into the text cue.
 ----
 
 ### Fade Cues
-| Number | Type | Name | Stop Target When Done | Fade Opacity | Target
-| ------ | ------ | ------ | ------ | ------ | ------ |
-| V1 | video | Video Cue 1 |       |   |
-| F1 | fade  | Fade Cue 1  | false | 0 | V1
-| F2 | fade  | Fade Cue 2  | true  | 1 | V1
+| Number | Type | Name | Stop Target When Done | Fade Opacity | Fade And Stop Others | Fade And Stop Others Time | Target
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| V1 | video | Video Cue 1 |       |   |   |   |
+| F1 | fade  | Fade Cue 1  | false | 0 | 1 | 2.5 | V1
+| F2 | fade  | Fade Cue 2  | true  | 1 | 3 | 1.0 | V1
 
 #### Stop Target When Done
-This accepts either "true" or "false" to check the box for "Stop Target When Done"
+Stop the target cue when the fade completes: `true` or `false`
 
 #### Fade Opacity
-Per QLab Docs, only 0 or 1 is accepted.
-:::tip
-Also activates the checkbox next to opacity
+Fade opacity value (0-1, where 0 is transparent and 1 is opaque)
+
+:::tip Auto-Enable
+Setting Fade Opacity automatically enables the "Do Opacity" checkbox
 :::
+
+#### Fade And Stop Others
+Fade and stop mode:
+- 0 - None
+- 1 - Peers (cues at same level)
+- 2 - List or cart
+- 3 - All
+
+#### Fade And Stop Others Time
+Time in seconds for the fade and stop action (decimal values allowed)
+
+#### Do Fade / Do Volume
+Enable fading for general properties or volume: `true` or `false`
+
+----
+
+### Audio Cues
+
+| Number | Type | Name | Level | Rate | Pitch | Infinite Loop | Play Count | Start Time | End Time | Patch |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| A1 | audio | Music Cue | -6.5 | 1.0 | true | false | 1 | 0 | 120.5 | 1 |
+
+#### Level
+Audio level/volume in dB (typically -60 to 12)
+
+#### Rate
+Playback rate (0.03 to 33.0, where 1.0 is normal speed)
+
+#### Pitch
+Preserve pitch when rate changes: `true` or `false`
+
+#### Infinite Loop
+Enable infinite looping: `true` or `false`
+
+#### Play Count
+Number of times to play (integer)
+
+#### Start Time / End Time
+Start and end time in seconds (decimal values allowed)
+
+#### Patch
+Audio patch number (1-16)
+
+#### Gang
+Level gang/group name for linked volume control
 
 ----
 
 ### Video Cues
+
+| Number | Type | Name | Level | Rate | Stage Number | Infinite Loop | Play Count | Start Time | End Time | Patch |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| V1 | video | Video Cue | -6.5 | 1.0 | 1 | false | 1 | 0 | 120.5 | 1 |
+
 #### Stage Number
 The stage number in order of the list in the "video outputs" setting
 
 :::tip
 Stages are in QLab 5 only.
 :::
+
+#### Level
+Video audio level/volume in dB
+
+#### Rate
+Playback rate (0.03 to 33.0)
+
+#### Infinite Loop
+Enable infinite looping: `true` or `false`
+
+#### Play Count
+Number of times to play
+
+#### Start Time / End Time
+Start and end time in seconds
+
+#### Patch
+Video patch number (1-16)
 
 ----
 
@@ -189,3 +281,9 @@ Only if using QLab Message Type
 For QLab Messages, review the [QLab Docs](https://qlab.app/docs/v4/scripting/osc-dictionary-v4/#cuecue_numberqlabcommand-number)
 
 For OSC Messages, you may now include a raw string in the column.
+
+----
+
+## See Complete Reference
+
+For a comprehensive list of all available columns and cue types, see the [CSV Column Reference](../reference/csv-columns.md).

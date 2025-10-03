@@ -14,9 +14,10 @@ import DropdownButton from './../components/DropdownButton.js';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const options = [
-    { label: 'macOS 14 (Latest)', value: 'macos14', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
-    { label: 'macOS 13', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos13.dmg' },
-    { label: 'macOS 12', value: 'macos12', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos12.dmg' },
+    { label: 'macOS 15 (Latest)', value: 'macos15', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
+    { label: 'macOS 15 ARM', value: 'macos15-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos15-arm.dmg' },
+    { label: 'macOS 14', value: 'macos14', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos14.dmg' },
+    { label: 'macOS 14 ARM', value: 'macos14-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos14-arm.dmg' },
   ];
   const buttonClassName = "button button--secondary button--lg"
 

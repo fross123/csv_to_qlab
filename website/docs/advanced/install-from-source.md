@@ -70,16 +70,37 @@ python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 ```
 
-## Step 5: Navigate to the application directory
-```bash
-cd app
-```
+## Step 5: Start the application
 
-## Step 6: Start the application
+From the `csv_to_qlab` directory, run:
+
 ```bash
 python3 application.py
 ```
 
 :::tip
 To exit type control+c.
+:::
+
+## Building for Distribution (Optional)
+
+If you want to bundle the application as a standalone macOS app:
+
+### Install PyInstaller
+```bash
+python3 -m pip install pyinstaller
+```
+
+### Bundle the Application
+```bash
+pyinstaller application.spec
+```
+
+The bundled app will be created in the `dist` directory.
+
+:::note Important Files for Bundling
+The `application.spec` file includes:
+- `app/static` - Static assets
+- `app/templates` - HTML templates
+- `app/qlab_osc_config.json` - OSC configuration (required!)
 :::

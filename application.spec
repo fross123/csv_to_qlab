@@ -9,6 +9,7 @@ a = Analysis(['app/application.py'],
              datas=[
                ('app/static', 'static'),
                ('app/templates', 'templates'),
+               ('app/qlab_osc_config.json', '.'),
              ],
              hiddenimports=[],
              hookspath=[],

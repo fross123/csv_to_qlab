@@ -1,0 +1,368 @@
+{
+  "global_properties": {
+    "number": {
+      "osc_address": "/cue/selected/number",
+      "type": "string",
+      "description": "Cue number"
+    },
+    "name": {
+      "osc_address": "/cue/selected/name",
+      "type": "string",
+      "description": "Cue name"
+    },
+    "notes": {
+      "osc_address": "/cue/selected/notes",
+      "type": "string",
+      "description": "Cue notes"
+    },
+    "continuemode": {
+      "osc_address": "/cue/selected/continueMode",
+      "type": "int",
+      "description": "Continue mode (0=No continue, 1=Auto-continue, 2=Auto-follow)",
+      "valid_range": [0, 2]
+    },
+    "follow": {
+      "osc_address": "/cue/selected/continueMode",
+      "type": "int",
+      "description": "Follow mode (alias for continueMode)",
+      "valid_range": [0, 2]
+    },
+    "target": {
+      "osc_address": "/cue/selected/cueTargetNumber",
+      "type": "string",
+      "description": "Target cue number"
+    },
+    "filetarget": {
+      "osc_address": "/cue/selected/fileTarget",
+      "type": "string",
+      "description": "File target path"
+    },
+    "color": {
+      "osc_address": "/cue/selected/colorName",
+      "type": "string",
+      "description": "Cue color",
+      "valid_values": [
+        "none", "berry", "blue", "crimson", "cyan", "forest",
+        "gray", "green", "hot pink", "indigo", "lavender",
+        "magenta", "midnight", "olive", "orange", "peach",
+        "plum", "purple", "red", "sky blue", "yellow"
+      ]
+    },
+    "groupmode": {
+      "osc_address": "/cue/selected/mode",
+      "type": "int",
+      "description": "Group mode (0=List, 1=Start first and enter, 2=Start first, 3=Timeline, 4=Start random, 5=Cart, 6=Playlist)"
+    },
+    "armed": {
+      "osc_address": "/cue/selected/armed",
+      "type": "bool",
+      "description": "Armed state"
+    },
+    "autoload": {
+      "osc_address": "/cue/selected/autoLoad",
+      "type": "bool",
+      "description": "Auto-load state"
+    },
+    "duration": {
+      "osc_address": "/cue/selected/duration",
+      "type": "int",
+      "description": "Cue duration"
+    },
+    "prewait": {
+      "osc_address": "/cue/selected/preWait",
+      "type": "int",
+      "description": "Pre-wait time"
+    },
+    "postwait": {
+      "osc_address": "/cue/selected/postWait",
+      "type": "int",
+      "description": "Post-wait time"
+    },
+    "flagged": {
+      "osc_address": "/cue/selected/flagged",
+      "type": "bool",
+      "description": "Flagged state"
+    }
+  },
+  "cue_type_properties": {
+    "audio": {
+      "level": {
+        "osc_address": "/cue/selected/level",
+        "type": "float",
+        "description": "Audio level/volume in dB"
+      },
+      "rate": {
+        "osc_address": "/cue/selected/rate",
+        "type": "float",
+        "description": "Playback rate (0.03 to 33.0)"
+      },
+      "pitch": {
+        "osc_address": "/cue/selected/pitch",
+        "type": "bool",
+        "description": "Preserve pitch when rate changes"
+      },
+      "infiniteloop": {
+        "osc_address": "/cue/selected/infiniteLoop",
+        "type": "bool",
+        "description": "Infinite loop state"
+      },
+      "playcount": {
+        "osc_address": "/cue/selected/playCount",
+        "type": "int",
+        "description": "Number of times to play"
+      },
+      "gang": {
+        "osc_address": "/cue/selected/gang",
+        "type": "string",
+        "description": "Level gang/group name"
+      },
+      "starttime": {
+        "osc_address": "/cue/selected/startTime",
+        "type": "float",
+        "description": "Start time in seconds"
+      },
+      "endtime": {
+        "osc_address": "/cue/selected/endTime",
+        "type": "float",
+        "description": "End time in seconds"
+      },
+      "patch": {
+        "osc_address": "/cue/selected/patch",
+        "type": "int",
+        "description": "Audio patch number (1-16)",
+        "valid_range": [1, 16]
+      }
+    },
+    "mic": {
+      "level": {
+        "osc_address": "/cue/selected/level",
+        "type": "float",
+        "description": "Audio level/volume in dB"
+      },
+      "patch": {
+        "osc_address": "/cue/selected/patch",
+        "type": "int",
+        "description": "Audio patch number (1-16)",
+        "valid_range": [1, 16]
+      }
+    },
+    "text": {
+      "text": {
+        "osc_address": "/cue/selected/text",
+        "type": "string",
+        "description": "Text content for text cue"
+      }
+    },
+    "fade": {
+      "stoptargetwhendone": {
+        "osc_address": "/cue/selected/stopTargetWhenDone",
+        "type": "bool",
+        "description": "Stop target when fade is done"
+      },
+      "fadeopacity": {
+        "osc_address": "/cue/selected/opacity",
+        "type": "int",
+        "description": "Fade opacity (0-1)"
+      },
+      "doopacity": {
+        "osc_address": "/cue/selected/doOpacity",
+        "type": "bool",
+        "description": "Enable opacity fading",
+        "auto_value": true
+      },
+      "dovolume": {
+        "osc_address": "/cue/selected/doVolume",
+        "type": "bool",
+        "description": "Enable volume fading",
+        "auto_value": true
+      },
+      "dofade": {
+        "osc_address": "/cue/selected/doFade",
+        "type": "bool",
+        "description": "Enable general fading"
+      },
+      "fadeandstopothers": {
+        "osc_address": "/cue/selected/fadeAndStopOthers",
+        "type": "int",
+        "description": "Fade and stop mode (0=None, 1=Peers, 2=List/cart, 3=All)",
+        "valid_range": [0, 3]
+      },
+      "fadeandstopotherstime": {
+        "osc_address": "/cue/selected/fadeAndStopOthersTime",
+        "type": "float",
+        "description": "Fade and stop others time in seconds"
+      }
+    },
+    "video": {
+      "stagenumber": {
+        "osc_address": "/cue/selected/stageNumber",
+        "type": "int",
+        "description": "Video stage number"
+      },
+      "level": {
+        "osc_address": "/cue/selected/level",
+        "type": "float",
+        "description": "Video audio level/volume in dB"
+      },
+      "rate": {
+        "osc_address": "/cue/selected/rate",
+        "type": "float",
+        "description": "Playback rate (0.03 to 33.0)"
+      },
+      "infiniteloop": {
+        "osc_address": "/cue/selected/infiniteLoop",
+        "type": "bool",
+        "description": "Infinite loop state"
+      },
+      "playcount": {
+        "osc_address": "/cue/selected/playCount",
+        "type": "int",
+        "description": "Number of times to play"
+      },
+      "starttime": {
+        "osc_address": "/cue/selected/startTime",
+        "type": "float",
+        "description": "Start time in seconds"
+      },
+      "endtime": {
+        "osc_address": "/cue/selected/endTime",
+        "type": "float",
+        "description": "End time in seconds"
+      },
+      "patch": {
+        "osc_address": "/cue/selected/patch",
+        "type": "int",
+        "description": "Video patch number",
+        "valid_range": [1, 16]
+      }
+    },
+    "midi": {
+      "midimessagetype": {
+        "osc_address": "/cue/selected/messageType",
+        "type": "int",
+        "description": "MIDI message type (1=Voice, 2=MSC, 3=SysEx)"
+      },
+      "midirawstring": {
+        "osc_address": "/cue/selected/rawString",
+        "type": "string",
+        "description": "MIDI SysEx raw string"
+      },
+      "midicommandformat": {
+        "osc_address": "/cue/selected/commandFormat",
+        "type": "int",
+        "description": "MIDI command format",
+        "valid_range": [0, 127]
+      },
+      "midicommand": {
+        "osc_address": "/cue/selected/command",
+        "type": "int",
+        "description": "MIDI command",
+        "valid_range": [0, 127]
+      },
+      "midideviceid": {
+        "osc_address": "/cue/selected/deviceID",
+        "type": "int",
+        "description": "MIDI device ID",
+        "valid_range": [0, 127]
+      },
+      "midicontrolnumber": {
+        "osc_address": "/cue/selected/controlNumber",
+        "type": "int",
+        "description": "MIDI control number",
+        "valid_range": [0, 16383]
+      },
+      "midicontrolvalue": {
+        "osc_address": "/cue/selected/controlValue",
+        "type": "int",
+        "description": "MIDI control value",
+        "valid_range": [0, 16383]
+      },
+      "midipatchname": {
+        "osc_address": "/cue/selected/midiPatchName",
+        "type": "string",
+        "description": "MIDI patch name"
+      },
+      "midipatchnumber": {
+        "osc_address": "/cue/selected/midiPatchNumber",
+        "type": "int",
+        "description": "MIDI patch number"
+      },
+      "midiqlist": {
+        "osc_address": "/cue/selected/qList",
+        "type": "string",
+        "description": "MIDI Q list"
+      },
+      "midiqnumber": {
+        "osc_address": "/cue/selected/qNumber",
+        "type": "string",
+        "description": "MIDI Q number"
+      },
+      "midistatus": {
+        "osc_address": "/cue/selected/status",
+        "type": "int",
+        "description": "MIDI status (0=Note Off, 1=Note On, 2=Key Pressure, 3=Control Change, 4=Program Change, 5=Channel Pressure, 6=Pitch Bend)",
+        "valid_range": [0, 6]
+      }
+    },
+    "network": {
+      "qlab5": {
+        "networkpatchnumber": {
+          "osc_address": "/cue/selected/networkPatchNumber",
+          "type": "int",
+          "description": "Network patch number (QLab 5)"
+        },
+        "networkpatchname": {
+          "osc_address": "/cue/selected/networkPatchName",
+          "type": "string",
+          "description": "Network patch name (QLab 5)"
+        },
+        "customstring": {
+          "osc_address": "/cue/selected/customString",
+          "type": "string",
+          "description": "Custom string for OSC message or plain text (QLab 5)"
+        }
+      },
+      "qlab4": {
+        "messagetype": {
+          "osc_address": "/cue/selected/messageType",
+          "type": "int",
+          "description": "Message type (QLab 4)"
+        },
+        "command": {
+          "osc_address": "/cue/selected/qlabCommand",
+          "type": "int",
+          "description": "QLab command (QLab 4)",
+          "condition": {
+            "field": "messagetype",
+            "value": "1"
+          }
+        },
+        "osccuenumber": {
+          "osc_address": "/cue/selected/qlabCueNumber",
+          "type": "string",
+          "description": "OSC cue number (QLab 4)",
+          "condition": {
+            "field": "messagetype",
+            "value": "1"
+          }
+        },
+        "rawstring": {
+          "osc_address": "/cue/selected/rawString",
+          "type": "string",
+          "description": "Raw OSC string (QLab 4)",
+          "condition": {
+            "field": "messagetype",
+            "value": "2"
+          }
+        }
+      }
+    }
+  },
+  "valid_cue_types": [
+    "audio", "mic", "video", "camera", "text", "light", "fade",
+    "network", "midi", "midi file", "timecode", "group", "start",
+    "stop", "pause", "load", "reset", "devamp", "goto", "target",
+    "arm", "disarm", "wait", "memo", "script", "list", "cuelist",
+    "cue list", "cart", "cuecart", "cue cart"
+  ]
+}
