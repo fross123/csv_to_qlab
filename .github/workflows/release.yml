@@ -15,38 +15,8 @@ jobs:
     strategy:
       matrix:
         include:
-          # MacOS11 no longer supported.
-          # - os: macos-11
-          #   TARGET: macos
-          #   CMD_BUILD: >
-          #       pyinstaller application.spec &&
-          #       cd dist/ &&
-          #       mv csv-to-qlab.app csv-to-qlab-macos11.app &&
-          #       zip -r9 csv-to-qlab-macos11.zip csv-to-qlab-macos11.app
-          #   OUT_FILE_NAME: csv-to-qlab-macos11.app
-          #   ZIP_FILE_NAME: csv-to-qlab-macos11.zip
-          #   BASE_FILE_NAME: CSV-To-QLab-macos11
-          - os: macos-12
-            TARGET: macos
-            CMD_BUILD: >
-                pyinstaller application.spec &&
-                cd dist/ &&
-                mv csv-to-qlab.app csv-to-qlab-macos12.app &&
-                zip -r9 csv-to-qlab-macos12.zip csv-to-qlab-macos12.app
-            OUT_FILE_NAME: csv-to-qlab-macos12.app
-            ZIP_FILE_NAME: csv-to-qlab-macos12.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos12
-          - os: macos-13
-            TARGET: macos
-            CMD_BUILD: >
-                pyinstaller application.spec &&
-                cd dist/ &&
-                mv csv-to-qlab.app csv-to-qlab-macos13.app &&
-                zip -r9 csv-to-qlab-macos13.zip csv-to-qlab-macos13.app
-            OUT_FILE_NAME: csv-to-qlab-macos13.app
-            ZIP_FILE_NAME: csv-to-qlab-macos13.zip
-            BASE_FILE_NAME: CSV-To-QLab-macos13
-          - os: macos-14
+          # Intel build via self-hosted runner (macOS 11.7, supports macOS 11+)
+          - os: [self-hosted, macOS, X64]
             TARGET: macos
             CMD_BUILD: >
                 pyinstaller application.spec &&
@@ -55,23 +25,45 @@ jobs:
             OUT_FILE_NAME: csv-to-qlab.app
             ZIP_FILE_NAME: csv-to-qlab.zip
             BASE_FILE_NAME: CSV-To-QLab
+          # ARM builds via GitHub-hosted runners
+          - os: macos-14
+            TARGET: macos
+            CMD_BUILD: >
+                pyinstaller application.spec &&
+                cd dist/ &&
+                mv csv-to-qlab.app csv-to-qlab-macos14-arm.app &&
+                zip -r9 csv-to-qlab-macos14-arm.zip csv-to-qlab-macos14-arm.app
+            OUT_FILE_NAME: csv-to-qlab-macos14-arm.app
+            ZIP_FILE_NAME: csv-to-qlab-macos14-arm.zip
+            BASE_FILE_NAME: CSV-To-QLab-macOS14-ARM
+          - os: macos-15
+            TARGET: macos
+            CMD_BUILD: >
+                pyinstaller application.spec &&
+                cd dist/ &&
+                mv csv-to-qlab.app csv-to-qlab-macos15-arm.app &&
+                zip -r9 csv-to-qlab-macos15-arm.zip csv-to-qlab-macos15-arm.app
+            OUT_FILE_NAME: csv-to-qlab-macos15-arm.app
+            ZIP_FILE_NAME: csv-to-qlab-macos15-arm.zip
+            BASE_FILE_NAME: CSV-To-QLab-macOS15-ARM
 
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
+      if: ${{ !contains(matrix.os, 'self-hosted') }}
       uses: actions/setup-python@v5
       with:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pyinstaller
+        python3 -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+        pip3 install pyinstaller
     - name: Build with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
     - name: Create DMG
       run: |
-        brew install create-dmg
+        brew install create-dmg || true
         create-dmg \
         --volname "${{ matrix.BASE_FILE_NAME }}" \
         --window-pos 300 200 \
@@ -79,6 +71,7 @@ jobs:
         --icon-size 100 \
         --app-drop-link 330 150 \
         --icon ${{ matrix.OUT_FILE_NAME }} 100 150 \
+        --skip-jenkins \
         --eula COPYING \
         ${{ matrix.BASE_FILE_NAME }}.dmg \
         ./dist/${{ matrix.OUT_FILE_NAME }}

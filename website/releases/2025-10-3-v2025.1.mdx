@@ -1,0 +1,85 @@
+---
+slug: 2025/1
+title: Version 2025.1
+tags: ["2025", "1"]
+---
+
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import styles from '@site/src/pages/index.module.css';
+import DropdownButton from '@site/src/components/DropdownButton.js';
+
+export const options = [
+    { label: 'macOS 15 ARM (Latest)', value: 'macos15-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2025.1/CSV-To-QLab-macOS15-ARM.dmg' },
+    { label: 'macOS 14 ARM', value: 'macos14-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2025.1/CSV-To-QLab-macOS14-ARM.dmg' },
+    { label: 'macOS 11+ Intel', value: 'macos-intel', link: 'https://github.com/fross123/csv_to_qlab/releases/download/v2025.1/CSV-To-QLab.dmg' },
+];
+export const buttonClassName = "button button--primary button--lg"
+
+## Major Architecture Refactor
+
+This release features a significant refactor to a **configuration-driven architecture**, making it easier to maintain and extend CSV to QLab.
+
+:::info Build Changes
+Starting with this release, builds are provided for:
+- **macOS 11+ Intel** - Supports all Intel Macs running macOS 11 or later
+- **macOS 14 ARM** - For Apple Silicon Macs
+- **macOS 15 ARM** - For Apple Silicon Macs
+
+Older release versions remain available in [release history](https://github.com/fross123/csv_to_qlab/releases).
+:::
+
+### New Features
+
+- **Command-Line Interface (CLI)** - New cross-platform CLI for automation and scripting workflows
+  - Install with `pip install .` for CLI-only or `pip install .[gui]` for full GUI support
+  - Run with `csv-to-qlab show.csv 127.0.0.1 5`
+  - Supports verbose, quiet, and JSON output modes
+  - Perfect for batch processing, automation, and remote/SSH sessions
+  - See [CLI Advanced](/docs/tutorial-basics/cli-advanced) for automation and scripting
+- **JSON-Based Configuration** - All OSC properties now defined in `qlab_osc_config.json`
+- **Enhanced Property Support** - Added many new global and cue-specific properties
+- **Auto-Properties** - Automatic enabling of related settings (e.g., setting fade opacity auto-enables the checkbox)
+- **Improved Validation** - Better type checking and value validation for all properties
+
+### New Cue Properties
+
+- **Global Properties**: Armed, Flagged, Auto Load, Duration, Pre/Post Wait
+- **Audio/Video Cues**: Level, Rate, Pitch, Loop controls, Start/End Time, Patch, Gang
+- **Fade Cues**: Fade And Stop Others, Fade And Stop Others Time, Do Volume, Do Fade
+- **All existing MIDI and Network properties** retained and improved
+
+### Developer Improvements
+
+- **No-Code Property Addition** - Add new OSC properties by editing JSON config only
+- **Comprehensive Documentation** - New developer and reference documentation
+- **Better Error Handling** - Improved validation and error reporting with instance-based error handlers
+- **Comprehensive Test Suite** - 69 tests with 86% code coverage (added 19 CLI tests)
+- **Duplicate Property Detection** - Automated tests prevent configuration conflicts
+- **Package Setup** - New `setup.py` for pip installation with separate GUI and CLI dependencies
+- **Proper Package Structure** - Follows Python/PyInstaller best practices with `app/` as a proper Python package
+
+### Documentation
+
+- New [CLI Documentation](/docs/tutorial-basics/cli-advanced) with automation and scripting examples
+- New [Developer Documentation](/docs/developer/architecture) section
+- New [CSV Column Reference](/docs/reference/csv-columns) with all available properties
+- New [Testing Guide](/docs/developer/testing) for contributors
+- Updated tutorials with expanded examples and unified flow
+
+<DropdownButton buttonClassName={buttonClassName} options={options} />
+
+---
+
+### Bug Fixes (v2025.1.1 - Hotfix)
+
+- **Fixed CLI Installation** - Resolved `ModuleNotFoundError` when installing CLI via pip
+  - Added `app/__init__.py` to properly mark `app/` as a Python package
+  - Converted all intra-package imports to relative imports (following PEP 8)
+  - Created `run_gui.py` as external PyInstaller entry point (following PyInstaller best practices)
+  - Updated all test imports to use proper package structure
+  - All 69 tests now pass
+
+---
+
+For contributors: See the [Architecture Overview](/docs/developer/architecture) and [Adding Properties Guide](/docs/developer/adding-properties) for details on the new system.

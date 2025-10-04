@@ -11,12 +11,21 @@ import DropdownButton from '@site/src/components/DropdownButton.js';
 
 # Installation
 
+CSV to QLab is available as both a GUI application (Mac only) and a cross-platform command-line interface.
+
+:::tip 👉 Choose Your Path
+- **Mac GUI users**: Continue with the GUI Application section below
+- **CLI users**: Jump to [CLI Installation](#command-line-interface-cli)
+:::
+
+## GUI Application (Recommended for Mac Users)
+
 Download CSV to QLab from the [latest GitHub release](https://github.com/fross123/csv_to_qlab/releases/). Check out the [latest release notes](/releases) for the latest updates.
 
 export const options = [
-    { label: 'macOS 14 (Latest)', value: 'macos14', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
-    { label: 'macOS 13', value: 'macos13', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos13.dmg' },
-    { label: 'macOS 12', value: 'macos12', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macos12.dmg' },
+    { label: 'macOS 15 ARM (Latest)', value: 'macos15-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macOS15-ARM.dmg' },
+    { label: 'macOS 14 ARM', value: 'macos14-arm', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab-macOS14-ARM.dmg' },
+    { label: 'macOS 11+ Intel', value: 'macos-intel', link: 'https://github.com/fross123/csv_to_qlab/releases/latest/download/CSV-To-QLab.dmg' },
 ];
 export const buttonClassName = "button button--primary button--lg"
 
@@ -86,3 +95,28 @@ This instruction is not to be taken as advice to ignore Apple policies and/or st
 ## CSV to QLab should open
 
 ![Application Screenshot](/img/tutorial/app-screenshot-ud.png)
+
+---
+
+## Command-Line Interface (CLI)
+
+For automation, scripting, or cross-platform use, install the CLI with pip:
+
+```bash
+# Clone the repository
+git clone https://github.com/fross123/csv_to_qlab.git
+cd csv_to_qlab
+
+# Install
+pip install .
+```
+
+**Next Steps:**
+- Continue to [Prepare a CSV File](/docs/tutorial-basics/prepare-csv-file) to format your data
+- Learn basic usage in [Send to QLab](/docs/tutorial-basics/send-to-qlab#using-the-cli)
+- Explore [CLI Advanced](/docs/tutorial-basics/cli-advanced) for automation and scripting
+
+:::tip When to Use CLI vs GUI
+- **Use CLI**: Automation, scripting, batch processing, remote/SSH sessions, Linux/Windows
+- **Use GUI**: Quick one-off imports, visual feedback, Mac users
+:::

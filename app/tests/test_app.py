@@ -1,5 +1,5 @@
 from pathlib import Path
-from application import app
+from app.application import app
 
 
 def test_home_page():

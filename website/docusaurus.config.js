@@ -57,15 +57,19 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/logo.png',
-      announcementBar: {
-        id: 'support_us',
-        content:
-          '🌟 If you are enjoying CSV to QLab please give us a star on <a target="_blank" href="https://www.github.com/fross123/csv_to_qlab">Github!</a>!',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        textColor: '#091E42',
-        isCloseable: false,
+      colorMode: {
+        defaultMode: 'dark',
+        respectPrefersColorScheme: true,
       },
+      image: 'img/logo.png',
+      // announcementBar: {
+      //   id: 'support_us',
+      //   content:
+      //     '🌟 If you are enjoying CSV to QLab please give us a star on <a target="_blank" href="https://www.github.com/fross123/csv_to_qlab">Github!</a>!',
+      //   backgroundColor: 'rgba(0, 0, 0, 0.3)',
+      //   textColor: '#091E42',
+      //   isCloseable: false,
+      // },
       navbar: {
         title: 'CSV to QLab',
         logo: {

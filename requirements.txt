@@ -1,3 +1,5 @@
 Flask==3.0.3
 python-osc==1.8.3
 pywebview==5.1
+pytest>=8.0.0
+pytest-cov>=4.1.0

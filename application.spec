@@ -3,12 +3,13 @@
 block_cipher = None
 
 
-a = Analysis(['app/application.py'],
+a = Analysis(['run_gui.py'],
              pathex=['.'],
              binaries=[],
              datas=[
                ('app/static', 'static'),
                ('app/templates', 'templates'),
+               ('app/qlab_osc_config.json', '.'),
              ],
              hiddenimports=[],
              hookspath=[],
@@ -29,8 +30,7 @@ exe = EXE(pyz,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=False,
-          target_arch='x86_64' )
+          console=False )
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,
