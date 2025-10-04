@@ -2,64 +2,16 @@
 sidebar_position: 4
 ---
 
-# Command-Line Interface (CLI)
+# CLI Advanced Usage
 
-The CLI provides a cross-platform, terminal-based interface for sending CSV files to QLab. It's ideal for automation, scripting, batch processing, and remote/SSH sessions.
+Advanced features for automation, scripting, and batch processing with the CSV to QLab command-line interface.
 
-:::tip When to Use CLI vs GUI
-- **Use CLI**: Automation, scripting, batch processing, remote/SSH sessions, cross-platform (Linux/Windows/Mac)
-- **Use GUI**: Quick one-off imports, visual feedback preferred, Mac users
+:::info Prerequisites
+This guide assumes you've already:
+- [Installed the CLI](/docs/tutorial-basics/installation#command-line-interface-cli)
+- Learned [basic CLI usage](/docs/tutorial-basics/send-to-qlab#using-the-cli)
+- Prepared a [CSV file](/docs/tutorial-basics/prepare-csv-file)
 :::
-
-## Installation
-
-### Requirements
-- Python 3.8 or later
-- pip (Python package installer)
-
-### Install CLI-Only (Recommended)
-This installs just the CLI without GUI dependencies:
-
-```bash
-# Clone the repository
-git clone https://github.com/fross123/csv_to_qlab.git
-cd csv_to_qlab
-
-# Install
-pip install .
-```
-
-### Install with GUI Support
-If you also want to run the GUI application from source:
-
-```bash
-pip install .[gui]
-```
-
-### Verify Installation
-```bash
-csv-to-qlab --help
-```
-
-## Basic Usage
-
-### Simple Example
-Send a CSV file to QLab running on the same machine:
-
-```bash
-csv-to-qlab show.csv 127.0.0.1 5
-```
-
-- `show.csv` - Path to your CSV file
-- `127.0.0.1` - IP address of QLab machine
-- `5` - QLab version (4 or 5)
-
-### With Passcode
-If your QLab workspace requires a passcode:
-
-```bash
-csv-to-qlab show.csv 192.168.1.100 5 --passcode 1234
-```
 
 ## Output Modes
 
@@ -258,6 +210,6 @@ This allows you to modify the code and test changes immediately without reinstal
 
 ## Next Steps
 
-- Learn about [CSV file formatting](/docs/tutorial-basics/prepare-csv-file)
-- See [CSV Column Reference](/docs/reference/csv-columns) for all available properties
-- Check out [automation examples](https://github.com/fross123/csv_to_qlab/tree/main/examples) (coming soon)
+- Explore the [CSV Column Reference](/docs/reference/csv-columns) for all available properties
+- Learn about [Developer Documentation](/docs/developer/architecture) if you want to contribute
+- Share your automation scripts with the community
