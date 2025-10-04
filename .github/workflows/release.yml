@@ -71,6 +71,7 @@ jobs:
         --icon-size 100 \
         --app-drop-link 330 150 \
         --icon ${{ matrix.OUT_FILE_NAME }} 100 150 \
+        --skip-jenkins \
         --eula COPYING \
         ${{ matrix.BASE_FILE_NAME }}.dmg \
         ./dist/${{ matrix.OUT_FILE_NAME }}
