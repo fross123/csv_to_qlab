@@ -4,7 +4,7 @@ Tests for OSC configuration loading and validation
 import pytest
 import json
 from pathlib import Path
-from osc_config import OSCConfig, get_osc_config
+from app.osc_config import OSCConfig, get_osc_config
 
 
 @pytest.fixture

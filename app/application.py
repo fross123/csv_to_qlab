@@ -5,9 +5,9 @@ import webview
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
-from csv_parser import send_csv
-from helper import resource_path
-from error_success_handler import return_errors, return_success, clear_errors_and_success
+from .csv_parser import send_csv
+from .helper import resource_path
+from .error_success_handler import return_errors, return_success, clear_errors_and_success
 
 if getattr(sys, "frozen", False):
     template_folder = resource_path("templates")
@@ -57,8 +57,3 @@ def success():
 @app.errorhandler(413)
 def too_large(e):
     return "File is too large", 413
-
-
-if __name__ == "__main__":
-    webview.create_window("CSV to QLab", app, frameless=True, width=300, height=465)
-    webview.start()

@@ -11,8 +11,8 @@ import json
 import io
 from pathlib import Path
 
-from csv_parser import send_csv
-from error_success_handler import ErrorHandler
+from .csv_parser import send_csv
+from .error_success_handler import ErrorHandler
 
 
 class FileStorageAdapter:

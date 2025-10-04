@@ -57,6 +57,7 @@ Older release versions remain available in [release history](https://github.com/
 - **Comprehensive Test Suite** - 69 tests with 86% code coverage (added 19 CLI tests)
 - **Duplicate Property Detection** - Automated tests prevent configuration conflicts
 - **Package Setup** - New `setup.py` for pip installation with separate GUI and CLI dependencies
+- **Proper Package Structure** - Follows Python/PyInstaller best practices with `app/` as a proper Python package
 
 ### Documentation
 
@@ -67,6 +68,17 @@ Older release versions remain available in [release history](https://github.com/
 - Updated tutorials with expanded examples and unified flow
 
 <DropdownButton buttonClassName={buttonClassName} options={options} />
+
+---
+
+### Bug Fixes (v2025.1.1 - Hotfix)
+
+- **Fixed CLI Installation** - Resolved `ModuleNotFoundError` when installing CLI via pip
+  - Added `app/__init__.py` to properly mark `app/` as a Python package
+  - Converted all intra-package imports to relative imports (following PEP 8)
+  - Created `run_gui.py` as external PyInstaller entry point (following PyInstaller best practices)
+  - Updated all test imports to use proper package structure
+  - All 69 tests now pass
 
 ---
 

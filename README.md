@@ -186,7 +186,12 @@ Contributions are welcome! Whether you're fixing bugs, adding features, improvin
 
 **Run GUI from source:**
 ```bash
-python app/application.py
+# Use the PyInstaller entry point
+python run_gui.py
+
+# Or with GUI dependencies installed
+pip install -e .[gui]
+python run_gui.py
 ```
 
 **Run CLI from source:**
@@ -194,8 +199,8 @@ python app/application.py
 # After pip install -e .
 csv-to-qlab path/to/file.csv 127.0.0.1 5
 
-# Or run directly
-python app/cli.py path/to/file.csv 127.0.0.1 5
+# Or run as module
+python -m app.cli path/to/file.csv 127.0.0.1 5
 ```
 
 **Run tests:**

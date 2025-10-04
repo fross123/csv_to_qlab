@@ -2,8 +2,8 @@ import io
 import csv
 
 from pythonosc import osc_message_builder, osc_bundle_builder, udp_client, osc_server
-from osc_server import async_osc_server
-from osc_config import get_osc_config
+from .osc_server import async_osc_server
+from .osc_config import get_osc_config
 
 
 def send_csv(ip, document, qlab_version, passcode, error_handler=None):

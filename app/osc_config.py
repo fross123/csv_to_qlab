@@ -1,6 +1,6 @@
 import json
 from pythonosc import osc_message_builder
-from helper import resource_path
+from .helper import resource_path
 
 
 class OSCConfig:

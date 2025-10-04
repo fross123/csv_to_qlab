@@ -43,6 +43,15 @@ This guide is for maintainers and contributors who need to build release version
 
 The `application.spec` file defines how PyInstaller bundles the application. Key sections:
 
+**Entry Point** (line 6):
+```python
+a = Analysis(['run_gui.py'],  # Entry point outside app/ package
+```
+
+:::info Entry Point Architecture
+The GUI uses `run_gui.py` as its entry point (located in project root), which imports the `app` package. This follows PyInstaller best practices for Python packages with relative imports.
+:::
+
 **Data Files** (lines 9-12):
 ```python
 datas=[
@@ -238,7 +247,13 @@ For rapid development and testing:
 
 1. **Use the source directly** (not bundled):
    ```bash
-   python app/application.py
+   python run_gui.py
+   ```
+
+   Or with GUI dependencies:
+   ```bash
+   pip install -e .[gui]
+   python run_gui.py
    ```
 
 2. **Only build when:**

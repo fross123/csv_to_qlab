@@ -6,6 +6,9 @@ import io
 from unittest.mock import Mock, patch, MagicMock
 from pathlib import Path
 
+# Import once at module level for all tests
+from app.csv_parser import send_csv
+
 
 class MockFileStorage:
     """Mock Flask FileStorage object for testing"""
@@ -16,7 +19,7 @@ class MockFileStorage:
 @pytest.fixture
 def mock_udp_client():
     """Mock UDP client to avoid network calls"""
-    with patch('csv_parser.udp_client.UDPClient') as mock:
+    with patch('app.csv_parser.udp_client.UDPClient') as mock:
         client_instance = Mock()
         mock.return_value = client_instance
         yield client_instance
@@ -25,7 +28,7 @@ def mock_udp_client():
 @pytest.fixture
 def mock_async_server():
     """Mock async OSC server"""
-    with patch('csv_parser.async_osc_server') as mock:
+    with patch('app.csv_parser.async_osc_server') as mock:
         yield mock
 
 
@@ -61,7 +64,6 @@ class TestCSVParsing:
 
     def test_parse_simple_csv(self, simple_csv, mock_udp_client, mock_async_server):
         """Test basic CSV parsing"""
-        from csv_parser import send_csv
 
         send_csv('127.0.0.1', simple_csv, 5, '')
 
@@ -70,7 +72,6 @@ class TestCSVParsing:
 
     def test_header_normalization(self, mock_udp_client, mock_async_server):
         """Test that headers are normalized (lowercase, no spaces)"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""MIDI Device ID,Type,Name
 1,midi,Test""")
@@ -83,7 +84,6 @@ class TestCSVParsing:
 
     def test_empty_csv_handling(self, mock_udp_client, mock_async_server):
         """Test handling of CSV with only headers"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""Number,Type,Name""")
 
@@ -98,7 +98,6 @@ class TestPropertyProcessing:
 
     def test_skip_empty_values(self, csv_with_empty_values, mock_udp_client, mock_async_server):
         """Verify empty values are skipped"""
-        from csv_parser import send_csv
 
         send_csv('127.0.0.1', csv_with_empty_values, 5, '')
 
@@ -107,9 +106,8 @@ class TestPropertyProcessing:
 
     def test_skip_type_column(self, simple_csv, mock_udp_client, mock_async_server):
         """Verify 'type' column is not sent as a property"""
-        from csv_parser import send_csv
 
-        with patch('csv_parser.get_osc_config') as mock_get_config:
+        with patch('app.csv_parser.get_osc_config') as mock_get_config:
             mock_config = Mock()
             mock_config.check_cue_type.return_value = 'audio'
             mock_config.build_osc_message.return_value = None  # Return None instead of Mock
@@ -125,7 +123,6 @@ class TestPropertyProcessing:
 
     def test_processed_properties_tracking(self, csv_with_optional_props, mock_udp_client, mock_async_server):
         """Verify no duplicate property sends"""
-        from csv_parser import send_csv
 
         send_csv('127.0.0.1', csv_with_optional_props, 5, '')
 
@@ -139,7 +136,6 @@ class TestPasscodeHandling:
 
     def test_passcode_sent_when_provided(self, simple_csv, mock_udp_client, mock_async_server):
         """Test that passcode is sent when provided"""
-        from csv_parser import send_csv
 
         send_csv('127.0.0.1', simple_csv, 5, 'test_password')
 
@@ -150,7 +146,6 @@ class TestPasscodeHandling:
 
     def test_no_passcode_sent_when_empty(self, simple_csv, mock_udp_client, mock_async_server):
         """Test that no connect message is sent when passcode is empty"""
-        from csv_parser import send_csv
 
         send_csv('127.0.0.1', simple_csv, 5, '')
 
@@ -164,12 +159,11 @@ class TestCueTypeValidation:
 
     def test_valid_cue_type_accepted(self, mock_udp_client, mock_async_server):
         """Test that valid cue types are accepted"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""Number,Type,Name
 1,audio,Test""")
 
-        with patch('csv_parser.get_osc_config') as mock_get_config:
+        with patch('app.csv_parser.get_osc_config') as mock_get_config:
             mock_config = Mock()
             mock_config.check_cue_type.return_value = 'audio'
             mock_config.build_osc_message.return_value = None
@@ -181,12 +175,11 @@ class TestCueTypeValidation:
 
     def test_invalid_cue_type_falls_back_to_memo(self, mock_udp_client, mock_async_server):
         """Test that invalid cue types fall back to 'memo'"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""Number,Type,Name
 1,invalid_type,Test""")
 
-        with patch('csv_parser.get_osc_config') as mock_get_config:
+        with patch('app.csv_parser.get_osc_config') as mock_get_config:
             mock_config = Mock()
             mock_config.check_cue_type.return_value = False  # Invalid type
             mock_config.build_osc_message.return_value = None
@@ -199,12 +192,11 @@ class TestCueTypeValidation:
 
     def test_missing_type_defaults_to_memo(self, mock_udp_client, mock_async_server):
         """Test that missing type column defaults to 'memo'"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""Number,Name
 1,Test""")
 
-        with patch('csv_parser.get_osc_config') as mock_get_config:
+        with patch('app.csv_parser.get_osc_config') as mock_get_config:
             mock_config = Mock()
             mock_config.check_cue_type.return_value = 'memo'
             mock_config.build_osc_message.return_value = None
@@ -221,12 +213,11 @@ class TestAutoProperties:
 
     def test_auto_properties_called(self, mock_udp_client, mock_async_server):
         """Test that get_auto_properties is called during CSV processing"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""Number,Type,Name
 1,fade,Test""")
 
-        with patch('csv_parser.get_osc_config') as mock_get_config:
+        with patch('app.csv_parser.get_osc_config') as mock_get_config:
             mock_config = Mock()
             mock_config.check_cue_type.return_value = 'fade'
             mock_config.build_osc_message.return_value = None
@@ -245,9 +236,8 @@ class TestQLab4vs5:
 
     def test_qlab5_version_passed_to_config(self, simple_csv, mock_udp_client, mock_async_server):
         """Test that QLab version 5 is passed to config"""
-        from csv_parser import send_csv
 
-        with patch('csv_parser.get_osc_config') as mock_get_config:
+        with patch('app.csv_parser.get_osc_config') as mock_get_config:
             mock_config = Mock()
             mock_config.check_cue_type.return_value = 'audio'
             mock_config.build_osc_message.return_value = None
@@ -261,9 +251,8 @@ class TestQLab4vs5:
 
     def test_qlab4_version_passed_to_config(self, simple_csv, mock_udp_client, mock_async_server):
         """Test that QLab version 4 is passed to config"""
-        from csv_parser import send_csv
 
-        with patch('csv_parser.get_osc_config') as mock_get_config:
+        with patch('app.csv_parser.get_osc_config') as mock_get_config:
             mock_config = Mock()
             mock_config.check_cue_type.return_value = 'audio'
             mock_config.build_osc_message.return_value = None
@@ -281,7 +270,6 @@ class TestEdgeCases:
 
     def test_special_characters_in_values(self, mock_udp_client, mock_async_server):
         """Test CSV with special characters"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""Number,Type,Name
 1,audio,"Test, with comma"
@@ -294,7 +282,6 @@ class TestEdgeCases:
 
     def test_unicode_handling(self, mock_udp_client, mock_async_server):
         """Test CSV with unicode characters"""
-        from csv_parser import send_csv
 
         csv_content = MockFileStorage("""Number,Type,Name
 1,audio,Tëst Çüé 日本語""")
@@ -306,7 +293,6 @@ class TestEdgeCases:
 
     def test_very_long_values(self, mock_udp_client, mock_async_server):
         """Test CSV with very long values"""
-        from csv_parser import send_csv
 
         long_name = "A" * 1000
         csv_content = MockFileStorage(f"""Number,Type,Name

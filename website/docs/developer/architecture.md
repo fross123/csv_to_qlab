@@ -28,13 +28,27 @@ User Feedback (Flask UI)
 
 ## Core Components
 
-### 1. Flask Application (`application.py`)
+### 1. Entry Points
+
+**GUI Entry Point (`run_gui.py`):**
+- Entry point for PyInstaller GUI builds
+- Imports `app.application` as a module
+- Creates PyWebView window
+- Located in project root (outside `app/` package)
+
+**CLI Entry Point (`app/cli.py`):**
+- Command-line interface entry point
+- Installed via `pip install .` as `csv-to-qlab` command
+- Provides automation and scripting capabilities
+
+### 2. Flask Application (`app/application.py`)
 - Web server providing the UI
 - Runs inside a PyWebView native window
 - Handles file uploads and form submission
 - Routes: `/` (upload), `/success` (results)
+- Uses relative imports as part of the `app` package
 
-### 2. CSV Parser (`csv_parser.py`)
+### 3. CSV Parser (`app/csv_parser.py`)
 The main processing pipeline:
 
 1. **Parse CSV** - Reads CSV file into list of dictionaries
@@ -46,7 +60,7 @@ The main processing pipeline:
    - Handle auto-properties (e.g., fadeopacity → doopacity)
 5. **Send to QLab** - UDP transmission with async reply handling
 
-### 3. OSC Configuration System (`osc_config.py`)
+### 4. OSC Configuration System (`app/osc_config.py`)
 
 **Configuration-Driven Design:**
 - All OSC properties defined in `qlab_osc_config.json`
@@ -65,13 +79,40 @@ get_auto_properties(property_name, cue_type)
 # Returns properties to auto-enable
 ```
 
-### 4. OSC Server (`osc_server.py`)
+### 5. OSC Server (`app/osc_server.py`)
 - Async UDP server listening on port 53001
 - Receives QLab reply messages
 - Parses JSON responses for status
 - Routes to error/success handlers
 
-### 5. PyWebView Desktop Wrapper
+## Package Structure
+
+CSV to QLab follows Python best practices for a pip-installable package with PyInstaller GUI:
+
+```
+csv_to_qlab/
+├── run_gui.py              # GUI entry point (PyInstaller)
+├── setup.py                # pip installation config
+├── application.spec        # PyInstaller build config
+└── app/                    # Main Python package
+    ├── __init__.py         # Package marker
+    ├── cli.py              # CLI entry point
+    ├── application.py      # Flask app
+    ├── csv_parser.py       # CSV processing
+    ├── osc_config.py       # OSC configuration
+    ├── osc_server.py       # OSC server
+    ├── helper.py           # Utilities
+    ├── error_success_handler.py  # Error tracking
+    ├── qlab_osc_config.json  # OSC property definitions
+    └── tests/              # Test suite
+```
+
+**Import Structure:**
+- All modules within `app/` use **relative imports** (e.g., `from .csv_parser import send_csv`)
+- Entry points (`run_gui.py`, `setup.py`) use **absolute imports** (e.g., `from app.cli import main`)
+- This follows PEP 8 and PyInstaller best practices
+
+### 6. PyWebView Desktop Wrapper
 - Creates native macOS app window
 - Frameless design (300x465px)
 - Bundles with PyInstaller for distribution
